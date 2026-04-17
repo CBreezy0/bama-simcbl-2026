@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Alabama 2026 â Depth Chart</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0f1a; font-family: 'Arial', sans-serif; padding: 32px; }
+
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #9E1B32 0%, #7a1325 40%, #1D3557 100%);
+    border-radius: 12px;
+    padding: 26px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .hdr-left {}
+  .hdr-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.45); text-transform: uppercase; margin-bottom: 5px; }
+  .hdr-title { font-size: 26px; font-weight: 800; color: #fff; }
+  .hdr-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 3px; }
+  .hdr-stats { display: flex; gap: 28px; }
+  .hdr-stat { text-align: center; }
+  .hdr-stat-num { font-size: 24px; font-weight: 800; color: #fff; }
+  .hdr-stat-lbl { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.4); text-transform: uppercase; }
+
+  /* PANELS */
+  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .panel {
+    background: #111827;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #1e2d42;
+  }
+  .panel-full { grid-column: 1 / -1; }
+
+  .panel-hdr {
+    background: #1a2236;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #2a3a55;
+  }
+  .panel-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #7a9cc4;
+    text-transform: uppercase;
+  }
+  .panel-count {
+    font-size: 10px;
+    font-weight: 700;
+    background: rgba(29,53,87,0.5);
+    border: 1px solid #2a3a55;
+    border-radius: 10px;
+    padding: 2px 9px;
+    color: #5a7a9a;
+  }
+
+  /* FIELD DIAGRAM */
+  .field-wrap {
+    padding: 24px 20px;
+  }
+  .field {
+    background: #0d1f0d;
+    border-radius: 10px;
+    padding: 28px 20px 20px;
+    position: relative;
+    border: 1px solid #1a3a1a;
+  }
+
+  /* Field positions layout */
+  .field-row { display: flex; justify-content: center; gap: 0; margin-bottom: 0; }
+
+  .pos-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 10px;
+    min-width: 130px;
+  }
+  .pos-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .pos-card {
+    background: #0f1d10;
+    border: 1px solid #264026;
+    border-radius: 8px;
+    padding: 9px 12px;
+    text-align: center;
+    width: 100%;
+    min-width: 110px;
+  }
+  .pos-card.grad { background: #200d10; border-color: #4a1a1a; }
+  .pos-card.weak { background: #201a08; border-color: #4a3a08; }
+
+  .pos-name { font-size: 13px; font-weight: 800; color: #d8e8d8; white-space: nowrap; }
+  .pos-ovr  { font-size: 12px; font-weight: 700; margin-top: 2px; }
+  .pos-cls  { font-size: 10px; color: rgba(255,255,255,0.3); margin-top: 1px; }
+
+  /* LINEUP TABLE */
+  .lineup-table { width: 100%; border-collapse: collapse; }
+  .lineup-table thead tr { background: #0f1520; }
+  .lineup-table thead th {
+    padding: 9px 14px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #4a6080;
+    text-align: left;
+    border-bottom: 1px solid #1e2d42;
+  }
+  .lineup-table thead th.c { text-align: center; }
+  .lineup-table tbody tr { border-bottom: 1px solid #151f2e; }
+  .lineup-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+  .lineup-table td { padding: 9px 14px; font-size: 13px; color: #b0c0d0; vertical-align: middle; }
+  .lineup-table td.c { text-align: center; }
+  .num { font-size: 11px; font-weight: 700; color: #3a4a5a; width: 24px; }
+  .pname { font-weight: 700; color: #d8e0ea; font-size: 13px; }
+  .pname.grad { color: #e87a8a; }
+
+  .ovr-chip {
+    display: inline-block; min-width: 32px; text-align: center;
+    padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: 800;
+  }
+  .g-ap { color: #22c55e; }
+  .g-a  { color: #34d058; }
+  .g-am { color: #4ade80; }
+  .g-bp { color: #60a5fa; }
+  .g-b  { color: #3b82f6; }
+  .g-bm { color: #93c5fd; }
+  .g-cp { color: #f59e0b; }
+  .g-c  { color: #f6a823; }
+  .g-cm { color: #fbbf24; }
+  .g-dp { color: #f87171; }
+  .g-d  { color: #ef4444; }
+  .g-f  { color: #dc2626; }
+
+  .cls-pill {
+    font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px;
+  }
+  .cls-sr { background: rgba(158,27,50,0.2); color: #e87a8a; }
+  .cls-jr { background: rgba(29,53,87,0.4); color: #7aabda; }
+  .cls-so { background: rgba(80,80,80,0.3); color: #aaa; }
+  .cls-fr { background: rgba(26,116,49,0.2); color: #6ec97f; }
+  .cls-rsjr { background: rgba(120,80,0,0.3); color: #d4a04a; }
+  .cls-rsso { background: rgba(60,60,60,0.3); color: #bbb; }
+
+  .role-mini {
+    font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px;
+    white-space: nowrap;
+  }
+  .r-ace    { background: rgba(34,197,94,0.12); color: #22c55e; }
+  .r-start  { background: rgba(96,165,250,0.12); color: #60a5fa; }
+  .r-close  { background: rgba(167,139,250,0.12); color: #a78bfa; }
+  .r-long   { background: rgba(99,102,241,0.12); color: #818cf8; }
+  .r-setup  { background: rgba(251,191,36,0.12); color: #fbbf24; }
+  .r-mid    { background: rgba(156,163,175,0.12); color: #9ca3af; }
+  .r-dev    { background: rgba(107,114,128,0.1); color: #6b7280; }
+
+  /* FOOTER */
+  .footer-bar {
+    background: #111827;
+    border-radius: 10px;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #1e2d42;
+  }
+  .footer-bar span { font-size: 10px; color: #2a3a55; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; }
+
+  .note { font-size: 10px; color: #3a5070; padding: 4px 14px 10px; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="hdr-left">
+      <div class="hdr-eyebrow">CBreezy Media  â¢  SimCBL  â¢  Season 2026</div>
+      <div class="hdr-title">Alabama Crimson Tide â Depth Chart</div>
+      <div class="hdr-sub">27 players  â¢  13 pitchers  â¢  14 position players  â¢  6 graduating seniors</div>
+    </div>
+    <div class="hdr-stats">
+      <div class="hdr-stat"><div class="hdr-stat-num" style="color:#22c55e">3</div><div class="hdr-stat-lbl">A+ Players</div></div>
+      <div class="hdr-stat"><div class="hdr-stat-num" style="color:#e87a8a">6</div><div class="hdr-stat-lbl">Graduating</div></div>
+      <div class="hdr-stat"><div class="hdr-stat-num" style="color:#f59e0b">8</div><div class="hdr-stat-lbl">Open Spots</div></div>
+    </div>
+  </div>
+
+  <!-- PANELS -->
+  <div class="panels">
+
+    <!-- STARTING LINEUP -->
+    <div class="panel">
+      <div class="panel-hdr">
+        <span class="panel-title">Projected Starting Lineup</span>
+        <span class="panel-count">9 Starters</span>
+      </div>
+      <table class="lineup-table">
+        <thead><tr>
+          <th>#</th><th>Player</th><th>Pos</th><th class="c">OVR</th><th>Class</th><th>Notes</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td><span class="pname grad">Leroy Adams</span></td><td>CF</td><td class="c"><span class="ovr-chip g-ap">A+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td class="note">Final season</td></tr>
+          <tr><td class="num">2</td><td><span class="pname">George Faulkner</span></td><td>1B</td><td class="c"><span class="ovr-chip g-a">A</span></td><td><span class="cls-pill cls-jr">JR</span></td><td></td></tr>
+          <tr><td class="num">3</td><td><span class="pname">Wayne White</span></td><td>C</td><td class="c"><span class="ovr-chip g-a">A</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td></td></tr>
+          <tr><td class="num">4</td><td><span class="pname grad">Garry Mays</span></td><td>1B/RF</td><td class="c"><span class="ovr-chip g-bp">B+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td class="note">Final season</td></tr>
+          <tr><td class="num">5</td><td><span class="pname">Keith Osborne</span></td><td>1B</td><td class="c"><span class="ovr-chip g-b">B</span></td><td><span class="cls-pill cls-fr">FR</span></td><td></td></tr>
+          <tr><td class="num">6</td><td><span class="pname">Robert Jordan</span></td><td>3B</td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-so">SO</span></td><td></td></tr>
+          <tr><td class="num">7</td><td><span class="pname">Mally Alvarez</span></td><td>SS/2B</td><td class="c"><span class="ovr-chip g-cp">C+</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td></td></tr>
+          <tr><td class="num">8</td><td><span class="pname">Jimmie Schultz</span></td><td>SS/2B</td><td class="c"><span class="ovr-chip g-cp">C+</span></td><td><span class="cls-pill cls-jr">JR</span></td><td></td></tr>
+          <tr><td class="num">9</td><td><span class="pname" style="color:#f87171">Kendall Green</span></td><td>RF</td><td class="c"><span class="ovr-chip g-f">F</span></td><td><span class="cls-pill cls-fr">FR</span></td><td class="note" style="color:#f87171">Needs upgrade</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PITCHING ROTATION -->
+    <div class="panel">
+      <div class="panel-hdr">
+        <span class="panel-title">Pitching Rotation & Bullpen</span>
+        <span class="panel-count">13 Arms</span>
+      </div>
+      <table class="lineup-table">
+        <thead><tr>
+          <th>#</th><th>Player</th><th class="c">OVR</th><th>Class</th><th>Role</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td><span class="pname grad">Jerry Butler</span></td><td class="c"><span class="ovr-chip g-ap">A+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-ace">ACE</span></td></tr>
+          <tr><td class="num">2</td><td><span class="pname">Mirza Price</span></td><td class="c"><span class="ovr-chip g-bp">B+</span></td><td><span class="cls-pill cls-fr">FR</span></td><td><span class="role-mini r-start">FUTURE ACE</span></td></tr>
+          <tr><td class="num">â</td><td><span class="pname grad">Jacob Boone</span></td><td class="c"><span class="ovr-chip g-ap">A+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-close">CLOSER</span></td></tr>
+          <tr><td class="num">â</td><td><span class="pname">Jermichael Robertson</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-jr">JR</span></td><td><span class="role-mini r-long">LONG RP</span></td></tr>
+          <tr><td class="num">â</td><td><span class="pname">Rocket Smith</span></td><td class="c"><span class="ovr-chip g-b">B</span></td><td><span class="cls-pill cls-jr">JR</span></td><td><span class="role-mini r-setup">SETUP</span></td></tr>
+          <tr><td class="num">â</td><td><span class="pname grad">Jeffrey Andrews</span></td><td class="c"><span class="ovr-chip g-bp">B+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-mid">HI-LVG RP</span></td></tr>
+          <tr><td class="num">â</td><td><span class="pname grad">Everett Nash</span></td><td class="c"><span class="ovr-chip g-am">A-</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-mid">HI-LVG RP</span></td></tr>
+          <tr><td class="num">â</td><td><span class="pname">Cameron Garcia</span></td><td class="c"><span class="ovr-chip g-b">B</span></td><td><span class="cls-pill cls-jr">JR</span></td><td><span class="role-mini r-dev">CLOSER CAND</span></td></tr>
+          <tr><td class="num">â</td><td><span class="pname">Frank Coleman</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-fr">FR</span></td><td><span class="role-mini r-dev">SHORT RP</span></td></tr>
+          <tr><td class="num">â</td><td><span class="pname">Jack Gilbert</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-so">SO</span></td><td><span class="role-mini r-dev">DEV RP</span></td></tr>
+          <tr><td class="num">â</td><td><span class="pname">Rolando Garcia</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-fr">FR</span></td><td><span class="role-mini r-dev">MID RP</span></td></tr>
+          <tr><td class="num">â</td><td><span class="pname">Francis Collins</span></td><td class="c"><span class="ovr-chip g-c">C</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td><span class="role-mini r-dev">LO-LVG RP</span></td></tr>
+          <tr><td class="num">â</td><td><span class="pname">John Norman</span></td><td class="c"><span class="ovr-chip g-d">D</span></td><td><span class="cls-pill cls-so">SO</span></td><td><span class="role-mini r-dev">DEPTH</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CATCHING & BENCH DEPTH -->
+    <div class="panel">
+      <div class="panel-hdr">
+        <span class="panel-title">Catching Depth</span>
+        <span class="panel-count">4 Catchers</span>
+      </div>
+      <table class="lineup-table">
+        <thead><tr><th>Player</th><th class="c">OVR</th><th>Class</th><th>C Rating</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pname">Wayne White</span></td><td class="c"><span class="ovr-chip g-a">A</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td><span style="color:#22c55e;font-weight:700">75</span></td></tr>
+          <tr><td><span class="pname">Garrett Mckee</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td><span style="color:#60a5fa;font-weight:700">55</span></td></tr>
+          <tr><td><span class="pname">Robinson Smith</span></td><td class="c"><span class="ovr-chip g-c">C</span></td><td><span class="cls-pill cls-rsso">RS SO</span></td><td><span style="color:#f59e0b;font-weight:700">â</span></td></tr>
+          <tr><td><span class="pname">Daniel Collins</span></td><td class="c"><span class="ovr-chip g-c">C</span></td><td><span class="cls-pill cls-fr">FR</span></td><td><span style="color:#f59e0b;font-weight:700">45</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- KEY GAPS -->
+    <div class="panel">
+      <div class="panel-hdr">
+        <span class="panel-title">Roster Gaps & Recruiting Priorities</span>
+      </div>
+      <table class="lineup-table">
+        <thead><tr><th>Position</th><th>Status</th><th>Priority</th></tr></thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700;color:#e87a8a">Right Field</td>
+            <td style="color:#f87171;font-size:12px">F-rated starter (Green)</td>
+            <td><span style="background:rgba(220,38,38,0.15);color:#f87171;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">CRITICAL</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#e87a8a">Pitching (Post-2026)</td>
+            <td style="color:#f87171;font-size:12px">Lose 4 arms after season</td>
+            <td><span style="background:rgba(220,38,38,0.15);color:#f87171;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">CRITICAL</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#fbbf24">Center Field</td>
+            <td style="color:#fbbf24;font-size:12px">Adams leaves â Underwood (C+)</td>
+            <td><span style="background:rgba(245,158,11,0.15);color:#fbbf24;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">MONITOR</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#fbbf24">Second Base</td>
+            <td style="color:#9ca3af;font-size:12px">Alvarez / Schultz (C+ utility)</td>
+            <td><span style="background:rgba(107,114,128,0.15);color:#9ca3af;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">MANAGEABLE</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#22c55e">First Base</td>
+            <td style="color:#9ca3af;font-size:12px">Faulkner (A) + Osborne (B)</td>
+            <td><span style="background:rgba(34,197,94,0.12);color:#22c55e;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">COVERED</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#22c55e">Catcher</td>
+            <td style="color:#9ca3af;font-size:12px">White (A) + Mckee (B-)</td>
+            <td><span style="background:rgba(34,197,94,0.12);color:#22c55e;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">COVERED</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-bar">
+    <span>CBreezy Media  â¢  Alabama Crimson Tide  â¢  SimCBL 2026</span>
+    <span style="color:#e87a8a">Highlighted in red = graduating after 2026</span>
+  </div>
+
+</div>
+</body>
+</html>

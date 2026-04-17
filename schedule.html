@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alabama 2026 â Season Schedule | CBreezy Media</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #080d14; font-family: 'Arial', sans-serif; min-height: 100vh; }
+
+  .hero { background: linear-gradient(150deg, #0d1520 0%, #1D3557 55%, #9E1B32 100%); padding: 52px 48px 40px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: '2026'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 180px; font-weight: 900; color: rgba(255,255,255,0.025); white-space: nowrap; pointer-events: none; }
+  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 4px; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 14px; }
+  .hero-title { font-size: 48px; font-weight: 900; color: #fff; line-height: 1.0; margin-bottom: 6px; }
+  .hero-title span { color: #f4a342; }
+  .hero-subtitle { font-size: 16px; color: rgba(255,255,255,0.45); margin-top: 8px; margin-bottom: 28px; font-style: italic; }
+  .hero-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 5px 16px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
+
+  .nav { background: #0f1824; border-bottom: 1px solid #1a2740; padding: 0 48px; display: flex; align-items: center; gap: 2px; overflow-x: auto; }
+  .nav a { display: block; padding: 14px 16px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #4a6080; text-decoration: none; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; white-space: nowrap; }
+  .nav a:hover, .nav a.active { color: #fff; border-bottom-color: #9E1B32; }
+
+  .content { max-width: 1000px; margin: 0 auto; padding: 40px 32px 64px; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 40px; }
+  .stat-box { background: #111827; border: 1px solid #1e2d42; border-radius: 10px; padding: 16px 14px; text-align: center; }
+  .stat-box .val { font-size: 26px; font-weight: 800; color: #9E1B32; }
+  .stat-box .lbl { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #4a6080; text-transform: uppercase; margin-top: 4px; }
+
+  .month-block { margin-bottom: 32px; }
+  .month-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: #2a4060; text-transform: uppercase; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #1a2740; }
+
+  table { width: 100%; border-collapse: collapse; background: #111827; border-radius: 12px; overflow: hidden; border: 1px solid #1e2d42; margin-bottom: 4px; }
+  thead tr { background: #1a2236; }
+  thead th { padding: 10px 14px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #4a6080; text-align: left; border-bottom: 2px solid #2a3a55; }
+  tbody tr { border-bottom: 1px solid #1a2236; transition: background 0.12s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  tbody tr.bye-row { opacity: 0.4; }
+  tbody tr.sec-row { background: rgba(29,53,87,0.18); }
+  tbody tr.sec-row:hover { background: rgba(29,53,87,0.28); }
+  tbody tr.tourn-row { background: rgba(158,27,50,0.12); }
+  tbody tr.tourn-row:hover { background: rgba(158,27,50,0.2); }
+  td { padding: 10px 14px; font-size: 13px; color: #c8d8e8; }
+  td.week { font-weight: 800; color: #4a6080; font-size: 12px; width: 60px; }
+
+  .home-badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700; background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.25); margin-right: 4px; }
+  .away-badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700; background: rgba(248,113,113,0.12); color: #f87171; border: 1px solid rgba(248,113,113,0.25); margin-right: 4px; }
+  .type-badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
+  .type-nc { background: rgba(156,163,175,0.1); color: #9ca3af; border: 1px solid rgba(156,163,175,0.2); }
+  .type-sec { background: rgba(29,53,87,0.3); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+  .type-tourn { background: rgba(158,27,50,0.25); color: #e87a8a; border: 1px solid rgba(158,27,50,0.4); }
+  .type-bye { background: rgba(107,114,128,0.1); color: #4a6080; border: 1px solid rgba(107,114,128,0.2); }
+
+  .games-cell { display: flex; flex-wrap: wrap; gap: 6px; }
+  .game-entry { font-size: 13px; color: #c8d8e8; }
+
+  .legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #4a6080; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  .footer { background: #080d14; border-top: 1px solid #111827; padding: 24px 48px; text-align: center; font-size: 10px; color: #1e2d42; letter-spacing: 2px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">CBreezy Media  â¢  SimCBL Season 2026</div>
+  <div class="hero-title">Alabama<br><span>Season Schedule</span></div>
+  <div class="hero-subtitle">26-Week Schedule â Non-Conference through Tournament</div>
+  <div class="hero-pills">
+    <span class="pill">Weeks 1â12 Non-Conf</span>
+    <span class="pill">Weeks 13â23 SEC</span>
+    <span class="pill">Weeks 24â26 Tournament</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="index.html">Home</a>
+  <a href="season-preview.html">Season Preview</a>
+  <a href="depth-chart.html">Depth Chart</a>
+  <a href="pitcher-potentials.html">Pitching Intel</a>
+  <a href="spotlight-cards.html">Player Spotlights</a>
+  <a href="schedule.html" class="active">Schedule</a>
+  <a href="recruiting.html">Recruiting</a>
+  <a href="war-room.html">War Room</a>
+  <a href="freshmen.html">Freshmen</a>
+</nav>
+
+<div class="content">
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="val">26</div><div class="lbl">Total Weeks</div></div>
+    <div class="stat-box"><div class="val">12</div><div class="lbl">Non-Conf Wks</div></div>
+    <div class="stat-box"><div class="val">10</div><div class="lbl">SEC Series</div></div>
+    <div class="stat-box"><div class="val">7</div><div class="lbl">Road Series</div></div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div> Home</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f87171"></div> Away</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#60a5fa"></div> SEC Series (3 games)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e87a8a"></div> Tournament</div>
+  </div>
+
+  <!-- MONTH 1 -->
+  <div class="month-block">
+    <div class="month-label">Month 1 â Non-Conference</div>
+    <table>
+      <thead><tr><th>Wk</th><th>Game A</th><th>Game B</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="week">1</td><td><span class="away-badge">@</span>South Florida</td><td><span class="away-badge">@</span>Towson</td><td><span class="type-badge type-nc">Non-Conf</span></td></tr>
+        <tr><td class="week">2</td><td><span class="home-badge">vs</span>Long Beach State</td><td><span class="away-badge">@</span>W. Michigan</td><td><span class="type-badge type-nc">Non-Conf</span></td></tr>
+        <tr><td class="week">3</td><td><span class="home-badge">vs</span>Little Rock</td><td><span class="away-badge">@</span>Arkansas St.</td><td><span class="type-badge type-nc">Non-Conf</span></td></tr>
+        <tr><td class="week">4</td><td><span class="home-badge">vs</span>Baylor</td><td><span class="away-badge">@</span>Navy</td><td><span class="type-badge type-nc">Non-Conf</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MONTH 2 -->
+  <div class="month-block">
+    <div class="month-label">Month 2 â Non-Conference</div>
+    <table>
+      <thead><tr><th>Wk</th><th>Game A</th><th>Game B</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="week">5</td><td><span class="away-badge">@</span>Delaware</td><td><span class="home-badge">vs</span>Portland</td><td><span class="type-badge type-nc">Non-Conf</span></td></tr>
+        <tr><td class="week">6</td><td><span class="away-badge">@</span>North Carolina</td><td><span class="home-badge">vs</span>Gardner-Webb</td><td><span class="type-badge type-nc">Non-Conf</span></td></tr>
+        <tr><td class="week">7</td><td><span class="away-badge">@</span>St. John's</td><td><span class="home-badge">vs</span>C. of Charleston</td><td><span class="type-badge type-nc">Non-Conf</span></td></tr>
+        <tr><td class="week">8</td><td><span class="home-badge">vs</span>Dallas Baptist</td><td><span class="away-badge">@</span>Lehigh</td><td><span class="type-badge type-nc">Non-Conf</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MONTH 3 -->
+  <div class="month-block">
+    <div class="month-label">Month 3 â Non-Conference Finish + SEC Opener</div>
+    <table>
+      <thead><tr><th>Wk</th><th>Games</th><th></th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="week">9</td><td><span class="home-badge">vs</span>Murray State</td><td><span class="home-badge">vs</span>UMBC</td><td><span class="type-badge type-nc">Non-Conf</span></td></tr>
+        <tr><td class="week">10</td><td><span class="home-badge">vs</span>Monmouth</td><td>â</td><td><span class="type-badge type-nc">Non-Conf</span></td></tr>
+        <tr><td class="week">11</td><td><span class="home-badge">vs</span>New Orleans</td><td>â</td><td><span class="type-badge type-nc">Non-Conf</span></td></tr>
+        <tr class="bye-row"><td class="week">12</td><td colspan="2">â BYE WEEK â</td><td><span class="type-badge type-bye">BYE</span></td></tr>
+        <tr class="sec-row"><td class="week">13</td><td colspan="2"><span class="home-badge">vs</span>Vanderbilt  Ã3 games</td><td><span class="type-badge type-sec">SEC Series #1</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MONTH 4 -->
+  <div class="month-block">
+    <div class="month-label">Month 4 â SEC Conference Play</div>
+    <table>
+      <thead><tr><th>Wk</th><th>Opponent</th><th>Location</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr class="bye-row"><td class="week">14</td><td>â BYE WEEK â</td><td>â</td><td><span class="type-badge type-bye">BYE</span></td></tr>
+        <tr class="sec-row"><td class="week">15</td><td>Kentucky</td><td><span class="home-badge">vs</span>Ã3 games</td><td><span class="type-badge type-sec">SEC Series #2</span></td></tr>
+        <tr class="sec-row"><td class="week">16</td><td>Tennessee</td><td><span class="away-badge">@</span>Ã3 games</td><td><span class="type-badge type-sec">SEC Series #3</span></td></tr>
+        <tr class="sec-row"><td class="week">17</td><td>LSU</td><td><span class="home-badge">vs</span>Ã3 games</td><td><span class="type-badge type-sec">SEC Series #4</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MONTH 5 -->
+  <div class="month-block">
+    <div class="month-label">Month 5 â SEC Conference Play (Toughest Stretch)</div>
+    <table>
+      <thead><tr><th>Wk</th><th>Opponent</th><th>Location</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr class="sec-row"><td class="week">18</td><td>Missouri</td><td><span class="away-badge">@</span>Ã3 games</td><td><span class="type-badge type-sec">SEC Series #5</span></td></tr>
+        <tr class="sec-row"><td class="week">19</td><td>Mississippi St.</td><td><span class="away-badge">@</span>Ã3 games</td><td><span class="type-badge type-sec">SEC Series #6</span></td></tr>
+        <tr class="sec-row"><td class="week">20</td><td>Florida</td><td><span class="away-badge">@</span>Ã3 games</td><td><span class="type-badge type-sec">SEC Series #7</span></td></tr>
+        <tr class="sec-row"><td class="week">21</td><td>Georgia</td><td><span class="away-badge">@</span>Ã3 games</td><td><span class="type-badge type-sec">SEC Series #8</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MONTH 6 -->
+  <div class="month-block">
+    <div class="month-label">Month 6 â SEC Finish + Tournament</div>
+    <table>
+      <thead><tr><th>Wk</th><th>Opponent</th><th>Location</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr class="sec-row"><td class="week">22</td><td>Texas</td><td><span class="away-badge">@</span>Ã3 games</td><td><span class="type-badge type-sec">SEC Series #9</span></td></tr>
+        <tr class="sec-row"><td class="week">23</td><td>Arkansas</td><td><span class="home-badge">vs</span>Ã3 games</td><td><span class="type-badge type-sec">SEC Series #10</span></td></tr>
+        <tr class="tourn-row"><td class="week">24</td><td colspan="2">SEC Tournament â Bracket TBD</td><td><span class="type-badge type-tourn">Tournament</span></td></tr>
+        <tr class="tourn-row"><td class="week">25</td><td colspan="2">SEC Tournament â Bracket TBD</td><td><span class="type-badge type-tourn">Tournament</span></td></tr>
+        <tr class="tourn-row"><td class="week">26</td><td colspan="2">SEC Tournament â Bracket TBD</td><td><span class="type-badge type-tourn">Tournament</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="footer">CBreezy Media  â¢  Alabama Crimson Tide SimCBL  â¢  Season 2026 Schedule</div>
+</body>
+</html>

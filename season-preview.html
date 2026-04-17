@@ -5,41 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 Alabama Crimson Tide &mdash; Season Preview | CBreezy Media</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0c0c0c; font-family: 'Arial', sans-serif; color: #f2f2f2; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  .site-header {
-    background: #9E1B32;
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 2px solid #7a1325;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  :root {
+    --crimson:    #9E1B32;
+    --crimson-dk: #7a1325;
+    --crimson-md: #be2240;
+    --bg:         #0c0c0c;
+    --surface:    #161616;
+    --raised:     #1e1e1e;
+    --border:     #282828;
+    --border-sub: #1c1c1c;
+    --t1: #f2f2f2;
+    --t2: #b0b0b0;
+    --t3: #888888;
+    --t4: #606060;
   }
-  .site-brand { display: flex; align-items: center; gap: 10px; padding: 12px 0; }
-  .brand-name { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 1px; text-transform: uppercase; }
-  .brand-divider { color: rgba(255,255,255,0.4); }
-  .brand-team { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.75); }
-  .site-nav { display: flex; align-items: center; gap: 2px; }
+
+  body { background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; color: var(--t1); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  .site-header { background: var(--crimson); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--crimson-dk); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+
+  .site-brand { display: flex; align-items: center; gap: 10px; padding: 10px 0; flex-shrink: 0; }
+  .nav-logo    { height: 34px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; flex-shrink: 0; }
+  .brand-name  { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+  .brand-div   { color: rgba(255,255,255,0.35); }
+  .brand-team  { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); white-space: nowrap; }
+
+  .site-nav { display: flex; align-items: center; }
   .site-nav a {
-    display: block; padding: 14px 16px;
-    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-    color: rgba(255,255,255,0.65); text-decoration: none;
+    display: block; padding: 13px 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); text-decoration: none;
     border-bottom: 3px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
+    transition: color .15s, border-color .15s;
     white-space: nowrap;
   }
-  .site-nav a:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.6); }
+  .site-nav a:hover  { color: #fff; border-bottom-color: rgba(255,255,255,0.5); }
   .site-nav a.active { color: #fff; border-bottom-color: #fff; }
-  .nav-logo { height: 38px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; flex-shrink: 0; }
 
   /* ── HERO ── */
   .hero {
-    background: linear-gradient(160deg, #3a0010 0%, #9E1B32 55%, #7a1325 100%);
-    padding: 64px 48px 52px;
+    background: linear-gradient(160deg, #3a0010 0%, var(--crimson) 55%, var(--crimson-dk) 100%);
+    padding: clamp(40px, 8vw, 64px) clamp(20px, 5vw, 48px) clamp(36px, 7vw, 52px);
     position: relative;
     overflow: hidden;
   }
@@ -47,160 +57,141 @@
     content: 'A';
     position: absolute;
     right: 60px; top: -20px;
-    font-size: 300px;
+    font-size: clamp(120px, 30vw, 300px);
     font-weight: 900;
     color: rgba(0,0,0,0.15);
     line-height: 1;
+    pointer-events: none;
   }
-  .hero-logo { height: 80px; width: auto; margin-bottom: 18px; filter: brightness(0) invert(1); opacity: 0.9; position: relative; }
-  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.45); text-transform: uppercase; margin-bottom: 16px; position: relative; }
-  .hero-title { font-size: 54px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 10px; position: relative; text-shadow: 0 2px 20px rgba(0,0,0,0.4); }
-  .hero-subtitle { font-size: 20px; color: rgba(255,255,255,0.55); margin-bottom: 32px; font-style: italic; position: relative; }
-  .hero-tags { display: flex; gap: 10px; flex-wrap: wrap; position: relative; }
+  .hero-logo     { height: clamp(56px, 10vw, 80px); width: auto; margin-bottom: 18px; filter: brightness(0) invert(1); opacity: 0.9; position: relative; }
+  .hero-eyebrow  { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.45); text-transform: uppercase; margin-bottom: 16px; position: relative; }
+  .hero-title    { font-size: clamp(30px, 8vw, 54px); font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 10px; position: relative; text-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+  .hero-subtitle { font-size: clamp(15px, 3vw, 20px); color: rgba(255,255,255,0.55); margin-bottom: 32px; font-style: italic; position: relative; }
+  .hero-tags     { display: flex; gap: 10px; flex-wrap: wrap; position: relative; }
   .htag {
-    background: rgba(0,0,0,0.25);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    padding: 5px 14px;
-    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.8); letter-spacing: 0.5px;
+    background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.8);
   }
 
   /* ── CONTENT ── */
-  .content {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 52px 32px 72px;
-  }
+  .content { max-width: 780px; margin: 0 auto; padding: clamp(32px, 6vw, 52px) clamp(16px, 4vw, 32px) clamp(48px, 8vw, 72px); }
 
   .byline {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 36px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid #282828;
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 36px; padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
   }
   .byline-avatar {
     width: 44px; height: 44px; border-radius: 50%;
-    background: #9E1B32;
+    background: var(--crimson); border: 2px solid var(--crimson-md);
     display: flex; align-items: center; justify-content: center;
-    font-size: 15px; font-weight: 900; color: #fff;
-    flex-shrink: 0;
-    border: 2px solid #be2240;
+    font-size: 15px; font-weight: 900; color: #fff; flex-shrink: 0;
   }
-  .byline-name { font-size: 14px; font-weight: 800; color: #f2f2f2; }
-  .byline-meta { font-size: 12px; color: #888888; margin-top: 2px; }
+  .byline-name { font-size: 14px; font-weight: 800; color: var(--t1); }
+  .byline-meta { font-size: 12px; color: var(--t3); margin-top: 2px; }
 
-  .lede { font-size: 21px; line-height: 1.65; color: #c8c8c8; margin-bottom: 32px; font-weight: 400; }
+  .lede { font-size: clamp(17px, 3vw, 21px); line-height: 1.65; color: #c8c8c8; margin-bottom: 32px; }
   .lede strong { color: #f08898; }
 
   h2 {
-    font-size: 22px; font-weight: 900; color: #fff;
+    font-size: clamp(18px, 3.5vw, 22px); font-weight: 900; color: var(--t1);
     margin-bottom: 14px; margin-top: 44px;
     padding-bottom: 8px;
-    border-bottom: 3px solid #9E1B32;
+    border-bottom: 3px solid var(--crimson);
     display: inline-block;
   }
 
-  p { font-size: 16px; line-height: 1.8; color: #b0b0b0; margin-bottom: 18px; }
-  p strong { color: #f2f2f2; }
+  p { font-size: clamp(14px, 2.5vw, 16px); line-height: 1.8; color: var(--t2); margin-bottom: 18px; }
+  p strong { color: var(--t1); }
 
   .callout {
-    background: #1e1e1e;
-    border-left: 4px solid #9E1B32;
+    background: var(--raised); border: 1px solid var(--border);
+    border-left: 4px solid var(--crimson);
     border-radius: 0 10px 10px 0;
-    padding: 18px 24px;
-    margin: 28px 0;
-    border: 1px solid #333333;
-    border-left: 4px solid #9E1B32;
-    border-radius: 0 10px 10px 0;
+    padding: 18px 24px; margin: 28px 0;
   }
   .callout p { color: #c0c0c0; font-size: 15px; margin: 0; line-height: 1.65; }
-  .callout strong { color: #fff; }
+  .callout strong { color: var(--t1); }
 
   .callout-warn {
-    background: #1c0a00;
+    background: #1c0a00; border: 1px solid #3a2000;
     border-left: 4px solid #f59e0b;
     border-radius: 0 10px 10px 0;
-    padding: 18px 24px;
-    margin: 28px 0;
-    border: 1px solid #3a2000;
-    border-left: 4px solid #f59e0b;
+    padding: 18px 24px; margin: 28px 0;
   }
-  .callout-warn p { color: #999999; font-size: 15px; margin: 0; line-height: 1.65; }
+  .callout-warn p { color: #999; font-size: 15px; margin: 0; line-height: 1.65; }
 
   .callout-good {
-    background: #001408;
+    background: #001408; border: 1px solid #002810;
     border-left: 4px solid #22c55e;
     border-radius: 0 10px 10px 0;
-    padding: 18px 24px;
-    margin: 28px 0;
-    border: 1px solid #002810;
-    border-left: 4px solid #22c55e;
+    padding: 18px 24px; margin: 28px 0;
   }
   .callout-good p { color: #609870; font-size: 15px; margin: 0; line-height: 1.65; }
 
   .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 28px 0; }
-  .stat-box {
-    background: #161616;
-    border: 1px solid #282828;
-    border-radius: 10px;
-    padding: 18px 16px;
-    text-align: center;
-  }
-  .stat-box .val { font-size: 30px; font-weight: 900; color: #9E1B32; }
-  .stat-box .lbl { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #888888; text-transform: uppercase; margin-top: 4px; }
+  .stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 16px; text-align: center; }
+  .stat-box .val { font-size: clamp(22px, 5vw, 30px); font-weight: 900; color: var(--crimson); }
+  .stat-box .lbl { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--t3); text-transform: uppercase; margin-top: 4px; }
 
   .player-tag {
-    display: inline-block;
-    background: #1e1e1e;
-    border: 1px solid #333333;
-    border-radius: 5px;
-    padding: 1px 8px;
+    display: inline-block; background: var(--raised); border: 1px solid #333;
+    border-radius: 5px; padding: 1px 8px;
     font-size: 14px; font-weight: 700; color: #f08898;
   }
 
   .prediction-box {
-    background: linear-gradient(135deg, #3a0010, #9E1B32);
-    border-radius: 14px;
-    padding: 32px 36px;
-    margin-top: 44px;
-    text-align: center;
-    border: 1px solid #be2240;
+    background: linear-gradient(135deg, #3a0010, var(--crimson));
+    border-radius: 14px; padding: clamp(24px, 5vw, 32px) clamp(20px, 5vw, 36px);
+    margin-top: 44px; text-align: center;
+    border: 1px solid var(--crimson-md);
   }
-  .pred-title { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.45); text-transform: uppercase; margin-bottom: 10px; }
-  .pred-verdict { font-size: 34px; font-weight: 900; color: #fff; margin-bottom: 10px; }
-  .pred-sub { font-size: 14px; color: rgba(255,255,255,0.55); font-style: italic; line-height: 1.6; }
+  .pred-title   { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.45); text-transform: uppercase; margin-bottom: 10px; }
+  .pred-verdict { font-size: clamp(24px, 5vw, 34px); font-weight: 900; color: #fff; margin-bottom: 10px; }
+  .pred-sub     { font-size: 14px; color: rgba(255,255,255,0.55); font-style: italic; line-height: 1.6; }
 
   /* ── FOOTER ── */
-  .site-footer {
-    background: #9E1B32;
-    border-top: 2px solid #7a1325;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .site-footer { background: var(--crimson); border-top: 2px solid var(--crimson-dk); padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .site-footer span { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; }
+  .footer-brand { color: rgba(255,255,255,0.85) !important; font-size: 11px !important; font-weight: 800 !important; letter-spacing: 0.5px !important; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .header-inner { flex-direction: column; align-items: stretch; padding: 0; }
+    .site-brand   { padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .brand-team   { display: none; }
+    .site-nav     { overflow-x: auto; scrollbar-width: none; padding: 0 6px; }
+    .site-nav::-webkit-scrollbar { display: none; }
+    .site-nav a   { padding: 9px 12px; font-size: 10px; }
+    .site-footer  { padding: 14px 16px; justify-content: center; text-align: center; }
+    .site-footer span:last-child { display: none; }
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
   }
-  .site-footer span { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
-  .footer-brand { color: rgba(255,255,255,0.85) !important; font-size: 11px !important; font-weight: 800 !important; }
+
+  @media (max-width: 400px) {
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="site-brand">
-    <img src="alabama-logo.png" class="nav-logo" alt="Alabama">
-    <span class="brand-name">CBreezy Media</span>
-    <span class="brand-divider">&bull;</span>
-    <span class="brand-team">Alabama Crimson Tide</span>
+  <div class="header-inner">
+    <div class="site-brand">
+      <img src="alabama-logo.png" class="nav-logo" alt="Alabama">
+      <span class="brand-name">CBreezy Media</span>
+      <span class="brand-div">&bull;</span>
+      <span class="brand-team">Alabama Crimson Tide</span>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="season-preview.html" class="active">Season Preview</a>
+      <a href="depth-chart.html">Depth Chart</a>
+      <a href="pitcher-potentials.html">Pitching Intel</a>
+      <a href="spotlight-cards.html">Player Spotlights</a>
+    </nav>
   </div>
-  <nav class="site-nav">
-    <a href="index.html">Home</a>
-    <a href="season-preview.html" class="active">Season Preview</a>
-    <a href="depth-chart.html">Depth Chart</a>
-    <a href="pitcher-potentials.html">Pitching Intel</a>
-    <a href="spotlight-cards.html">Player Spotlights</a>
-  </nav>
 </header>
 
 <div class="hero">

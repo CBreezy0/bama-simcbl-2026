@@ -5,91 +5,102 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alabama 2026 &mdash; Depth Chart | CBreezy Media</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0c0c0c; font-family: 'Arial', sans-serif; color: #f2f2f2; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  .site-header {
-    background: #9E1B32;
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 2px solid #7a1325;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  :root {
+    --crimson:    #9E1B32;
+    --crimson-dk: #7a1325;
+    --crimson-md: #be2240;
+    --bg:         #0c0c0c;
+    --surface:    #161616;
+    --raised:     #1e1e1e;
+    --border:     #282828;
+    --border-sub: #1c1c1c;
+    --t1: #f2f2f2;
+    --t2: #b0b0b0;
+    --t3: #888888;
+    --t4: #606060;
   }
-  .site-brand { display: flex; align-items: center; gap: 10px; padding: 12px 0; }
-  .brand-name { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 1px; text-transform: uppercase; }
-  .brand-divider { color: rgba(255,255,255,0.4); }
-  .brand-team { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.75); }
-  .site-nav { display: flex; align-items: center; gap: 2px; }
+
+  body { background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; color: var(--t1); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  .site-header { background: var(--crimson); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--crimson-dk); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+
+  .site-brand { display: flex; align-items: center; gap: 10px; padding: 10px 0; flex-shrink: 0; }
+  .nav-logo    { height: 34px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; flex-shrink: 0; }
+  .brand-name  { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+  .brand-div   { color: rgba(255,255,255,0.35); }
+  .brand-team  { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); white-space: nowrap; }
+
+  .site-nav { display: flex; align-items: center; }
   .site-nav a {
-    display: block; padding: 14px 16px;
-    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-    color: rgba(255,255,255,0.65); text-decoration: none;
+    display: block; padding: 13px 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); text-decoration: none;
     border-bottom: 3px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
+    transition: color .15s, border-color .15s;
     white-space: nowrap;
   }
-  .site-nav a:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.6); }
+  .site-nav a:hover  { color: #fff; border-bottom-color: rgba(255,255,255,0.5); }
   .site-nav a.active { color: #fff; border-bottom-color: #fff; }
-  .nav-logo { height: 38px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; flex-shrink: 0; }
 
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 36px 32px 64px; display: flex; flex-direction: column; gap: 20px; }
+  /* ── LAYOUT ── */
+  .wrap { max-width: 1120px; margin: 0 auto; padding: clamp(24px, 5vw, 36px) clamp(16px, 4vw, 32px) clamp(48px, 8vw, 64px); display: flex; flex-direction: column; gap: 20px; }
 
+  /* ── PAGE HEADER ── */
   .page-header {
-    background: linear-gradient(135deg, #9E1B32 0%, #7a1325 50%, #3a0010 100%);
+    background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dk) 50%, #3a0010 100%);
     border-radius: 12px;
-    padding: 28px 36px;
+    padding: clamp(20px, 4vw, 28px) clamp(20px, 4vw, 36px);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #be2240;
+    gap: 20px;
+    border: 1px solid var(--crimson-md);
+    flex-wrap: wrap;
   }
   .hdr-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.45); text-transform: uppercase; margin-bottom: 6px; }
-  .hdr-title { font-size: 28px; font-weight: 900; color: #fff; }
+  .hdr-title { font-size: clamp(20px, 4vw, 28px); font-weight: 900; color: #fff; }
   .hdr-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 4px; }
-  .hdr-stats { display: flex; gap: 32px; }
+  .hdr-stats { display: flex; gap: clamp(16px, 4vw, 32px); flex-shrink: 0; }
   .hdr-stat { text-align: center; }
-  .hdr-stat-num { font-size: 26px; font-weight: 900; color: #fff; }
+  .hdr-stat-num { font-size: clamp(20px, 4vw, 26px); font-weight: 900; color: #fff; }
   .hdr-stat-lbl { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-top: 2px; }
 
+  /* ── PANELS ── */
   .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .panel { background: #161616; border-radius: 12px; overflow: hidden; border: 1px solid #282828; }
+  .panel { background: var(--surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
 
   .panel-hdr {
-    background: #1e1e1e;
+    background: var(--raised);
     padding: 13px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #282828;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
   }
-  .panel-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #be2240; text-transform: uppercase; }
-  .panel-count {
-    font-size: 10px; font-weight: 700;
-    background: rgba(158,27,50,0.15);
-    border: 1px solid #333333;
-    border-radius: 10px; padding: 2px 10px; color: #606060;
-  }
+  .panel-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--crimson-md); text-transform: uppercase; }
+  .panel-count { font-size: 10px; font-weight: 700; background: rgba(158,27,50,0.15); border: 1px solid #333; border-radius: 10px; padding: 2px 10px; color: var(--t4); }
 
+  /* ── TABLE ── */
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .data-table { width: 100%; border-collapse: collapse; }
-  .data-table thead tr { background: #111111; }
+  .data-table thead tr { background: #111; }
   .data-table thead th {
     padding: 9px 16px;
     font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
-    text-transform: uppercase; color: #888888; text-align: left;
-    border-bottom: 1px solid #282828;
+    text-transform: uppercase; color: var(--t3); text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
   }
   .data-table thead th.c { text-align: center; }
-  .data-table tbody tr { border-bottom: 1px solid #1c1c1c; }
+  .data-table tbody tr { border-bottom: 1px solid var(--border-sub); }
   .data-table tbody tr:hover { background: rgba(158,27,50,0.06); }
   .data-table td { padding: 9px 16px; font-size: 13px; color: #9e9e9e; vertical-align: middle; }
   .data-table td.c { text-align: center; }
 
-  .row-num { font-size: 11px; font-weight: 700; color: #777777; }
-  .pname { font-weight: 700; color: #f2f2f2; }
+  .row-num { font-size: 11px; font-weight: 700; color: #777; }
+  .pname { font-weight: 700; color: var(--t1); }
   .pname-grad { color: #f08898; }
   .pname-warn { color: #f87171; }
 
@@ -106,7 +117,7 @@
   .g-d  { color: #ef4444; }
   .g-f  { color: #dc2626; }
 
-  .cls-pill { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+  .cls-pill { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
   .cls-sr   { background: rgba(158,27,50,0.25);  color: #f08898; }
   .cls-jr   { background: rgba(96,165,250,0.15); color: #7aabda; }
   .cls-so   { background: rgba(100,100,100,0.2); color: #aaa; }
@@ -123,48 +134,63 @@
   .r-mid   { background: rgba(156,163,175,0.12); color: #9ca3af; }
   .r-dev   { background: rgba(107,114,128,0.1);  color: #6b7280; }
 
-  .cell-note      { font-size: 11px; color: #606060; font-style: italic; }
+  .cell-note      { font-size: 11px; color: var(--t4); font-style: italic; }
   .cell-note-warn { font-size: 11px; color: #f87171; font-style: italic; }
 
-  .status { font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 10px; }
+  .status { font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 10px; white-space: nowrap; }
   .s-critical   { background: rgba(220,38,38,0.15);   color: #f87171; }
   .s-monitor    { background: rgba(245,158,11,0.15);  color: #fbbf24; }
   .s-manageable { background: rgba(107,114,128,0.15); color: #9ca3af; }
   .s-covered    { background: rgba(34,197,94,0.12);   color: #22c55e; }
 
   .gap-pos   { font-weight: 700; }
-  .gap-issue { font-size: 12px; color: #606060; }
+  .gap-issue { font-size: 12px; color: var(--t4); }
 
-  .site-footer {
-    background: #9E1B32;
-    border-top: 2px solid #7a1325;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 8px;
-  }
-  .site-footer span { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
-  .footer-brand { color: rgba(255,255,255,0.85) !important; font-size: 11px !important; font-weight: 800 !important; }
+  /* ── FOOTER ── */
+  .site-footer { background: var(--crimson); border-top: 2px solid var(--crimson-dk); padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .site-footer span { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; }
+  .footer-brand { color: rgba(255,255,255,0.85) !important; font-size: 11px !important; font-weight: 800 !important; letter-spacing: 0.5px !important; }
   .footer-note  { color: rgba(255,255,255,0.65) !important; font-style: italic; letter-spacing: 0.5px !important; text-transform: none !important; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .panels { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .header-inner { flex-direction: column; align-items: stretch; padding: 0; }
+    .site-brand   { padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .brand-team   { display: none; }
+    .site-nav     { overflow-x: auto; scrollbar-width: none; padding: 0 6px; }
+    .site-nav::-webkit-scrollbar { display: none; }
+    .site-nav a   { padding: 9px 12px; font-size: 10px; }
+    .site-footer  { padding: 14px 16px; justify-content: center; text-align: center; }
+    .site-footer .footer-note { display: none; }
+  }
+
+  @media (max-width: 500px) {
+    .hdr-stats { gap: 12px; }
+  }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="site-brand">
-    <img src="alabama-logo.png" class="nav-logo" alt="Alabama">
-    <span class="brand-name">CBreezy Media</span>
-    <span class="brand-divider">&bull;</span>
-    <span class="brand-team">Alabama Crimson Tide</span>
+  <div class="header-inner">
+    <div class="site-brand">
+      <img src="alabama-logo.png" class="nav-logo" alt="Alabama">
+      <span class="brand-name">CBreezy Media</span>
+      <span class="brand-div">&bull;</span>
+      <span class="brand-team">Alabama Crimson Tide</span>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="season-preview.html">Season Preview</a>
+      <a href="depth-chart.html" class="active">Depth Chart</a>
+      <a href="pitcher-potentials.html">Pitching Intel</a>
+      <a href="spotlight-cards.html">Player Spotlights</a>
+    </nav>
   </div>
-  <nav class="site-nav">
-    <a href="index.html">Home</a>
-    <a href="season-preview.html">Season Preview</a>
-    <a href="depth-chart.html" class="active">Depth Chart</a>
-    <a href="pitcher-potentials.html">Pitching Intel</a>
-    <a href="spotlight-cards.html">Player Spotlights</a>
-  </nav>
 </header>
 
 <div class="wrap">
@@ -199,22 +225,24 @@
         <span class="panel-title">Projected Starting Lineup</span>
         <span class="panel-count">9 Starters</span>
       </div>
-      <table class="data-table">
-        <thead><tr>
-          <th>#</th><th>Player</th><th>Pos</th><th class="c">OVR</th><th>Class</th><th>Notes</th>
-        </tr></thead>
-        <tbody>
-          <tr><td class="row-num">1</td><td><span class="pname pname-grad">Leroy Adams</span></td><td>CF</td><td class="c"><span class="ovr-chip g-ap">A+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td class="cell-note">Final season</td></tr>
-          <tr><td class="row-num">2</td><td><span class="pname">George Faulkner</span></td><td>1B</td><td class="c"><span class="ovr-chip g-a">A</span></td><td><span class="cls-pill cls-jr">JR</span></td><td></td></tr>
-          <tr><td class="row-num">3</td><td><span class="pname">Wayne White</span></td><td>C</td><td class="c"><span class="ovr-chip g-a">A</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td></td></tr>
-          <tr><td class="row-num">4</td><td><span class="pname pname-grad">Garry Mays</span></td><td>1B / RF</td><td class="c"><span class="ovr-chip g-bp">B+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td class="cell-note">Final season</td></tr>
-          <tr><td class="row-num">5</td><td><span class="pname">Keith Osborne</span></td><td>1B</td><td class="c"><span class="ovr-chip g-b">B</span></td><td><span class="cls-pill cls-fr">FR</span></td><td></td></tr>
-          <tr><td class="row-num">6</td><td><span class="pname">Robert Jordan</span></td><td>3B</td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-so">SO</span></td><td></td></tr>
-          <tr><td class="row-num">7</td><td><span class="pname">Mally Alvarez</span></td><td>SS / 2B</td><td class="c"><span class="ovr-chip g-cp">C+</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td></td></tr>
-          <tr><td class="row-num">8</td><td><span class="pname">Jimmie Schultz</span></td><td>SS / 2B</td><td class="c"><span class="ovr-chip g-cp">C+</span></td><td><span class="cls-pill cls-jr">JR</span></td><td></td></tr>
-          <tr><td class="row-num">9</td><td><span class="pname pname-warn">Kendall Green</span></td><td>RF</td><td class="c"><span class="ovr-chip g-f">F</span></td><td><span class="cls-pill cls-fr">FR</span></td><td class="cell-note-warn">Needs upgrade</td></tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead><tr>
+            <th>#</th><th>Player</th><th>Pos</th><th class="c">OVR</th><th>Class</th><th>Notes</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="row-num">1</td><td><span class="pname pname-grad">Leroy Adams</span></td><td>CF</td><td class="c"><span class="ovr-chip g-ap">A+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td class="cell-note">Final season</td></tr>
+            <tr><td class="row-num">2</td><td><span class="pname">George Faulkner</span></td><td>1B</td><td class="c"><span class="ovr-chip g-a">A</span></td><td><span class="cls-pill cls-jr">JR</span></td><td></td></tr>
+            <tr><td class="row-num">3</td><td><span class="pname">Wayne White</span></td><td>C</td><td class="c"><span class="ovr-chip g-a">A</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td></td></tr>
+            <tr><td class="row-num">4</td><td><span class="pname pname-grad">Garry Mays</span></td><td>1B / RF</td><td class="c"><span class="ovr-chip g-bp">B+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td class="cell-note">Final season</td></tr>
+            <tr><td class="row-num">5</td><td><span class="pname">Keith Osborne</span></td><td>1B</td><td class="c"><span class="ovr-chip g-b">B</span></td><td><span class="cls-pill cls-fr">FR</span></td><td></td></tr>
+            <tr><td class="row-num">6</td><td><span class="pname">Robert Jordan</span></td><td>3B</td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-so">SO</span></td><td></td></tr>
+            <tr><td class="row-num">7</td><td><span class="pname">Mally Alvarez</span></td><td>SS / 2B</td><td class="c"><span class="ovr-chip g-cp">C+</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td></td></tr>
+            <tr><td class="row-num">8</td><td><span class="pname">Jimmie Schultz</span></td><td>SS / 2B</td><td class="c"><span class="ovr-chip g-cp">C+</span></td><td><span class="cls-pill cls-jr">JR</span></td><td></td></tr>
+            <tr><td class="row-num">9</td><td><span class="pname pname-warn">Kendall Green</span></td><td>RF</td><td class="c"><span class="ovr-chip g-f">F</span></td><td><span class="cls-pill cls-fr">FR</span></td><td class="cell-note-warn">Needs upgrade</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- PITCHING ROTATION -->
@@ -223,26 +251,28 @@
         <span class="panel-title">Pitching Rotation &amp; Bullpen</span>
         <span class="panel-count">13 Arms</span>
       </div>
-      <table class="data-table">
-        <thead><tr>
-          <th>#</th><th>Player</th><th class="c">OVR</th><th>Class</th><th>Role</th>
-        </tr></thead>
-        <tbody>
-          <tr><td class="row-num">SP1</td><td><span class="pname pname-grad">Jerry Butler</span></td><td class="c"><span class="ovr-chip g-ap">A+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-ace">ACE</span></td></tr>
-          <tr><td class="row-num">SP2</td><td><span class="pname">Mirza Price</span></td><td class="c"><span class="ovr-chip g-bp">B+</span></td><td><span class="cls-pill cls-fr">FR</span></td><td><span class="role-mini r-start">FUTURE ACE</span></td></tr>
-          <tr><td class="row-num">CL</td><td><span class="pname pname-grad">Jacob Boone</span></td><td class="c"><span class="ovr-chip g-ap">A+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-close">CLOSER</span></td></tr>
-          <tr><td class="row-num">RP</td><td><span class="pname">Jermichael Robertson</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-jr">JR</span></td><td><span class="role-mini r-long">LONG RP</span></td></tr>
-          <tr><td class="row-num">RP</td><td><span class="pname">Rocket Smith</span></td><td class="c"><span class="ovr-chip g-b">B</span></td><td><span class="cls-pill cls-jr">JR</span></td><td><span class="role-mini r-setup">SETUP</span></td></tr>
-          <tr><td class="row-num">RP</td><td><span class="pname pname-grad">Jeffrey Andrews</span></td><td class="c"><span class="ovr-chip g-bp">B+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-mid">HI-LVG RP</span></td></tr>
-          <tr><td class="row-num">RP</td><td><span class="pname pname-grad">Everett Nash</span></td><td class="c"><span class="ovr-chip g-am">A-</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-mid">HI-LVG RP</span></td></tr>
-          <tr><td class="row-num">RP</td><td><span class="pname">Cameron Garcia</span></td><td class="c"><span class="ovr-chip g-b">B</span></td><td><span class="cls-pill cls-jr">JR</span></td><td><span class="role-mini r-dev">CLOSER CAND</span></td></tr>
-          <tr><td class="row-num">RP</td><td><span class="pname">Frank Coleman</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-fr">FR</span></td><td><span class="role-mini r-dev">SHORT RP</span></td></tr>
-          <tr><td class="row-num">RP</td><td><span class="pname">Jack Gilbert</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-so">SO</span></td><td><span class="role-mini r-dev">DEV RP</span></td></tr>
-          <tr><td class="row-num">RP</td><td><span class="pname">Rolando Garcia</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-fr">FR</span></td><td><span class="role-mini r-dev">MID RP</span></td></tr>
-          <tr><td class="row-num">RP</td><td><span class="pname">Francis Collins</span></td><td class="c"><span class="ovr-chip g-c">C</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td><span class="role-mini r-dev">LO-LVG RP</span></td></tr>
-          <tr><td class="row-num">RP</td><td><span class="pname">John Norman</span></td><td class="c"><span class="ovr-chip g-d">D</span></td><td><span class="cls-pill cls-so">SO</span></td><td><span class="role-mini r-dev">DEPTH</span></td></tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead><tr>
+            <th>#</th><th>Player</th><th class="c">OVR</th><th>Class</th><th>Role</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="row-num">SP1</td><td><span class="pname pname-grad">Jerry Butler</span></td><td class="c"><span class="ovr-chip g-ap">A+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-ace">ACE</span></td></tr>
+            <tr><td class="row-num">SP2</td><td><span class="pname">Mirza Price</span></td><td class="c"><span class="ovr-chip g-bp">B+</span></td><td><span class="cls-pill cls-fr">FR</span></td><td><span class="role-mini r-start">FUTURE ACE</span></td></tr>
+            <tr><td class="row-num">CL</td><td><span class="pname pname-grad">Jacob Boone</span></td><td class="c"><span class="ovr-chip g-ap">A+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-close">CLOSER</span></td></tr>
+            <tr><td class="row-num">RP</td><td><span class="pname">Jermichael Robertson</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-jr">JR</span></td><td><span class="role-mini r-long">LONG RP</span></td></tr>
+            <tr><td class="row-num">RP</td><td><span class="pname">Rocket Smith</span></td><td class="c"><span class="ovr-chip g-b">B</span></td><td><span class="cls-pill cls-jr">JR</span></td><td><span class="role-mini r-setup">SETUP</span></td></tr>
+            <tr><td class="row-num">RP</td><td><span class="pname pname-grad">Jeffrey Andrews</span></td><td class="c"><span class="ovr-chip g-bp">B+</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-mid">HI-LVG RP</span></td></tr>
+            <tr><td class="row-num">RP</td><td><span class="pname pname-grad">Everett Nash</span></td><td class="c"><span class="ovr-chip g-am">A-</span></td><td><span class="cls-pill cls-sr">SR</span></td><td><span class="role-mini r-mid">HI-LVG RP</span></td></tr>
+            <tr><td class="row-num">RP</td><td><span class="pname">Cameron Garcia</span></td><td class="c"><span class="ovr-chip g-b">B</span></td><td><span class="cls-pill cls-jr">JR</span></td><td><span class="role-mini r-dev">CLOSER CAND</span></td></tr>
+            <tr><td class="row-num">RP</td><td><span class="pname">Frank Coleman</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-fr">FR</span></td><td><span class="role-mini r-dev">SHORT RP</span></td></tr>
+            <tr><td class="row-num">RP</td><td><span class="pname">Jack Gilbert</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-so">SO</span></td><td><span class="role-mini r-dev">DEV RP</span></td></tr>
+            <tr><td class="row-num">RP</td><td><span class="pname">Rolando Garcia</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-fr">FR</span></td><td><span class="role-mini r-dev">MID RP</span></td></tr>
+            <tr><td class="row-num">RP</td><td><span class="pname">Francis Collins</span></td><td class="c"><span class="ovr-chip g-c">C</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td><span class="role-mini r-dev">LO-LVG RP</span></td></tr>
+            <tr><td class="row-num">RP</td><td><span class="pname">John Norman</span></td><td class="c"><span class="ovr-chip g-d">D</span></td><td><span class="cls-pill cls-so">SO</span></td><td><span class="role-mini r-dev">DEPTH</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- CATCHING DEPTH -->
@@ -251,15 +281,17 @@
         <span class="panel-title">Catching Depth</span>
         <span class="panel-count">4 Catchers</span>
       </div>
-      <table class="data-table">
-        <thead><tr><th>Player</th><th class="c">OVR</th><th>Class</th><th class="c">C Rating</th></tr></thead>
-        <tbody>
-          <tr><td><span class="pname">Wayne White</span></td><td class="c"><span class="ovr-chip g-a">A</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td class="c"><span style="color:#22c55e;font-weight:800;font-size:15px">75</span></td></tr>
-          <tr><td><span class="pname">Garrett Mckee</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td class="c"><span style="color:#60a5fa;font-weight:800;font-size:15px">55</span></td></tr>
-          <tr><td><span class="pname">Robinson Smith</span></td><td class="c"><span class="ovr-chip g-c">C</span></td><td><span class="cls-pill cls-rsso">RS SO</span></td><td class="c"><span style="color:#777777;font-weight:800;font-size:15px">&mdash;</span></td></tr>
-          <tr><td><span class="pname">Daniel Collins</span></td><td class="c"><span class="ovr-chip g-c">C</span></td><td><span class="cls-pill cls-fr">FR</span></td><td class="c"><span style="color:#f59e0b;font-weight:800;font-size:15px">45</span></td></tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead><tr><th>Player</th><th class="c">OVR</th><th>Class</th><th class="c">C Rating</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pname">Wayne White</span></td><td class="c"><span class="ovr-chip g-a">A</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td class="c"><span style="color:#22c55e;font-weight:800;font-size:15px">75</span></td></tr>
+            <tr><td><span class="pname">Garrett Mckee</span></td><td class="c"><span class="ovr-chip g-bm">B-</span></td><td><span class="cls-pill cls-rsjr">RS JR</span></td><td class="c"><span style="color:#60a5fa;font-weight:800;font-size:15px">55</span></td></tr>
+            <tr><td><span class="pname">Robinson Smith</span></td><td class="c"><span class="ovr-chip g-c">C</span></td><td><span class="cls-pill cls-rsso">RS SO</span></td><td class="c"><span style="color:#777;font-weight:800;font-size:15px">&mdash;</span></td></tr>
+            <tr><td><span class="pname">Daniel Collins</span></td><td class="c"><span class="ovr-chip g-c">C</span></td><td><span class="cls-pill cls-fr">FR</span></td><td class="c"><span style="color:#f59e0b;font-weight:800;font-size:15px">45</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- ROSTER GAPS -->
@@ -267,17 +299,19 @@
       <div class="panel-hdr">
         <span class="panel-title">Roster Gaps &amp; Recruiting Priorities</span>
       </div>
-      <table class="data-table">
-        <thead><tr><th>Position</th><th>Status</th><th>Priority</th></tr></thead>
-        <tbody>
-          <tr><td class="gap-pos" style="color:#f08898">Right Field</td><td class="gap-issue">F-rated starter (Green)</td><td><span class="status s-critical">CRITICAL</span></td></tr>
-          <tr><td class="gap-pos" style="color:#f08898">Pitching (Post-2026)</td><td class="gap-issue">Lose 4 arms after season</td><td><span class="status s-critical">CRITICAL</span></td></tr>
-          <tr><td class="gap-pos" style="color:#fbbf24">Center Field</td><td class="gap-issue" style="color:#a87030">Adams leaves &rarr; Underwood (C+)</td><td><span class="status s-monitor">MONITOR</span></td></tr>
-          <tr><td class="gap-pos" style="color:#fbbf24">Second Base</td><td class="gap-issue">Alvarez / Schultz (C+ utility)</td><td><span class="status s-manageable">MANAGEABLE</span></td></tr>
-          <tr><td class="gap-pos" style="color:#22c55e">First Base</td><td class="gap-issue">Faulkner (A) + Osborne (B)</td><td><span class="status s-covered">COVERED</span></td></tr>
-          <tr><td class="gap-pos" style="color:#22c55e">Catcher</td><td class="gap-issue">White (A) + Mckee (B-)</td><td><span class="status s-covered">COVERED</span></td></tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead><tr><th>Position</th><th>Status</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td class="gap-pos" style="color:#f08898">Right Field</td><td class="gap-issue">F-rated starter (Green)</td><td><span class="status s-critical">CRITICAL</span></td></tr>
+            <tr><td class="gap-pos" style="color:#f08898">Pitching (Post-2026)</td><td class="gap-issue">Lose 4 arms after season</td><td><span class="status s-critical">CRITICAL</span></td></tr>
+            <tr><td class="gap-pos" style="color:#fbbf24">Center Field</td><td class="gap-issue">Adams leaves &rarr; Underwood (C+)</td><td><span class="status s-monitor">MONITOR</span></td></tr>
+            <tr><td class="gap-pos" style="color:#fbbf24">Second Base</td><td class="gap-issue">Alvarez / Schultz (C+ utility)</td><td><span class="status s-manageable">MANAGEABLE</span></td></tr>
+            <tr><td class="gap-pos" style="color:#22c55e">First Base</td><td class="gap-issue">Faulkner (A) + Osborne (B)</td><td><span class="status s-covered">COVERED</span></td></tr>
+            <tr><td class="gap-pos" style="color:#22c55e">Catcher</td><td class="gap-issue">White (A) + Mckee (B-)</td><td><span class="status s-covered">COVERED</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
   </div>
@@ -285,7 +319,7 @@
 
 <footer class="site-footer">
   <span class="footer-brand">CBreezy Media</span>
-  <span class="footer-note">Players highlighted in red are graduating after 2026</span>
+  <span class="footer-note">Players in red are graduating after 2026</span>
   <span>Alabama Crimson Tide &bull; SimCBL 2026</span>
 </footer>
 

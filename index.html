@@ -5,242 +5,151 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alabama Crimson Tide &mdash; SimCBL 2026 | CBreezy Media</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0c0c0c; font-family: 'Arial', sans-serif; min-height: 100vh; color: #f2f2f2; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* ── SITE HEADER ── */
-  .site-header {
-    background: #9E1B32;
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 2px solid #7a1325;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  :root {
+    --crimson:    #9E1B32;
+    --crimson-dk: #7a1325;
+    --crimson-md: #be2240;
+    --bg:         #0c0c0c;
+    --surface:    #161616;
+    --raised:     #1e1e1e;
+    --border:     #282828;
+    --border-sub: #1c1c1c;
+    --t1: #f2f2f2;
+    --t2: #b0b0b0;
+    --t3: #888888;
+    --t4: #606060;
   }
-  .site-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 0;
-  }
-  .brand-name {
-    font-size: 13px;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .brand-divider { color: rgba(255,255,255,0.4); font-size: 12px; }
-  .brand-team {
-    font-size: 12px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.75);
-    letter-spacing: 0.5px;
-  }
-  .site-nav { display: flex; align-items: center; gap: 2px; }
+
+  body { background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; color: var(--t1); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  .site-header { background: var(--crimson); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--crimson-dk); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+
+  .site-brand { display: flex; align-items: center; gap: 10px; padding: 10px 0; flex-shrink: 0; }
+  .nav-logo    { height: 34px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; flex-shrink: 0; }
+  .brand-name  { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+  .brand-div   { color: rgba(255,255,255,0.35); }
+  .brand-team  { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); white-space: nowrap; }
+
+  .site-nav { display: flex; align-items: center; }
   .site-nav a {
-    display: block;
-    padding: 14px 16px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
-    text-decoration: none;
+    display: block; padding: 13px 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); text-decoration: none;
     border-bottom: 3px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
+    transition: color .15s, border-color .15s;
     white-space: nowrap;
   }
-  .site-nav a:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.6); }
+  .site-nav a:hover  { color: #fff; border-bottom-color: rgba(255,255,255,0.5); }
   .site-nav a.active { color: #fff; border-bottom-color: #fff; }
-  .nav-logo { height: 38px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; flex-shrink: 0; }
 
   /* ── HERO ── */
   .hero {
-    background: linear-gradient(160deg, #3a0010 0%, #9E1B32 50%, #7a1325 100%);
-    padding: 72px 48px 60px;
+    background: linear-gradient(160deg, #3a0010 0%, var(--crimson) 50%, var(--crimson-dk) 100%);
+    padding: clamp(40px, 8vw, 72px) clamp(20px, 5vw, 48px) clamp(36px, 7vw, 60px);
     text-align: center;
     position: relative;
     overflow: hidden;
   }
   .hero::before {
     content: 'BAMA';
-    position: absolute;
-    left: 50%; top: 50%;
+    position: absolute; left: 50%; top: 50%;
     transform: translate(-50%, -50%);
-    font-size: 240px;
-    font-weight: 900;
-    color: rgba(0,0,0,0.15);
-    white-space: nowrap;
-    pointer-events: none;
-    letter-spacing: -10px;
+    font-size: clamp(80px, 22vw, 240px);
+    font-weight: 900; color: rgba(0,0,0,0.15);
+    white-space: nowrap; pointer-events: none; letter-spacing: -8px;
   }
-  .hero-eyebrow {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
-    margin-bottom: 18px;
-    position: relative;
-  }
-  .hero-title {
-    font-size: 64px;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1.0;
-    margin-bottom: 6px;
-    position: relative;
-    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
-  }
-  .hero-subtitle {
-    font-size: 18px;
-    color: rgba(255,255,255,0.6);
-    margin-top: 12px;
-    margin-bottom: 36px;
-    font-style: italic;
-    position: relative;
-  }
-  .hero-logo { height: 90px; width: auto; margin-bottom: 20px; filter: brightness(0) invert(1); opacity: 0.92; position: relative; }
-  .hero-pills {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-  }
+  .hero-logo     { height: clamp(56px, 11vw, 90px); width: auto; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: 0.92; position: relative; }
+  .hero-eyebrow  { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 14px; position: relative; }
+  .hero-title    { font-size: clamp(32px, 8vw, 64px); font-weight: 900; color: #fff; line-height: 1.05; position: relative; text-shadow: 0 2px 20px rgba(0,0,0,0.35); }
+  .hero-subtitle { font-size: clamp(15px, 3vw, 18px); color: rgba(255,255,255,0.6); margin-top: 10px; margin-bottom: 28px; font-style: italic; position: relative; }
+  .hero-pills    { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; position: relative; }
   .pill {
-    background: rgba(0,0,0,0.25);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    padding: 5px 16px;
-    font-size: 11px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.8);
-    letter-spacing: 0.5px;
+    background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.8);
   }
 
   /* ── CONTENT ── */
-  .content {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 48px 32px 72px;
-  }
+  .content { max-width: 1100px; margin: 0 auto; padding: clamp(28px, 5vw, 48px) clamp(16px, 4vw, 32px) clamp(48px, 8vw, 72px); }
 
-  .section-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: #888888;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--crimson-md); text-transform: uppercase; margin-bottom: 18px; }
 
   /* ── PAGE CARDS ── */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-bottom: 48px;
-  }
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 40px; }
 
   .card {
-    background: #161616;
-    border: 1px solid #282828;
-    border-radius: 14px;
-    overflow: hidden;
-    text-decoration: none;
-    display: block;
-    transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    text-decoration: none; display: block;
+    transition: transform .15s, border-color .15s, box-shadow .15s;
   }
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: #9E1B32;
-    box-shadow: 0 8px 32px rgba(158,27,50,0.3);
-  }
-  .card-banner { height: 5px; }
-  .banner-crimson  { background: linear-gradient(90deg, #9E1B32, #c0273f); }
-  .banner-white    { background: linear-gradient(90deg, #888, #ccc); }
-  .banner-gold     { background: linear-gradient(90deg, #b45309, #f59e0b); }
-  .banner-deep     { background: linear-gradient(90deg, #7a1325, #be2240); }
+  .card:hover { transform: translateY(-3px); border-color: var(--crimson); box-shadow: 0 8px 28px rgba(158,27,50,0.25); }
 
-  .card-inner { padding: 24px 26px 22px; }
-  .card-icon { font-size: 30px; margin-bottom: 14px; }
-  .card-title {
-    font-size: 20px;
-    font-weight: 800;
-    color: #f2f2f2;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .card-arrow { font-size: 18px; color: #888888; }
-  .card-desc { font-size: 13px; color: #909090; line-height: 1.65; margin-bottom: 16px; }
-  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-  .tag {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 20px;
-    background: rgba(158,27,50,0.1);
-    color: #909090;
-    border: 1px solid #282828;
-  }
+  .card-banner { height: 4px; }
+  .banner-crimson { background: linear-gradient(90deg, var(--crimson), var(--crimson-md)); }
+  .banner-silver  { background: linear-gradient(90deg, #666, #aaa); }
+  .banner-gold    { background: linear-gradient(90deg, #b45309, #f59e0b); }
+  .banner-deep    { background: linear-gradient(90deg, var(--crimson-dk), var(--crimson)); }
+
+  .card-inner { padding: 20px 22px 18px; }
+  .card-icon  { font-size: 28px; margin-bottom: 12px; }
+  .card-title { font-size: 18px; font-weight: 800; color: var(--t1); margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
+  .card-arrow { font-size: 16px; color: var(--t3); }
+  .card-desc  { font-size: 13px; color: var(--t3); line-height: 1.6; margin-bottom: 14px; }
+  .card-tags  { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; background: rgba(158,27,50,0.08); color: var(--t3); border: 1px solid var(--border); }
 
   /* ── ABOUT ── */
-  .about {
-    background: #161616;
-    border: 1px solid #282828;
-    border-radius: 14px;
-    padding: 28px 32px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-  .about-avatar {
-    width: 56px; height: 56px; border-radius: 50%;
-    background: #9E1B32;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; font-weight: 900; color: #fff;
-    flex-shrink: 0;
-    border: 2px solid #be2240;
-  }
-  .about-name { font-size: 16px; font-weight: 800; color: #f2f2f2; margin-bottom: 4px; }
-  .about-bio  { font-size: 13px; color: #909090; line-height: 1.65; }
+  .about { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; display: flex; align-items: center; gap: 20px; }
+  .about-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--crimson); border: 2px solid var(--crimson-md); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: #fff; flex-shrink: 0; }
+  .about-name { font-size: 15px; font-weight: 800; color: var(--t1); margin-bottom: 4px; }
+  .about-bio  { font-size: 13px; color: var(--t3); line-height: 1.6; }
 
   /* ── FOOTER ── */
-  .site-footer {
-    background: #9E1B32;
-    border-top: 2px solid #7a1325;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .site-footer { background: var(--crimson); border-top: 2px solid var(--crimson-dk); padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .site-footer span { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; }
+  .footer-brand { color: rgba(255,255,255,0.85) !important; font-size: 11px !important; font-weight: 800 !important; letter-spacing: 0.5px !important; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .header-inner { flex-direction: column; align-items: stretch; padding: 0; }
+    .site-brand   { padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .brand-team   { display: none; }
+    .site-nav     { overflow-x: auto; scrollbar-width: none; padding: 0 6px; }
+    .site-nav::-webkit-scrollbar { display: none; }
+    .site-nav a   { padding: 9px 12px; font-size: 10px; }
+    .site-footer  { padding: 14px 16px; justify-content: center; text-align: center; }
+    .site-footer span:last-child { display: none; }
   }
-  .site-footer span { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
-  .site-footer .footer-brand { color: rgba(255,255,255,0.8); font-size: 11px; font-weight: 800; }
+
+  @media (max-width: 600px) {
+    .cards { grid-template-columns: 1fr; }
+    .about { flex-direction: column; text-align: center; padding: 20px; }
+  }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="site-brand">
-    <img src="alabama-logo.png" class="nav-logo" alt="Alabama">
-    <span class="brand-name">CBreezy Media</span>
-    <span class="brand-divider">&bull;</span>
-    <span class="brand-team">Alabama Crimson Tide</span>
+  <div class="header-inner">
+    <div class="site-brand">
+      <img src="alabama-logo.png" class="nav-logo" alt="Alabama">
+      <span class="brand-name">CBreezy Media</span>
+      <span class="brand-div">&bull;</span>
+      <span class="brand-team">Alabama Crimson Tide</span>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="season-preview.html">Season Preview</a>
+      <a href="depth-chart.html">Depth Chart</a>
+      <a href="pitcher-potentials.html">Pitching Intel</a>
+      <a href="spotlight-cards.html">Player Spotlights</a>
+    </nav>
   </div>
-  <nav class="site-nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="season-preview.html">Season Preview</a>
-    <a href="depth-chart.html">Depth Chart</a>
-    <a href="pitcher-potentials.html">Pitching Intel</a>
-    <a href="spotlight-cards.html">Player Spotlights</a>
-  </nav>
 </header>
 
 <div class="hero">
@@ -268,25 +177,17 @@
         <div class="card-icon">&#128240;</div>
         <div class="card-title">Season Preview <span class="card-arrow">&#8594;</span></div>
         <div class="card-desc">Full breakdown of the 2026 Crimson Tide &mdash; pitching staff, lineup, roster concerns, and a season prediction before the first pitch.</div>
-        <div class="card-tags">
-          <span class="tag">Blog Post</span>
-          <span class="tag">Season Outlook</span>
-          <span class="tag">Recruiting</span>
-        </div>
+        <div class="card-tags"><span class="tag">Blog Post</span><span class="tag">Season Outlook</span><span class="tag">Recruiting</span></div>
       </div>
     </a>
 
     <a class="card" href="depth-chart.html">
-      <div class="card-banner banner-white"></div>
+      <div class="card-banner banner-silver"></div>
       <div class="card-inner">
         <div class="card-icon">&#128203;</div>
         <div class="card-title">Depth Chart <span class="card-arrow">&#8594;</span></div>
         <div class="card-desc">Full roster breakdown &mdash; projected starting lineup, pitching rotation with roles, catching depth, and a color-coded gap analysis.</div>
-        <div class="card-tags">
-          <span class="tag">Roster</span>
-          <span class="tag">Lineup</span>
-          <span class="tag">Pitching Roles</span>
-        </div>
+        <div class="card-tags"><span class="tag">Roster</span><span class="tag">Lineup</span><span class="tag">Pitching Roles</span></div>
       </div>
     </a>
 
@@ -295,12 +196,8 @@
       <div class="card-inner">
         <div class="card-icon">&#9918;</div>
         <div class="card-title">Pitching Intel <span class="card-arrow">&#8594;</span></div>
-        <div class="card-desc">Precise college potentials for all 13 arms. Color-coded Endurance, Control, Velocity, Sequencing, and Pickoff grades with assigned roles.</div>
-        <div class="card-tags">
-          <span class="tag">Scouting</span>
-          <span class="tag">Potentials</span>
-          <span class="tag">Role Assignments</span>
-        </div>
+        <div class="card-desc">Precise college potentials for all 13 arms. Color-coded Endurance, Control, Velocity, Sequencing, and Pickoff grades with role assignments.</div>
+        <div class="card-tags"><span class="tag">Scouting</span><span class="tag">Potentials</span><span class="tag">Roles</span></div>
       </div>
     </a>
 
@@ -310,11 +207,7 @@
         <div class="card-icon">&#127775;</div>
         <div class="card-title">Player Spotlights <span class="card-arrow">&#8594;</span></div>
         <div class="card-desc">Six individual cards for the key players heading into 2026 &mdash; Butler, Boone, Price, Adams, Faulkner, and White.</div>
-        <div class="card-tags">
-          <span class="tag">Player Cards</span>
-          <span class="tag">Key Personnel</span>
-          <span class="tag">Stats</span>
-        </div>
+        <div class="card-tags"><span class="tag">Player Cards</span><span class="tag">Key Personnel</span><span class="tag">Stats</span></div>
       </div>
     </a>
 

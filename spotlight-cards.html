@@ -5,51 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alabama 2026 &mdash; Player Spotlight Cards | CBreezy Media</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0c0c0c; font-family: 'Arial', sans-serif; color: #f2f2f2; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  .site-header {
-    background: #9E1B32;
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 2px solid #7a1325;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  :root {
+    --crimson:    #9E1B32;
+    --crimson-dk: #7a1325;
+    --crimson-md: #be2240;
+    --bg:         #0c0c0c;
+    --surface:    #161616;
+    --raised:     #1e1e1e;
+    --border:     #282828;
+    --border-sub: #1c1c1c;
+    --t1: #f2f2f2;
+    --t2: #b0b0b0;
+    --t3: #888888;
+    --t4: #606060;
   }
-  .site-brand { display: flex; align-items: center; gap: 10px; padding: 12px 0; }
-  .brand-name { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 1px; text-transform: uppercase; }
-  .brand-divider { color: rgba(255,255,255,0.4); }
-  .brand-team { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.75); }
-  .site-nav { display: flex; align-items: center; gap: 2px; }
+
+  body { background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; color: var(--t1); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  .site-header { background: var(--crimson); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--crimson-dk); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+
+  .site-brand { display: flex; align-items: center; gap: 10px; padding: 10px 0; flex-shrink: 0; }
+  .nav-logo    { height: 34px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; flex-shrink: 0; }
+  .brand-name  { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+  .brand-div   { color: rgba(255,255,255,0.35); }
+  .brand-team  { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); white-space: nowrap; }
+
+  .site-nav { display: flex; align-items: center; }
   .site-nav a {
-    display: block; padding: 14px 16px;
-    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-    color: rgba(255,255,255,0.65); text-decoration: none;
+    display: block; padding: 13px 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); text-decoration: none;
     border-bottom: 3px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
+    transition: color .15s, border-color .15s;
     white-space: nowrap;
   }
-  .site-nav a:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.6); }
+  .site-nav a:hover  { color: #fff; border-bottom-color: rgba(255,255,255,0.5); }
   .site-nav a.active { color: #fff; border-bottom-color: #fff; }
-  .nav-logo { height: 38px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; flex-shrink: 0; }
 
   /* ── PAGE HEADER ── */
-  .page-header {
-    text-align: center;
-    padding: 48px 32px 36px;
-  }
-  .page-header-eyebrow {
-    font-size: 11px; font-weight: 700; letter-spacing: 3px;
-    color: #888888; text-transform: uppercase; margin-bottom: 10px;
-  }
-  .page-header-title {
-    font-size: 30px; font-weight: 900; color: #fff; letter-spacing: 1px;
-  }
-  .page-header-title span { color: #9E1B32; }
-  .page-header-sub { font-size: 14px; color: #888888; margin-top: 8px; }
+  .page-header { text-align: center; padding: clamp(32px, 6vw, 48px) clamp(16px, 4vw, 32px) clamp(24px, 4vw, 36px); }
+  .page-header-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--t3); text-transform: uppercase; margin-bottom: 10px; }
+  .page-header-title   { font-size: clamp(22px, 5vw, 30px); font-weight: 900; color: var(--t1); letter-spacing: 1px; }
+  .page-header-title span { color: var(--crimson); }
+  .page-header-sub     { font-size: 14px; color: var(--t3); margin-top: 8px; }
 
   /* ── GRID ── */
   .grid {
@@ -58,51 +60,39 @@
     gap: 20px;
     max-width: 1080px;
     margin: 0 auto;
-    padding: 0 32px 64px;
+    padding: 0 clamp(16px, 4vw, 32px) clamp(48px, 8vw, 64px);
   }
 
   /* ── CARD ── */
   .card {
-    background: #161616;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid #282828;
-    transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+    background: var(--surface); border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform .15s, border-color .15s, box-shadow .15s;
   }
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: #9E1B32;
-    box-shadow: 0 8px 32px rgba(158,27,50,0.3);
-  }
+  .card:hover { transform: translateY(-3px); border-color: var(--crimson); box-shadow: 0 8px 32px rgba(158,27,50,0.3); }
 
-  .card-top {
-    padding: 22px 22px 16px;
-    position: relative;
-    border-bottom: 1px solid #282828;
-  }
+  .card-top { padding: 22px 22px 16px; position: relative; border-bottom: 1px solid var(--border); }
   .card-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
-  .accent-crimson  { background: linear-gradient(90deg, #9E1B32, #c0273f); }
-  .accent-gold     { background: linear-gradient(90deg, #b45309, #f59e0b); }
-  .accent-purple   { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
-  .accent-deep     { background: linear-gradient(90deg, #7a1325, #9E1B32); }
+  .accent-crimson { background: linear-gradient(90deg, var(--crimson), var(--crimson-md)); }
+  .accent-gold    { background: linear-gradient(90deg, #b45309, #f59e0b); }
+  .accent-purple  { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+  .accent-green   { background: linear-gradient(90deg, #16a34a, #22c55e); }
 
   .card-pos-line { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-  .pos-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #888888; text-transform: uppercase; }
-  .pos-divider { width: 1px; height: 12px; background: #333333; }
+  .pos-tag     { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--t3); text-transform: uppercase; }
+  .pos-divider { width: 1px; height: 12px; background: #333; }
 
-  .card-name { font-size: 22px; font-weight: 900; color: #f2f2f2; line-height: 1.15; margin-bottom: 8px; }
+  .card-name { font-size: clamp(18px, 3vw, 22px); font-weight: 900; color: var(--t1); line-height: 1.15; margin-bottom: 8px; }
 
   .card-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .meta-pill {
     font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
-    background: rgba(158,27,50,0.1);
-    color: #787878;
-    border: 1px solid #282828;
+    background: rgba(158,27,50,0.1); color: #787878; border: 1px solid var(--border);
   }
 
   .ovr-block { position: absolute; top: 22px; right: 22px; text-align: center; }
   .ovr-grade { font-size: 38px; font-weight: 900; line-height: 1; }
-  .ovr-label { font-size: 9px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; color: #888888; margin-top: 2px; }
+  .ovr-label { font-size: 9px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; color: var(--t3); margin-top: 2px; }
 
   .g-ap { color: #22c55e; }
   .g-a  { color: #34d058; }
@@ -113,71 +103,76 @@
   .card-body { padding: 18px 22px; }
 
   .hype-line {
-    font-size: 13px; color: #888888; line-height: 1.6;
+    font-size: 13px; color: var(--t3); line-height: 1.6;
     margin-bottom: 16px; font-style: italic;
-    border-left: 3px solid #333333;
-    padding-left: 12px;
+    border-left: 3px solid #333; padding-left: 12px;
   }
 
   .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .stat-item {
-    background: #111111;
-    border-radius: 8px;
-    padding: 10px 12px;
-    border: 1px solid #1c1c1c;
-  }
-  .stat-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #777777; text-transform: uppercase; margin-bottom: 4px; }
+  .stat-item { background: #111; border-radius: 8px; padding: 10px 12px; border: 1px solid var(--border-sub); }
+  .stat-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #777; text-transform: uppercase; margin-bottom: 4px; }
   .stat-val { font-size: 16px; font-weight: 800; color: #c0c0c0; }
-  .stat-val.green  { color: #22c55e; }
-  .stat-val.blue   { color: #60a5fa; }
-  .stat-val.gold   { color: #f59e0b; }
-  .stat-val.white  { color: #f2f2f2; }
+  .stat-val.green { color: #22c55e; }
+  .stat-val.blue  { color: #60a5fa; }
+  .stat-val.gold  { color: #f59e0b; }
+  .stat-val.white { color: var(--t1); }
 
   .tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
   .tag { font-size: 10px; font-weight: 700; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 20px; }
-  .tag-crimson { background: rgba(158,27,50,0.2);   color: #f08898; border: 1px solid rgba(158,27,50,0.3); }
-  .tag-green   { background: rgba(34,197,94,0.12);  color: #22c55e; border: 1px solid rgba(34,197,94,0.25); }
-  .tag-blue    { background: rgba(96,165,250,0.12); color: #60a5fa; border: 1px solid rgba(96,165,250,0.25); }
-  .tag-gold    { background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
-  .tag-purple  { background: rgba(167,139,250,0.12);color: #a78bfa; border: 1px solid rgba(167,139,250,0.25); }
+  .tag-crimson { background: rgba(158,27,50,0.2);    color: #f08898; border: 1px solid rgba(158,27,50,0.3); }
+  .tag-green   { background: rgba(34,197,94,0.12);   color: #22c55e; border: 1px solid rgba(34,197,94,0.25); }
+  .tag-blue    { background: rgba(96,165,250,0.12);  color: #60a5fa; border: 1px solid rgba(96,165,250,0.25); }
+  .tag-gold    { background: rgba(245,158,11,0.12);  color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+  .tag-purple  { background: rgba(167,139,250,0.12); color: #a78bfa; border: 1px solid rgba(167,139,250,0.25); }
 
   /* ── CARD FOOTER ── */
   .card-footer {
-    padding: 10px 22px;
-    border-top: 1px solid #1c1c1c;
-    background: #111111;
-    font-size: 10px; color: #777777; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    padding: 10px 22px; border-top: 1px solid var(--border-sub);
+    background: #111;
+    font-size: 10px; color: #777; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
   }
 
   /* ── SITE FOOTER ── */
-  .site-footer {
-    background: #9E1B32;
-    border-top: 2px solid #7a1325;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .site-footer { background: var(--crimson); border-top: 2px solid var(--crimson-dk); padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .site-footer span { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; }
+  .footer-brand { color: rgba(255,255,255,0.85) !important; font-size: 11px !important; font-weight: 800 !important; letter-spacing: 0.5px !important; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .header-inner { flex-direction: column; align-items: stretch; padding: 0; }
+    .site-brand   { padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .brand-team   { display: none; }
+    .site-nav     { overflow-x: auto; scrollbar-width: none; padding: 0 6px; }
+    .site-nav::-webkit-scrollbar { display: none; }
+    .site-nav a   { padding: 9px 12px; font-size: 10px; }
+    .grid         { grid-template-columns: repeat(2, 1fr); }
+    .site-footer  { padding: 14px 16px; justify-content: center; text-align: center; }
+    .site-footer span:last-child { display: none; }
   }
-  .site-footer span { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
-  .footer-brand { color: rgba(255,255,255,0.85) !important; font-size: 11px !important; font-weight: 800 !important; }
+
+  @media (max-width: 520px) {
+    .grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="site-brand">
-    <img src="alabama-logo.png" class="nav-logo" alt="Alabama">
-    <span class="brand-name">CBreezy Media</span>
-    <span class="brand-divider">&bull;</span>
-    <span class="brand-team">Alabama Crimson Tide</span>
+  <div class="header-inner">
+    <div class="site-brand">
+      <img src="alabama-logo.png" class="nav-logo" alt="Alabama">
+      <span class="brand-name">CBreezy Media</span>
+      <span class="brand-div">&bull;</span>
+      <span class="brand-team">Alabama Crimson Tide</span>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="season-preview.html">Season Preview</a>
+      <a href="depth-chart.html">Depth Chart</a>
+      <a href="pitcher-potentials.html">Pitching Intel</a>
+      <a href="spotlight-cards.html" class="active">Player Spotlights</a>
+    </nav>
   </div>
-  <nav class="site-nav">
-    <a href="index.html">Home</a>
-    <a href="season-preview.html">Season Preview</a>
-    <a href="depth-chart.html">Depth Chart</a>
-    <a href="pitcher-potentials.html">Pitching Intel</a>
-    <a href="spotlight-cards.html" class="active">Player Spotlights</a>
-  </nav>
 </header>
 
 <div class="page-header">
@@ -191,7 +186,7 @@
   <!-- JERRY BUTLER -->
   <div class="card">
     <div class="card-top">
-      <div class="card-accent accent-green" style="background:linear-gradient(90deg,#16a34a,#22c55e)"></div>
+      <div class="card-accent accent-green"></div>
       <div class="ovr-block"><div class="ovr-grade g-ap">A+</div><div class="ovr-label">Overall</div></div>
       <div class="card-pos-line">
         <span class="pos-tag">Pitcher</span>

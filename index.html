@@ -99,6 +99,14 @@
   .card-tags  { display: flex; gap: 6px; flex-wrap: wrap; }
   .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; background: rgba(158,27,50,0.08); color: var(--t3); border: 1px solid var(--border); }
 
+  /* ── LIVE BAR ── */
+  .live-bar { display:flex; align-items:center; gap:0; background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:32px; flex-wrap:wrap; }
+  .live-bar-item { flex:1; min-width:80px; text-align:center; padding:14px 12px; }
+  .live-bar-val { font-size:clamp(17px,3vw,22px); font-weight:900; color:var(--t1); }
+  .live-bar-lbl { font-size:9px; font-weight:700; letter-spacing:1.5px; color:var(--t3); text-transform:uppercase; margin-top:3px; }
+  .live-bar-sep { width:1px; background:var(--border); align-self:stretch; }
+  .live-stamp   { font-size:10px; color:var(--t4); text-align:right; margin-bottom:12px; font-style:italic; }
+
   /* ── ABOUT ── */
   .about { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; display: flex; align-items: center; gap: 20px; }
   .about-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--crimson); border: 2px solid var(--crimson-md); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: #fff; flex-shrink: 0; }
@@ -166,6 +174,9 @@
 </div>
 
 <div class="content">
+
+  <div id="live-status"></div>
+  <div class="live-stamp"><span id="live-stamp"></span></div>
 
   <div class="section-label">All Pages</div>
 
@@ -268,5 +279,15 @@
   <span>Alabama Crimson Tide &bull; SimCBL 2026</span>
 </footer>
 
+<script src="live-data.js"></script>
+<script>
+(async () => {
+  SimSN.loading('live-status');
+  const data = await SimSN.load();
+  if (!data) { document.getElementById('live-status').innerHTML = ''; return; }
+  SimSN.renderStatusBar(data, 'live-status');
+  SimSN.stamp('live-stamp', data.updated_at);
+})();
+</script>
 </body>
 </html>

@@ -223,7 +223,7 @@
           <th>Role</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="live-pitcher-body">
         <tr class="grad-row">
           <td><span class="player-name">Jerry Butler</span></td>
           <td><span class="class-badge cls-sr">SR</span></td>
@@ -382,7 +382,16 @@
 <footer class="site-footer">
   <span class="footer-brand">CBreezy Media</span>
   <span>Alabama Crimson Tide &bull; SimCBL 2026</span>
+  <span id="live-stamp" style="font-style:italic;letter-spacing:0.5px"></span>
 </footer>
-
+<script src="live-data.js"></script>
+<script>
+(async () => {
+  const data = await SimSN.load();
+  if (!data) return;
+  SimSN.renderPitcherTable(data, 'live-pitcher-body');
+  SimSN.stamp('live-stamp', data.updated_at);
+})();
+</script>
 </body>
 </html>

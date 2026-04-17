@@ -160,6 +160,9 @@
 
 <div class="content">
 
+  <div id="live-standings"></div>
+  <div style="text-align:right;margin-bottom:16px;font-size:10px;color:#555;font-style:italic"><span id="live-stamp"></span></div>
+
   <div class="stat-row">
     <div class="stat-box"><div class="val">27</div><div class="lbl">Roster Size</div></div>
     <div class="stat-box"><div class="val">8</div><div class="lbl">Open Spots</div></div>
@@ -285,6 +288,16 @@
   <span class="footer-brand">CBreezy Media</span>
   <span>Alabama Crimson Tide &bull; SimCBL 2026 War Room</span>
 </footer>
-
+<script src="live-data.js"></script>
+<script>
+(async () => {
+  SimSN.loading('live-standings');
+  const data = await SimSN.load();
+  if (!data) return;
+  SimSN.renderStandings(data, 'live-standings');
+  SimSN.renderStatusBar(data, 'live-status-bar');
+  SimSN.stamp('live-stamp', data.updated_at);
+})();
+</script>
 </body>
 </html>

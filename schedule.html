@@ -144,7 +144,7 @@
 
 <div class="content">
 
-  <div class="stat-row">
+  <div class="stat-row" id="live-stats">
     <div class="stat-box"><div class="val">26</div><div class="lbl">Total Weeks</div></div>
     <div class="stat-box"><div class="val">12</div><div class="lbl">Non-Conf Wks</div></div>
     <div class="stat-box"><div class="val">10</div><div class="lbl">SEC Series</div></div>
@@ -158,6 +158,8 @@
     <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div> Tournament</div>
   </div>
 
+  <div style="text-align:right;margin-bottom:8px;font-size:10px;color:#555;font-style:italic"><span id="live-stamp"></span></div>
+  <div id="live-schedule">
   <!-- MONTH 1 -->
   <div class="month-block">
     <div class="month-label">Month 1 &mdash; Non-Conference</div>
@@ -256,12 +258,23 @@
     </div>
   </div>
 
+  </div><!-- /live-schedule -->
+
 </div>
 
 <footer class="site-footer">
   <span class="footer-brand">CBreezy Media</span>
   <span>Alabama Crimson Tide &bull; SimCBL 2026 Schedule</span>
 </footer>
-
+<script src="live-data.js"></script>
+<script>
+(async () => {
+  SimSN.loading('live-schedule');
+  const data = await SimSN.load();
+  if (!data) return;
+  SimSN.renderSchedule(data, 'live-schedule', 'live-stats');
+  SimSN.stamp('live-stamp', data.updated_at);
+})();
+</script>
 </body>
 </html>

@@ -203,9 +203,9 @@
     <div>
       <div class="hdr-eyebrow">CBreezy Media &bull; SimCBL &bull; Season 2026</div>
       <div class="hdr-title">Alabama Crimson Tide &mdash; Depth Chart</div>
-      <div class="hdr-sub">27 players &bull; 13 pitchers &bull; 14 position players &bull; 6 graduating seniors</div>
+      <div class="hdr-sub" id="live-hdr-sub">27 players &bull; 13 pitchers &bull; 14 position players &bull; 6 graduating seniors</div>
     </div>
-    <div class="hdr-stats">
+    <div class="hdr-stats" id="live-hdr-stats">
       <div class="hdr-stat">
         <div class="hdr-stat-num" style="color:#22c55e">3</div>
         <div class="hdr-stat-lbl">A+ Players</div>
@@ -221,7 +221,7 @@
     </div>
   </div>
 
-  <div class="panels">
+  <div class="panels" id="live-panels">
 
     <!-- STARTING LINEUP -->
     <div class="panel">
@@ -321,11 +321,21 @@
   </div>
 </div>
 
+<div style="text-align:right;padding:0 32px 8px;font-size:10px;color:#555;font-style:italic"><span id="live-stamp"></span></div>
 <footer class="site-footer">
   <span class="footer-brand">CBreezy Media</span>
   <span class="footer-note">Players in red are graduating after 2026</span>
   <span>Alabama Crimson Tide &bull; SimCBL 2026</span>
 </footer>
-
+<script src="live-data.js"></script>
+<script>
+(async () => {
+  SimSN.loading('live-panels');
+  const data = await SimSN.load();
+  if (!data) return;
+  SimSN.renderDepthChart(data, 'live-panels', 'live-hdr-sub', 'live-hdr-stats');
+  SimSN.stamp('live-stamp', data.updated_at);
+})();
+</script>
 </body>
 </html>

@@ -3,230 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alabama Crimson Tide &mdash; SimCBL 2026 | CBreezy Media</title>
+<title>Alabama Crimson Tide — SimCBL 2026 | CBreezy Media</title>
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --crimson:    #9E1B32;
-    --crimson-dk: #7a1325;
-    --crimson-md: #be2240;
-    --bg:         #0c0c0c;
-    --surface:    #161616;
-    --raised:     #1e1e1e;
-    --border:     #282828;
-    --border-sub: #1c1c1c;
-    --t1: #f2f2f2;
-    --t2: #b0b0b0;
-    --t3: #888888;
-    --t4: #606060;
-  }
-
-  body { background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; color: var(--t1); min-height: 100vh; }
-
-  /* ── HEADER ── */
-  .site-header { background: var(--crimson); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--crimson-dk); }
-  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
-
-  .site-brand { display: flex; align-items: center; gap: 10px; padding: 10px 0; flex-shrink: 0; }
-  .nav-logo    { height: 34px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; flex-shrink: 0; }
-  .brand-name  { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
-  .brand-div   { color: rgba(255,255,255,0.35); }
-  .brand-team  { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); white-space: nowrap; }
-
-  .site-nav { display: flex; align-items: center; }
-  .site-nav a {
-    display: block; padding: 13px 14px;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
-    color: rgba(255,255,255,0.6); text-decoration: none;
-    border-bottom: 3px solid transparent;
-    transition: color .15s, border-color .15s;
-    white-space: nowrap;
-  }
-  .site-nav a:hover  { color: #fff; border-bottom-color: rgba(255,255,255,0.5); }
-  .site-nav a.active { color: #fff; border-bottom-color: #fff; }
-
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(160deg, #3a0010 0%, var(--crimson) 50%, var(--crimson-dk) 100%);
-    padding: clamp(40px, 8vw, 72px) clamp(20px, 5vw, 48px) clamp(36px, 7vw, 60px);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: 'BAMA';
-    position: absolute; left: 50%; top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: clamp(80px, 22vw, 240px);
-    font-weight: 900; color: rgba(0,0,0,0.15);
-    white-space: nowrap; pointer-events: none; letter-spacing: -8px;
-  }
-  .hero-logo     { height: clamp(56px, 11vw, 90px); width: auto; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: 0.92; position: relative; }
-  .hero-eyebrow  { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 14px; position: relative; }
-  .hero-title    { font-size: clamp(32px, 8vw, 64px); font-weight: 900; color: #fff; line-height: 1.05; position: relative; text-shadow: 0 2px 20px rgba(0,0,0,0.35); }
-  .hero-subtitle { font-size: clamp(15px, 3vw, 18px); color: rgba(255,255,255,0.6); margin-top: 10px; margin-bottom: 28px; font-style: italic; position: relative; }
-  .hero-pills    { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; position: relative; }
-  .pill {
-    background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px; padding: 5px 14px;
-    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.8);
-  }
-
-  /* ── CONTENT ── */
-  .content { max-width: 1100px; margin: 0 auto; padding: clamp(28px, 5vw, 48px) clamp(16px, 4vw, 32px) clamp(48px, 8vw, 72px); }
-
-  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--crimson-md); text-transform: uppercase; margin-bottom: 18px; }
-
-  /* ── PAGE CARDS ── */
-  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 40px; }
-
-  .card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; overflow: hidden;
-    text-decoration: none; display: block;
-    transition: transform .15s, border-color .15s, box-shadow .15s;
-  }
-  .card:hover { transform: translateY(-3px); border-color: var(--crimson); box-shadow: 0 8px 28px rgba(158,27,50,0.25); }
-
-  .card-banner { height: 4px; }
-  .banner-crimson { background: linear-gradient(90deg, var(--crimson), var(--crimson-md)); }
-  .banner-silver  { background: linear-gradient(90deg, #666, #aaa); }
-  .banner-gold    { background: linear-gradient(90deg, #b45309, #f59e0b); }
-  .banner-deep    { background: linear-gradient(90deg, var(--crimson-dk), var(--crimson)); }
-
-  .card-inner { padding: 20px 22px 18px; }
-  .card-icon  { font-size: 28px; margin-bottom: 12px; }
-  .card-title { font-size: 18px; font-weight: 800; color: var(--t1); margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
-  .card-arrow { font-size: 16px; color: var(--t3); }
-  .card-desc  { font-size: 13px; color: var(--t3); line-height: 1.6; margin-bottom: 14px; }
-  .card-tags  { display: flex; gap: 6px; flex-wrap: wrap; }
-  .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; background: rgba(158,27,50,0.08); color: var(--t3); border: 1px solid var(--border); }
-
-  /* ── ABOUT ── */
-  .about { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; display: flex; align-items: center; gap: 20px; }
-  .about-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--crimson); border: 2px solid var(--crimson-md); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: #fff; flex-shrink: 0; }
-  .about-name { font-size: 15px; font-weight: 800; color: var(--t1); margin-bottom: 4px; }
-  .about-bio  { font-size: 13px; color: var(--t3); line-height: 1.6; }
-
-  /* ── FOOTER ── */
-  .site-footer { background: var(--crimson); border-top: 2px solid var(--crimson-dk); padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-  .site-footer span { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; }
-  .footer-brand { color: rgba(255,255,255,0.85) !important; font-size: 11px !important; font-weight: 800 !important; letter-spacing: 0.5px !important; }
-
-  /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    .header-inner { flex-direction: column; align-items: stretch; padding: 0; }
-    .site-brand   { padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.12); }
-    .brand-team   { display: none; }
-    .site-nav     { overflow-x: auto; scrollbar-width: none; padding: 0 6px; }
-    .site-nav::-webkit-scrollbar { display: none; }
-    .site-nav a   { padding: 9px 12px; font-size: 10px; }
-    .site-footer  { padding: 14px 16px; justify-content: center; text-align: center; }
-    .site-footer span:last-child { display: none; }
-  }
-
-  @media (max-width: 600px) {
-    .cards { grid-template-columns: 1fr; }
-    .about { flex-direction: column; text-align: center; padding: 20px; }
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #080d14; font-family: 'Arial', sans-serif; min-height: 100vh; }
+  .hero { background: linear-gradient(150deg, #0d1520 0%, #1D3557 55%, #9E1B32 100%); padding: 64px 48px 52px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: 'BAMA'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 220px; font-weight: 900; color: rgba(255,255,255,0.025); white-space: nowrap; pointer-events: none; }
+  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 4px; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 16px; }
+  .hero-title { font-size: 58px; font-weight: 900; color: #fff; line-height: 1.0; margin-bottom: 6px; }
+  .hero-title span { color: #f4a342; }
+  .hero-subtitle { font-size: 18px; color: rgba(255,255,255,0.45); margin-top: 10px; margin-bottom: 32px; font-style: italic; }
+  .hero-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 5px 16px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
+  .nav { background: #0f1824; border-bottom: 1px solid #1a2740; padding: 0 48px; display: flex; align-items: center; gap: 2px; overflow-x: auto; }
+  .nav a { display: block; padding: 14px 16px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #4a6080; text-decoration: none; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; white-space: nowrap; }
+  .nav a:hover { color: #fff; border-bottom-color: #9E1B32; }
+  .banner-green  { background: linear-gradient(90deg, #166534, #22c55e); }
+  .banner-orange { background: linear-gradient(90deg, #9a3412, #f97316); }
+  .banner-teal   { background: linear-gradient(90deg, #0f766e, #14b8a6); }
+  .banner-indigo { background: linear-gradient(90deg, #3730a3, #6366f1); }
+  .content { max-width: 1100px; margin: 0 auto; padding: 48px 32px 64px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: #2a4060; text-transform: uppercase; margin-bottom: 20px; }
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 48px; }
+  .card { background: #111827; border: 1px solid #1e2d42; border-radius: 14px; overflow: hidden; text-decoration: none; display: block; transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s; }
+  .card:hover { transform: translateY(-3px); border-color: #9E1B32; box-shadow: 0 8px 32px rgba(158,27,50,0.2); }
+  .card-banner { height: 6px; }
+  .banner-red    { background: linear-gradient(90deg, #9E1B32, #c0273f); }
+  .banner-blue   { background: linear-gradient(90deg, #1D3557, #2563a8); }
+  .banner-gold   { background: linear-gradient(90deg, #b45309, #f59e0b); }
+  .banner-purple { background: linear-gradient(90deg, #5b21b6, #7c3aed); }
+  .card-inner { padding: 24px 26px 22px; }
+  .card-icon { font-size: 28px; margin-bottom: 12px; }
+  .card-title { font-size: 20px; font-weight: 800; color: #e0eaf8; margin-bottom: 6px; }
+  .card-desc { font-size: 13px; color: #4a6080; line-height: 1.6; margin-bottom: 16px; }
+  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; background: rgba(255,255,255,0.05); color: #3a5070; border: 1px solid #1e2d42; }
+  .card-arrow { float: right; font-size: 18px; color: #2a3a55; margin-top: -4px; }
+  .about { background: #111827; border: 1px solid #1e2d42; border-radius: 14px; padding: 28px 32px; display: flex; align-items: center; gap: 28px; }
+  .about-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #9E1B32, #1D3557); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; color: #fff; flex-shrink: 0; }
+  .about-name { font-size: 16px; font-weight: 800; color: #e0eaf8; margin-bottom: 4px; }
+  .about-bio  { font-size: 13px; color: #4a6080; line-height: 1.6; }
+  .footer { background: #080d14; border-top: 1px solid #111827; padding: 24px 48px; text-align: center; font-size: 10px; color: #1e2d42; letter-spacing: 2px; text-transform: uppercase; }
 </style>
 </head>
 <body>
-
-<header class="site-header">
-  <div class="header-inner">
-    <div class="site-brand">
-      <img src="alabama-logo.png" class="nav-logo" alt="Alabama">
-      <span class="brand-name">CBreezy Media</span>
-      <span class="brand-div">&bull;</span>
-      <span class="brand-team">Alabama Crimson Tide</span>
-    </div>
-    <nav class="site-nav">
-      <a href="index.html" class="active">Home</a>
-      <a href="season-preview.html">Season Preview</a>
-      <a href="depth-chart.html">Depth Chart</a>
-      <a href="pitcher-potentials.html">Pitching Intel</a>
-      <a href="spotlight-cards.html">Player Spotlights</a>
-    </nav>
-  </div>
-</header>
-
 <div class="hero">
-  <img src="alabama-logo.png" class="hero-logo" alt="Alabama Crimson Tide">
-  <div class="hero-eyebrow">CBreezy Media &bull; SimCBL Coverage &bull; Season 2026</div>
-  <div class="hero-title">Alabama Crimson Tide</div>
-  <div class="hero-subtitle">2026 Team Hub</div>
+  <div class="hero-eyebrow">CBreezy Media  •  SimCBL Coverage</div>
+  <div class="hero-title">Alabama<br><span>Crimson Tide</span></div>
+  <div class="hero-subtitle">Season 2026 Team Hub</div>
   <div class="hero-pills">
-    <span class="pill">SimCBL</span>
-    <span class="pill">27-Man Roster</span>
-    <span class="pill">Season 2026</span>
-    <span class="pill">CBreezy Media</span>
+    <span class="pill">SimCBL</span><span class="pill">27-Man Roster</span><span class="pill">Season 2026</span><span class="pill">CBreezy Media</span>
   </div>
 </div>
-
+<nav class="nav">
+  <a href="index.html">Home</a>
+  <a href="season-preview.html">Season Preview</a>
+  <a href="depth-chart.html">Depth Chart</a>
+  <a href="pitcher-potentials.html">Pitching Intel</a>
+  <a href="spotlight-cards.html">Player Spotlights</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="recruiting.html">Recruiting</a>
+  <a href="war-room.html">War Room</a>
+  <a href="freshmen.html">Freshmen</a>
+</nav>
 <div class="content">
-
   <div class="section-label">All Pages</div>
-
   <div class="cards">
-
     <a class="card" href="season-preview.html">
-      <div class="card-banner banner-crimson"></div>
+      <div class="card-banner banner-red"></div>
       <div class="card-inner">
-        <div class="card-icon">&#128240;</div>
-        <div class="card-title">Season Preview <span class="card-arrow">&#8594;</span></div>
-        <div class="card-desc">Full breakdown of the 2026 Crimson Tide &mdash; pitching staff, lineup, roster concerns, and a season prediction before the first pitch.</div>
+        <div class="card-icon">📰</div>
+        <div class="card-title">Season Preview <span class="card-arrow">→</span></div>
+        <div class="card-desc">Full breakdown of the 2026 Crimson Tide — pitching staff, lineup, roster concerns, and a season prediction before the first pitch.</div>
         <div class="card-tags"><span class="tag">Blog Post</span><span class="tag">Season Outlook</span><span class="tag">Recruiting</span></div>
       </div>
     </a>
-
     <a class="card" href="depth-chart.html">
-      <div class="card-banner banner-silver"></div>
+      <div class="card-banner banner-blue"></div>
       <div class="card-inner">
-        <div class="card-icon">&#128203;</div>
-        <div class="card-title">Depth Chart <span class="card-arrow">&#8594;</span></div>
-        <div class="card-desc">Full roster breakdown &mdash; projected starting lineup, pitching rotation with roles, catching depth, and a color-coded gap analysis.</div>
+        <div class="card-icon">📋</div>
+        <div class="card-title">Depth Chart <span class="card-arrow">→</span></div>
+        <div class="card-desc">Full roster breakdown — projected starting lineup, pitching rotation with roles, catching depth, and a color-coded gap analysis.</div>
         <div class="card-tags"><span class="tag">Roster</span><span class="tag">Lineup</span><span class="tag">Pitching Roles</span></div>
       </div>
     </a>
-
     <a class="card" href="pitcher-potentials.html">
       <div class="card-banner banner-gold"></div>
       <div class="card-inner">
-        <div class="card-icon">&#9918;</div>
-        <div class="card-title">Pitching Intel <span class="card-arrow">&#8594;</span></div>
-        <div class="card-desc">Precise college potentials for all 13 arms. Color-coded Endurance, Control, Velocity, Sequencing, and Pickoff grades with role assignments.</div>
-        <div class="card-tags"><span class="tag">Scouting</span><span class="tag">Potentials</span><span class="tag">Roles</span></div>
+        <div class="card-icon">⚾</div>
+        <div class="card-title">Pitching Intel <span class="card-arrow">→</span></div>
+        <div class="card-desc">Precise college potentials for all 13 arms. Color-coded Endurance, Control, Velocity, Sequencing, and Pickoff grades with assigned roles.</div>
+        <div class="card-tags"><span class="tag">Scouting</span><span class="tag">Potentials</span><span class="tag">Role Assignments</span></div>
       </div>
     </a>
-
     <a class="card" href="spotlight-cards.html">
-      <div class="card-banner banner-deep"></div>
+      <div class="card-banner banner-purple"></div>
       <div class="card-inner">
-        <div class="card-icon">&#127775;</div>
-        <div class="card-title">Player Spotlights <span class="card-arrow">&#8594;</span></div>
-        <div class="card-desc">Six individual cards for the key players heading into 2026 &mdash; Butler, Boone, Price, Adams, Faulkner, and White.</div>
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Player Spotlights <span class="card-arrow">→</span></div>
+        <div class="card-desc">Six individual cards for the key players heading into 2026 — Butler, Boone, Price, Adams, Faulkner, and White.</div>
         <div class="card-tags"><span class="tag">Player Cards</span><span class="tag">Key Personnel</span><span class="tag">Stats</span></div>
       </div>
     </a>
-
+    <a class="card" href="schedule.html">
+      <div class="card-banner banner-green"></div>
+      <div class="card-inner">
+        <div class="card-icon">📅</div>
+        <div class="card-title">Season Schedule <span class="card-arrow">→</span></div>
+        <div class="card-desc">Full 26-week schedule — 12 non-conference weeks, 10 SEC series, tournament bracket. Home/away breakdown with month-by-month groupings.</div>
+        <div class="card-tags"><span class="tag">Schedule</span><span class="tag">SEC Series</span><span class="tag">Non-Conf</span></div>
+      </div>
+    </a>
+    <a class="card" href="recruiting.html">
+      <div class="card-banner banner-orange"></div>
+      <div class="card-inner">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Recruiting Board <span class="card-arrow">→</span></div>
+        <div class="card-desc">16 prospects — 7 pitching targets, 9 position players. Full scouting data, interest levels, weekly investment plan, and precise potentials on key arms.</div>
+        <div class="card-tags"><span class="tag">Recruiting</span><span class="tag">Prospects</span><span class="tag">Scouting</span></div>
+      </div>
+    </a>
+    <a class="card" href="war-room.html">
+      <div class="card-banner banner-teal"></div>
+      <div class="card-inner">
+        <div class="card-icon">🗂️</div>
+        <div class="card-title">War Room <span class="card-arrow">→</span></div>
+        <div class="card-desc">Program status hub — session log, scouting budget tracker (618 pts remaining), completed actions, and open decisions heading into the season.</div>
+        <div class="card-tags"><span class="tag">Program Status</span><span class="tag">Scouting Budget</span><span class="tag">Decisions</span></div>
+      </div>
+    </a>
+    <a class="card" href="freshmen.html">
+      <div class="card-banner banner-indigo"></div>
+      <div class="card-inner">
+        <div class="card-icon">🌱</div>
+        <div class="card-title">Freshman Class <span class="card-arrow">→</span></div>
+        <div class="card-desc">Price, Coleman, Rolando Garcia, Osborne, and Green. The 2026 freshman class — headlined by Mirza Price, the future ace already on the roster.</div>
+        <div class="card-tags"><span class="tag">Freshmen</span><span class="tag">Future</span><span class="tag">Development</span></div>
+      </div>
+    </a>
   </div>
-
   <div class="about">
     <div class="about-avatar">CB</div>
     <div>
       <div class="about-name">CBreezy Media</div>
-      <div class="about-bio">Multimedia brand covering SimCBL&rsquo;s Alabama Crimson Tide. Photography, videography, graphic design, and sports media production. All scouting data sourced from in-game precise potential reveals &mdash; Season 2026.</div>
+      <div class="about-bio">Multimedia brand covering SimCBL's Alabama Crimson Tide. Photography, videography, graphic design, and sports media production. All scouting data sourced from in-game precise potential reveals — Season 2026.</div>
     </div>
   </div>
-
 </div>
-
-<footer class="site-footer">
-  <span class="footer-brand">CBreezy Media</span>
-  <span>Alabama Crimson Tide &bull; SimCBL 2026</span>
-</footer>
-
+<div class="footer">CBreezy Media  •  Alabama Crimson Tide SimCBL  •  Season 2026</div>
 </body>
 </html>

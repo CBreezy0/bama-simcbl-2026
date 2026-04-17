@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alabama 2026 — Recruiting Board | CBreezy Media</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #080d14; font-family: 'Arial', sans-serif; min-height: 100vh; }
+
+  .hero { background: linear-gradient(150deg, #0d1520 0%, #1D3557 55%, #9E1B32 100%); padding: 52px 48px 40px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: 'RECRUIT'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 140px; font-weight: 900; color: rgba(255,255,255,0.025); white-space: nowrap; pointer-events: none; }
+  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 4px; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 14px; }
+  .hero-title { font-size: 48px; font-weight: 900; color: #fff; line-height: 1.0; margin-bottom: 6px; }
+  .hero-title span { color: #f4a342; }
+  .hero-subtitle { font-size: 16px; color: rgba(255,255,255,0.45); margin-top: 8px; margin-bottom: 28px; font-style: italic; }
+  .hero-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 5px 16px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
+
+  .nav { background: #0f1824; border-bottom: 1px solid #1a2740; padding: 0 48px; display: flex; align-items: center; gap: 2px; overflow-x: auto; }
+  .nav a { display: block; padding: 14px 16px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #4a6080; text-decoration: none; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; white-space: nowrap; }
+  .nav a:hover, .nav a.active { color: #fff; border-bottom-color: #9E1B32; }
+
+  .content { max-width: 1100px; margin: 0 auto; padding: 40px 32px 64px; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 40px; }
+  .stat-box { background: #111827; border: 1px solid #1e2d42; border-radius: 10px; padding: 16px 14px; text-align: center; }
+  .stat-box .val { font-size: 26px; font-weight: 800; color: #9E1B32; }
+  .stat-box .lbl { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #4a6080; text-transform: uppercase; margin-top: 4px; }
+
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: #2a4060; text-transform: uppercase; margin-bottom: 14px; margin-top: 36px; }
+
+  .card-wrap { background: #111827; border: 1px solid #1e2d42; border-radius: 14px; overflow: hidden; margin-bottom: 28px; }
+  .card-header { background: #1a2236; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #2a3a55; }
+  .card-header-title { font-size: 13px; font-weight: 800; color: #e0eaf8; letter-spacing: 0.5px; }
+  .card-header-sub { font-size: 11px; color: #4a6080; }
+
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: #141f30; }
+  thead th { padding: 9px 14px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #4a6080; text-align: left; border-bottom: 1px solid #2a3a55; }
+  thead th.center { text-align: center; }
+  tbody tr { border-bottom: 1px solid #1a2236; transition: background 0.12s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  tbody tr.priority { background: rgba(158,27,50,0.07); }
+  tbody tr.priority:hover { background: rgba(158,27,50,0.13); }
+  tbody tr.dropped { opacity: 0.4; }
+  td { padding: 10px 14px; font-size: 13px; color: #c8d8e8; vertical-align: middle; }
+  td.center { text-align: center; }
+
+  .recruit-name { font-weight: 800; color: #e8ecf0; font-size: 14px; }
+  .recruit-sub { font-size: 11px; color: #4a6080; margin-top: 2px; }
+
+  .stars { color: #f4a342; font-size: 11px; letter-spacing: 1px; }
+
+  .interest-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .int-medium { background: rgba(96,165,250,0.12); color: #60a5fa; border: 1px solid rgba(96,165,250,0.25); }
+  .int-low { background: rgba(107,114,128,0.12); color: #6b7280; border: 1px solid rgba(107,114,128,0.25); }
+  .int-listening { background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+
+  .scout-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .scout-full { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+  .scout-est { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+  .scout-report { background: rgba(107,114,128,0.1); color: #6b7280; border: 1px solid rgba(107,114,128,0.2); }
+
+  .pts-badge { display: inline-block; font-size: 13px; font-weight: 800; }
+  .pts-high { color: #22c55e; }
+  .pts-med { color: #60a5fa; }
+  .pts-zero { color: #2a3a55; }
+
+  .grade { display: inline-block; min-width: 32px; text-align: center; font-size: 12px; font-weight: 800; padding: 2px 0; border-radius: 4px; }
+  .g-ap { color: #22c55e; } .g-a { color: #34d058; } .g-am { color: #4ade80; }
+  .g-bp { color: #60a5fa; } .g-b { color: #3b82f6; } .g-bm { color: #93c5fd; }
+  .g-cp { color: #f59e0b; } .g-c { color: #f6a823; } .g-cm { color: #fbbf24; }
+  .g-dp { color: #f87171; } .g-d { color: #ef4444; } .g-dm { color: #fca5a5; }
+  .g-f { color: #dc2626; }
+
+  .priority-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; background: rgba(158,27,50,0.2); color: #e87a8a; border: 1px solid rgba(158,27,50,0.3); }
+  .watch-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+  .monitor-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; background: rgba(107,114,128,0.1); color: #6b7280; border: 1px solid rgba(107,114,128,0.2); }
+  .dropped-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; background: rgba(220,38,38,0.1); color: #dc2626; border: 1px solid rgba(220,38,38,0.2); }
+
+  .budget-bar-wrap { background: #111827; border: 1px solid #1e2d42; border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
+  .budget-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #4a6080; text-transform: uppercase; margin-bottom: 12px; }
+  .budget-bar { background: #1a2236; border-radius: 6px; height: 10px; overflow: hidden; margin-bottom: 8px; }
+  .budget-fill { height: 100%; background: linear-gradient(90deg, #9E1B32, #c0273f); border-radius: 6px; width: 49%; }
+  .budget-labels { display: flex; justify-content: space-between; font-size: 11px; }
+  .budget-spent { color: #e87a8a; font-weight: 700; }
+  .budget-remain { color: #22c55e; font-weight: 700; }
+  .budget-total { color: #4a6080; }
+
+  .note-box { background: #1a2236; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin-bottom: 8px; font-size: 12px; color: #94aabb; line-height: 1.55; }
+  .note-box strong { color: #f59e0b; }
+
+  .footer { background: #080d14; border-top: 1px solid #111827; padding: 24px 48px; text-align: center; font-size: 10px; color: #1e2d42; letter-spacing: 2px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">CBreezy Media  •  SimCBL Season 2026</div>
+  <div class="hero-title">Alabama<br><span>Recruiting Board</span></div>
+  <div class="hero-subtitle">16 Prospects — Post Week 1 Scouting Pass</div>
+  <div class="hero-pills">
+    <span class="pill">7 Pitching Targets</span>
+    <span class="pill">9 Position Targets</span>
+    <span class="pill">All 5-Star Prospects</span>
+    <span class="pill">Wk2 Plan Active</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="index.html">Home</a>
+  <a href="season-preview.html">Season Preview</a>
+  <a href="depth-chart.html">Depth Chart</a>
+  <a href="pitcher-potentials.html">Pitching Intel</a>
+  <a href="spotlight-cards.html">Player Spotlights</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="recruiting.html" class="active">Recruiting</a>
+  <a href="war-room.html">War Room</a>
+  <a href="freshmen.html">Freshmen</a>
+</nav>
+
+<div class="content">
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="val">16</div><div class="lbl">On Board</div></div>
+    <div class="stat-box"><div class="val">100</div><div class="lbl">Wk1 Pts Spent</div></div>
+    <div class="stat-box"><div class="val">80</div><div class="lbl">Wk2 Pts Planned</div></div>
+    <div class="stat-box"><div class="val">1,018</div><div class="lbl">Scout Pts Used</div></div>
+  </div>
+
+  <div class="budget-bar-wrap">
+    <div class="budget-title">Scouting Budget</div>
+    <div class="budget-bar"><div class="budget-fill"></div></div>
+    <div class="budget-labels">
+      <span class="budget-spent">1,018 pts used</span>
+      <span class="budget-remain">982 pts remaining</span>
+      <span class="budget-total">2,000 pts total</span>
+    </div>
+  </div>
+
+  <!-- PITCHING RECRUITS -->
+  <div class="section-label">Pitching Recruits — 7 on Board</div>
+
+  <div class="note-box"><strong>Priority arms:</strong> Farrell and Knox are the top SP targets — both have no active competitors. Wyatt is a must-win against Florida. Gardner dropped to 0 pts Wk2 after F Endurance/Sequencing scouting revealed limited ceiling.</div>
+
+  <div class="card-wrap">
+    <div class="card-header">
+      <div class="card-header-title">Pitching Prospects</div>
+      <div class="card-header-sub">Bold name = actively invested  •  Scout: FULL = 3 tiers, EST = 2 tiers, REPORT = 1 tier</div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Prospect</th>
+          <th class="center">Rank</th>
+          <th class="center">Stars</th>
+          <th class="center">Interest</th>
+          <th class="center">Wk1 Pts</th>
+          <th class="center">Wk2 Pts</th>
+          <th class="center">Scout</th>
+          <th>Key Potentials</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="priority">
+          <td><div class="recruit-name">Larry Farrell</div><div class="recruit-sub">SP — Alabama home state</div></td>
+          <td class="center"><strong>#13</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-medium">Medium</span></td>
+          <td class="center"><span class="pts-badge pts-high">+20</span></td>
+          <td class="center"><span class="pts-badge pts-high">+20</span></td>
+          <td class="center"><span class="scout-badge scout-full">FULL</span></td>
+          <td><span class="grade g-am">A-</span> End &nbsp;<span class="grade g-bp">B+</span> Vel &nbsp;<span class="grade g-cm">C-</span> Ctrl</td>
+          <td><span class="priority-tag">TOP PRIORITY</span></td>
+        </tr>
+        <tr class="priority">
+          <td><div class="recruit-name">Muadianvita Knox</div><div class="recruit-sub">SP — No competitor</div></td>
+          <td class="center"><strong>#35</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-medium">Medium</span></td>
+          <td class="center"><span class="pts-badge pts-med">+10</span></td>
+          <td class="center"><span class="pts-badge pts-high">+20</span></td>
+          <td class="center"><span class="scout-badge scout-full">FULL</span></td>
+          <td><span class="grade g-bm">B-</span> End &nbsp;<span class="grade g-bp">B+</span> Vel &nbsp;<span class="grade g-cp">C+</span> Ctrl</td>
+          <td><span class="priority-tag">TOP PRIORITY</span></td>
+        </tr>
+        <tr class="priority">
+          <td><div class="recruit-name">Matt Wyatt</div><div class="recruit-sub">RP/Closer — Florida competing</div></td>
+          <td class="center"><strong>#39</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-listening">Listening</span></td>
+          <td class="center"><span class="pts-badge pts-high">+20</span></td>
+          <td class="center"><span class="pts-badge pts-high">+20</span></td>
+          <td class="center"><span class="scout-badge scout-full">FULL</span></td>
+          <td><span class="grade g-f">F</span> End &nbsp;<span class="grade g-ap">A+</span> Vel &nbsp;<span class="grade g-cm">C-</span> Ctrl</td>
+          <td><span class="watch-tag">BEAT FLORIDA</span></td>
+        </tr>
+        <tr class="dropped">
+          <td><div class="recruit-name">John Gardner</div><div class="recruit-sub">RP — Dropped Wk2</div></td>
+          <td class="center"><strong>#27</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-medium">Medium</span></td>
+          <td class="center"><span class="pts-badge pts-med">+15</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-full">FULL</span></td>
+          <td><span class="grade g-f">F</span> End &nbsp;<span class="grade g-cp">C+</span> Vel &nbsp;<span class="grade g-bp">B+</span> Ctrl &nbsp;<span class="grade g-f">F</span> Seq</td>
+          <td><span class="dropped-tag">DROPPED</span></td>
+        </tr>
+        <tr>
+          <td><div class="recruit-name">Charles Sanders</div><div class="recruit-sub">RP/Closer — Short reliever type</div></td>
+          <td class="center"><strong>#34</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-low">Low</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-full">FULL</span></td>
+          <td><span class="grade g-dm">D-</span> End &nbsp;<span class="grade g-a">A</span> Vel &nbsp;<span class="grade g-c">C</span> Ctrl &nbsp;<span class="grade g-dm">D-</span> Seq</td>
+          <td><span class="monitor-tag">MONITOR</span></td>
+        </tr>
+        <tr>
+          <td><div class="recruit-name">Courtney Fletcher</div><div class="recruit-sub">SP — Illinois competing</div></td>
+          <td class="center"><strong>#6</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-low">Low</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-report">REPORT</span></td>
+          <td>Top-6 national arm — Illinois competitor</td>
+          <td><span class="monitor-tag">MONITOR</span></td>
+        </tr>
+        <tr>
+          <td><div class="recruit-name">Manuel Smith</div><div class="recruit-sub">SP — Low interest currently</div></td>
+          <td class="center"><strong>#20</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-low">Low</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-report">REPORT</span></td>
+          <td>Top-20 arm — build interest first</td>
+          <td><span class="monitor-tag">MONITOR</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- POSITION RECRUITS -->
+  <div class="section-label">Position Player Recruits — 9 on Board</div>
+
+  <div class="note-box"><strong>Top target:</strong> Henry Ramos — Contact A + Discipline A is a legitimate bat. Finn and Davis dropped to 0 pts Wk2 after scouting revealed D-range contact grades. Donovan and Cain are long-term targets.</div>
+
+  <div class="card-wrap">
+    <div class="card-header">
+      <div class="card-header-title">Position Player Prospects</div>
+      <div class="card-header-sub">Wk2 investment plan reflects updated scouting data</div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Prospect</th>
+          <th class="center">Rank</th>
+          <th class="center">Stars</th>
+          <th class="center">Interest</th>
+          <th class="center">Wk1 Pts</th>
+          <th class="center">Wk2 Pts</th>
+          <th class="center">Scout</th>
+          <th>Key Tools</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="priority">
+          <td><div class="recruit-name">Henry Ramos</div><div class="recruit-sub">Bat-first — .360/.424/.494 slash</div></td>
+          <td class="center"><strong>#304</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-medium">Medium</span></td>
+          <td class="center"><span class="pts-badge pts-med">+5</span></td>
+          <td class="center"><span class="pts-badge pts-high">+20</span></td>
+          <td class="center"><span class="scout-badge scout-full">FULL</span></td>
+          <td><span class="grade g-a">A</span> Contact &nbsp;<span class="grade g-a">A</span> Disc &nbsp;<span class="grade g-bp">B+</span> Eye</td>
+          <td><span class="priority-tag">TOP PRIORITY</span></td>
+        </tr>
+        <tr class="dropped">
+          <td><div class="recruit-name">Rip Finn</div><div class="recruit-sub">Toolsy OF — Dropped Wk2</div></td>
+          <td class="center"><strong>#167</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-medium">Medium</span></td>
+          <td class="center"><span class="pts-badge pts-med">+5</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-full">FULL</span></td>
+          <td><span class="grade g-bp">B+</span> Eye &nbsp;<span class="grade g-bp">B+</span> Speed &nbsp;<span class="grade g-dp">D+</span> Contact</td>
+          <td><span class="dropped-tag">DROPPED</span></td>
+        </tr>
+        <tr class="dropped">
+          <td><div class="recruit-name">Jesse Davis</div><div class="recruit-sub">Toolsy OF — Dropped Wk2</div></td>
+          <td class="center"><strong>#111</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-medium">Medium</span></td>
+          <td class="center"><span class="pts-badge pts-med">+5</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-est">ESTIMATE</span></td>
+          <td><span class="grade g-ap">A+</span> Eye &nbsp;<span class="grade g-am">A-</span> Speed &nbsp;<span class="grade g-dm">D-</span> Contact</td>
+          <td><span class="dropped-tag">DROPPED</span></td>
+        </tr>
+        <tr>
+          <td><div class="recruit-name">Edward Donovan</div><div class="recruit-sub">Power/Patience — Florida competing</div></td>
+          <td class="center"><strong>#4</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-low">Low</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-est">ESTIMATE</span></td>
+          <td><span class="grade g-a">A</span> Disc &nbsp;<span class="grade g-bm">B-</span> Power &nbsp;<span class="grade g-b">B</span> Eye</td>
+          <td><span class="monitor-tag">MONITOR</span></td>
+        </tr>
+        <tr>
+          <td><div class="recruit-name">Kenneth Cain</div><div class="recruit-sub">OBP — Elite plate vision, no comp</div></td>
+          <td class="center"><strong>#84</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-low">Low</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-est">ESTIMATE</span></td>
+          <td><span class="grade g-ap">A+</span> Eye &nbsp;<span class="grade g-cp">C+</span> Contact</td>
+          <td><span class="monitor-tag">MONITOR</span></td>
+        </tr>
+        <tr>
+          <td><div class="recruit-name">Alex Clark</div><div class="recruit-sub">Medium interest — no competitor</div></td>
+          <td class="center"><strong>#272</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-medium">Medium</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-report">REPORT</span></td>
+          <td>—</td>
+          <td><span class="monitor-tag">MONITOR</span></td>
+        </tr>
+        <tr>
+          <td><div class="recruit-name">Virgil Watson</div><div class="recruit-sub">Top-20 pos player — Low interest</div></td>
+          <td class="center"><strong>#17</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-low">Low</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-report">REPORT</span></td>
+          <td>—</td>
+          <td><span class="monitor-tag">LONG-TERM</span></td>
+        </tr>
+        <tr>
+          <td><div class="recruit-name">Kendrick Foster</div><div class="recruit-sub">Top-20 pos player — Low interest</div></td>
+          <td class="center"><strong>#19</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-low">Low</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-report">REPORT</span></td>
+          <td>—</td>
+          <td><span class="monitor-tag">LONG-TERM</span></td>
+        </tr>
+        <tr>
+          <td><div class="recruit-name">Luther Richard</div><div class="recruit-sub">Tracking only</div></td>
+          <td class="center"><strong>#63</strong></td>
+          <td class="center"><span class="stars">★★★★★</span></td>
+          <td class="center"><span class="interest-badge int-low">Low</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="pts-badge pts-zero">0</span></td>
+          <td class="center"><span class="scout-badge scout-report">REPORT</span></td>
+          <td>—</td>
+          <td><span class="monitor-tag">MONITOR</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="footer">CBreezy Media  •  Alabama Crimson Tide SimCBL  •  Season 2026 Recruiting Board</div>
+</body>
+</html>

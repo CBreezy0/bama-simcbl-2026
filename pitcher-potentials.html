@@ -3,115 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alabama Pitching Staff â Precise Potentials 2026</title>
+<title>Alabama Pitching Staff &mdash; Precise Potentials 2026 | CBreezy Media</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0d0d0d; font-family: 'Arial', sans-serif; padding: 32px; }
+  body { background: #080206; font-family: 'Arial', sans-serif; color: #f0e4e8; }
 
-  .card {
-    background: #111827;
-    border-radius: 12px;
-    overflow: hidden;
-    max-width: 1100px;
-    margin: 0 auto;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
-  }
-
-  .header {
-    background: linear-gradient(135deg, #9E1B32 0%, #7a1325 50%, #1D3557 100%);
-    padding: 28px 32px 22px;
+  .site-header {
+    background: #9E1B32;
+    padding: 0 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 2px solid #7a1325;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-  .header-left {}
-  .header-title {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: rgba(255,255,255,0.6);
-    text-transform: uppercase;
-    margin-bottom: 6px;
+  .site-brand { display: flex; align-items: center; gap: 10px; padding: 12px 0; }
+  .brand-name { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 1px; text-transform: uppercase; }
+  .brand-divider { color: rgba(255,255,255,0.4); }
+  .brand-team { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.75); }
+  .site-nav { display: flex; align-items: center; gap: 2px; }
+  .site-nav a {
+    display: block; padding: 14px 16px;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    color: rgba(255,255,255,0.65); text-decoration: none;
+    border-bottom: 3px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
   }
-  .header-main {
-    font-size: 26px;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 0.5px;
+  .site-nav a:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.6); }
+  .site-nav a.active { color: #fff; border-bottom-color: #fff; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 36px 32px 64px; }
+
+  .card {
+    background: #130009;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #2a0015;
   }
-  .header-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.55);
-    margin-top: 4px;
-    font-style: italic;
+
+  .page-header {
+    background: linear-gradient(135deg, #9E1B32 0%, #7a1325 50%, #3a0010 100%);
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #3a0020;
   }
-  .header-badge {
-    background: rgba(255,255,255,0.12);
+  .hdr-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.45); text-transform: uppercase; margin-bottom: 6px; }
+  .hdr-title { font-size: 26px; font-weight: 900; color: #fff; }
+  .hdr-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 4px; font-style: italic; }
+  .hdr-badge {
+    background: rgba(0,0,0,0.3);
     border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 8px;
-    padding: 10px 18px;
+    border-radius: 10px;
+    padding: 12px 20px;
     text-align: center;
+    min-width: 90px;
   }
-  .badge-num { font-size: 28px; font-weight: 800; color: #fff; }
-  .badge-label { font-size: 10px; letter-spacing: 1.5px; color: rgba(255,255,255,0.55); text-transform: uppercase; }
+  .badge-num { font-size: 30px; font-weight: 900; color: #fff; }
+  .badge-label { font-size: 10px; letter-spacing: 1.5px; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-top: 2px; }
 
   .legend {
     display: flex;
-    gap: 20px;
-    padding: 12px 32px;
-    background: #1a2236;
-    border-bottom: 1px solid #2a3a55;
+    gap: 22px;
+    padding: 12px 36px;
+    background: #1c000e;
+    border-bottom: 1px solid #2a0015;
     flex-wrap: wrap;
+    align-items: center;
   }
-  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #aaa; }
-  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #9a7080; }
+  .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .legend-sr { margin-left: auto; font-size: 11px; font-weight: 700; color: #f08898; }
 
   table { width: 100%; border-collapse: collapse; }
-  thead tr { background: #1a2236; }
+  thead tr { background: #0d0008; }
   thead th {
-    padding: 10px 14px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #7a9cc4;
-    text-align: left;
-    border-bottom: 2px solid #2a3a55;
+    padding: 10px 16px;
+    font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #6a2a38; text-align: left;
+    border-bottom: 2px solid #2a0015;
   }
   thead th.center { text-align: center; }
 
-  tbody tr { border-bottom: 1px solid #1e2d42; transition: background 0.15s; }
-  tbody tr:hover { background: rgba(255,255,255,0.03); }
-  tbody tr.grad-row { background: rgba(158, 27, 50, 0.08); }
-  tbody tr.grad-row:hover { background: rgba(158, 27, 50, 0.14); }
+  tbody tr { border-bottom: 1px solid #1a0010; transition: background 0.15s; }
+  tbody tr:hover { background: rgba(158,27,50,0.06); }
+  tbody tr.grad-row { background: rgba(158,27,50,0.07); }
+  tbody tr.grad-row:hover { background: rgba(158,27,50,0.13); }
 
-  td { padding: 11px 14px; font-size: 13px; color: #cdd9e5; vertical-align: middle; }
+  td { padding: 11px 16px; font-size: 13px; color: #c0909a; vertical-align: middle; }
   td.center { text-align: center; }
 
-  .player-name { font-weight: 700; color: #e8ecf0; font-size: 14px; }
-  .class-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-  }
-  .cls-sr { background: rgba(158,27,50,0.25); color: #e87a8a; }
-  .cls-jr { background: rgba(29,53,87,0.4); color: #7aabda; }
-  .cls-so { background: rgba(80,80,80,0.3); color: #aaa; }
-  .cls-fr { background: rgba(26,116,49,0.2); color: #6ec97f; }
-  .cls-rsjr { background: rgba(120,80,0,0.3); color: #d4a04a; }
+  .player-name { font-weight: 700; color: #f0e4e8; font-size: 14px; }
+  .est-note { font-size: 11px; color: #5a2030; font-style: italic; }
 
-  .grade {
-    display: inline-block;
-    min-width: 38px;
-    padding: 3px 0;
-    border-radius: 5px;
-    font-size: 13px;
-    font-weight: 800;
-    text-align: center;
-  }
+  .class-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+  .cls-sr   { background: rgba(158,27,50,0.25);  color: #f08898; }
+  .cls-jr   { background: rgba(96,165,250,0.15); color: #7aabda; }
+  .cls-so   { background: rgba(100,100,100,0.2); color: #aaa; }
+  .cls-fr   { background: rgba(34,197,94,0.12);  color: #6ec97f; }
+  .cls-rsjr { background: rgba(245,158,11,0.15); color: #d4a04a; }
+
+  .grade { display: inline-block; min-width: 38px; padding: 3px 0; border-radius: 5px; font-size: 13px; font-weight: 800; text-align: center; }
   .g-ap { color: #22c55e; }
   .g-a  { color: #34d058; }
   .g-am { color: #4ade80; }
@@ -125,73 +121,81 @@
   .g-d  { color: #ef4444; }
   .g-dm { color: #fca5a5; }
   .g-f  { color: #dc2626; }
-  .g-est { color: #6b7280; font-style: italic; }
 
-  .role-badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-  }
-  .role-ace      { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
-  .role-starter  { background: rgba(96,165,250,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
-  .role-closer   { background: rgba(167,139,250,0.15); color: #a78bfa; border: 1px solid rgba(167,139,250,0.3); }
-  .role-setup    { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
-  .role-long     { background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
-  .role-mid      { background: rgba(156,163,175,0.15); color: #9ca3af; border: 1px solid rgba(156,163,175,0.3); }
-  .role-short    { background: rgba(249,115,22,0.15); color: #fb923c; border: 1px solid rgba(249,115,22,0.3); }
-  .role-dev      { background: rgba(107,114,128,0.12); color: #6b7280; border: 1px solid rgba(107,114,128,0.2); }
+  .role-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; white-space: nowrap; }
+  .role-ace    { background: rgba(34,197,94,0.15);   color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+  .role-starter{ background: rgba(96,165,250,0.15);  color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+  .role-closer { background: rgba(167,139,250,0.15); color: #a78bfa; border: 1px solid rgba(167,139,250,0.3); }
+  .role-setup  { background: rgba(251,191,36,0.15);  color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .role-long   { background: rgba(99,102,241,0.15);  color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
+  .role-mid    { background: rgba(156,163,175,0.15); color: #9ca3af; border: 1px solid rgba(156,163,175,0.3); }
+  .role-short  { background: rgba(249,115,22,0.15);  color: #fb923c; border: 1px solid rgba(249,115,22,0.3); }
+  .role-dev    { background: rgba(107,114,128,0.12); color: #6b7280; border: 1px solid rgba(107,114,128,0.2); }
 
-  .footer {
-    background: #1a2236;
-    padding: 14px 32px;
+  .card-footer {
+    background: #1c000e;
+    padding: 14px 36px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid #2a3a55;
+    border-top: 1px solid #2a0015;
   }
-  .footer-left { font-size: 11px; color: #4a6080; }
-  .footer-right { font-size: 11px; color: #4a6080; font-style: italic; }
+  .card-footer span { font-size: 11px; color: #5a2030; }
+  .footer-note { font-style: italic; }
 
-  .est-note { font-size: 11px; color: #4a6080; font-style: italic; }
-  .ovr-dot {
-    display: inline-block;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    margin-right: 4px;
-    vertical-align: middle;
+  .site-footer {
+    background: #9E1B32;
+    border-top: 2px solid #7a1325;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
   }
+  .site-footer span { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+  .footer-brand { color: rgba(255,255,255,0.85) !important; font-size: 11px !important; font-weight: 800 !important; }
 </style>
 </head>
 <body>
+
+<header class="site-header">
+  <div class="site-brand">
+    <span class="brand-name">CBreezy Media</span>
+    <span class="brand-divider">&bull;</span>
+    <span class="brand-team">Alabama Crimson Tide</span>
+  </div>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="season-preview.html">Season Preview</a>
+    <a href="depth-chart.html">Depth Chart</a>
+    <a href="pitcher-potentials.html" class="active">Pitching Intel</a>
+    <a href="spotlight-cards.html">Player Spotlights</a>
+  </nav>
+</header>
+
+<div class="wrap">
 <div class="card">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-left">
-      <div class="header-title">Alabama Crimson Tide  â¢  SimCBL Season 2026</div>
-      <div class="header-main">Pitching Staff â Precise College Potentials</div>
-      <div class="header-sub">11 of 13 arms precisely scouted  â¢  Nash &amp; Norman estimated  â¢   50 pts per reveal</div>
+  <div class="page-header">
+    <div>
+      <div class="hdr-eyebrow">Alabama Crimson Tide &bull; SimCBL Season 2026</div>
+      <div class="hdr-title">Pitching Staff &mdash; Precise College Potentials</div>
+      <div class="hdr-sub">11 of 13 arms precisely scouted &bull; Nash &amp; Norman estimated &bull; 50 pts per reveal</div>
     </div>
-    <div class="header-badge">
+    <div class="hdr-badge">
       <div class="badge-num">618</div>
       <div class="badge-label">pts remaining</div>
     </div>
   </div>
 
-  <!-- LEGEND -->
   <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div> A range â Elite</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div> B range â Above avg</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div> C range â Average</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div> D/F range â Below avg</div>
-    <div class="legend-item" style="margin-left:auto"><span style="color:#e87a8a;font-size:11px;font-weight:700;">SR</span> = Graduating after 2026</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div> A range &mdash; Elite</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div> B range &mdash; Above avg</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div> C range &mdash; Average</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div> D/F range &mdash; Below avg</div>
+    <span class="legend-sr">Red row = graduating after 2026</span>
   </div>
 
-  <!-- TABLE -->
   <table>
     <thead>
       <tr>
@@ -249,10 +253,10 @@
         <td class="center"><span class="grade g-am">A-</span></td>
         <td class="center"><span class="grade g-c">C</span></td>
         <td class="center"><span class="grade g-cp">C+</span></td>
-        <td><span class="role-badge role-mid">HBÉGH-LVG RP</span></td>
+        <td><span class="role-badge role-mid">HIGH-LVG RP</span></td>
       </tr>
       <tr class="grad-row">
-        <td><span class="player-name">Everett Nash <span class="est-note">*eist.</span></span></td>
+        <td><span class="player-name">Everett Nash <span class="est-note">*est.</span></span></td>
         <td><span class="class-badge cls-sr">SR</span></td>
         <td class="center"><span class="grade g-am">A-</span></td>
         <td class="center"><span class="grade g-bm">B-</span></td>
@@ -348,17 +352,23 @@
         <td class="center"><span class="grade g-dp">D+</span></td>
         <td class="center"><span class="grade g-bp">B+</span></td>
         <td class="center"><span class="grade g-b">B</span></td>
-        <td><span class="role-badge role-dev">DEPTA!?ONY</span></td>
+        <td><span class="role-badge role-dev">DEPTH ONLY</span></td>
       </tr>
     </tbody>
   </table>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="footer-left">CBreezy Media  â¢  Alabama Crimson Tide SimCBL  â¢  Season 2026</div>
-    <div class="footer-right">*est. = estimated (not precisely scouted)</div>
+  <div class="card-footer">
+    <span>CBreezy Media &bull; Alabama Crimson Tide SimCBL &bull; Season 2026</span>
+    <span class="footer-note">*est. = estimated (not precisely scouted)</span>
   </div>
 
 </div>
+</div>
+
+<footer class="site-footer">
+  <span class="footer-brand">CBreezy Media</span>
+  <span>Alabama Crimson Tide &bull; SimCBL 2026</span>
+</footer>
+
 </body>
 </html>

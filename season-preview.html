@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>2026 Alabama Crimson Tide â Season Preview</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f4f6f9; font-family: 'Georgia', serif; color: #1a1a2e; }
+
+  .hero {
+    background: linear-gradient(160deg, #0d1520 0%, #1D3557 60%, #9E1B32 100%);
+    padding: 60px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'A';
+    position: absolute;
+    right: 60px; top: -20px;
+    font-size: 280px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    font-family: Arial, sans-serif;
+    line-height: 1;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    font-family: Arial, sans-serif;
+    margin-bottom: 14px;
+  }
+  .hero-title {
+    font-size: 52px;
+    font-weight: 900;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .hero-title span { color: #f4a342; }
+  .hero-subtitle {
+    font-size: 19px;
+    color: rgba(255,255,255,0.6);
+    font-family: Arial, sans-serif;
+    margin-bottom: 32px;
+    font-style: italic;
+  }
+  .hero-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+  .htag {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px 32px;
+  }
+
+  .byline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e4ea;
+  }
+  .byline-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #9E1B32, #1D3557);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 800; color: #fff;
+    font-family: Arial, sans-serif;
+  }
+  .byline-name { font-size: 14px; font-weight: 700; color: #1a1a2e; font-family: Arial, sans-serif; }
+  .byline-meta { font-size: 12px; color: #888; font-family: Arial, sans-serif; }
+
+  .lede {
+    font-size: 22px;
+    line-height: 1.65;
+    color: #2a2a3e;
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .lede strong { color: #9E1B32; }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1D3557;
+    font-family: Arial, sans-serif;
+    margin-bottom: 14px;
+    margin-top: 40px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #9E1B32;
+    display: inline-block;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 18px;
+  }
+  p strong { color: #1D3557; }
+
+  .callout {
+    background: #1D3557;
+    border-left: 4px solid #9E1B32;
+    border-radius: 0 10px 10px 0;
+    padding: 18px 24px;
+    margin: 28px 0;
+  }
+  .callout p { color: rgba(255,255,255,0.85); font-size: 15px; margin: 0; }
+  .callout strong { color: #f4a342; }
+
+  .callout-warn {
+    background: #fff8f0;
+    border-left: 4px solid #e67e22;
+    border-radius: 0 10px 10px 0;
+    padding: 18px 24px;
+    margin: 28px 0;
+  }
+  .callout-warn p { color: #7a4a10; font-size: 15px; margin: 0; }
+
+  .callout-good {
+    background: #f0fff5;
+    border-left: 4px solid #22c55e;
+    border-radius: 0 10px 10px 0;
+    padding: 18px 24px;
+    margin: 28px 0;
+  }
+  .callout-good p { color: #155a28; font-size: 15px; margin: 0; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .stat-box {
+    background: #fff;
+    border: 1px solid #e0e4ea;
+    border-radius: 10px;
+    padding: 16px 14px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .stat-box .val { font-size: 28px; font-weight: 800; color: #9E1B32; font-family: Arial, sans-serif; }
+  .stat-box .lbl { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #888; text-transform: uppercase; font-family: Arial, sans-serif; margin-top: 4px; }
+
+  .player-mention {
+    display: inline-block;
+    background: #eef2f7;
+    border: 1px solid #c8d4e4;
+    border-radius: 5px;
+    padding: 1px 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1D3557;
+    font-family: Arial, sans-serif;
+  }
+
+  .prediction-box {
+    background: linear-gradient(135deg, #0d1520, #1D3557);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-top: 40px;
+    text-align: center;
+  }
+  .pred-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    font-family: Arial, sans-serif;
+    margin-bottom: 10px;
+  }
+  .pred-verdict {
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin-bottom: 8px;
+  }
+  .pred-verdict span { color: #f4a342; }
+  .pred-sub { font-size: 14px; color: rgba(255,255,255,0.5); font-family: Arial, sans-serif; font-style: italic; }
+
+  .footer {
+    background: #1a1a2e;
+    padding: 24px 48px;
+    text-align: center;
+    font-size: 11px;
+    color: #3a4a5a;
+    font-family: Arial, sans-serif;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">CBreezy Media  â¢  SimCBL Season Preview  â¢  April 2026</div>
+  <div class="hero-title">2026 Alabama<br><span>Crimson Tide</span></div>
+  <div class="hero-subtitle">What to expect before the first pitch.</div>
+  <div class="hero-tags">
+    <span class="htag">SimCBL</span>
+    <span class="htag">27-Man Roster</span>
+    <span class="htag">6 Graduating Seniors</span>
+    <span class="htag">39-Week Season</span>
+    <span class="htag">SEC Competition</span>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- BYLINE -->
+  <div class="byline">
+    <div class="byline-avatar">CB</div>
+    <div>
+      <div class="byline-name">CBreezy Media</div>
+      <div class="byline-meta">Alabama Crimson Tide Coverage  â¢  Season 2026</div>
+    </div>
+  </div>
+
+  <!-- LEDE -->
+  <p class="lede">
+    Alabama enters 2026 with one of the most talented rosters in the SimCBL â and one of the most uncertain futures. <strong>Two A+ pitchers are walking out the door.</strong> An elite center fielder is playing his last season. And a freshman arm just showed up with the kind of scouting profile that doesn't come around often. This season is a window. The question is whether they can use it.
+  </p>
+
+  <!-- SNAPSHOT -->
+  <div class="stat-row">
+    <div class="stat-box"><div class="val">27</div><div class="lbl">Roster Size</div></div>
+    <div class="stat-box"><div class="val">6</div><div class="lbl">Graduating Seniors</div></div>
+    <div class="stat-box"><div class="val">39</div><div class="lbl">Season Weeks</div></div>
+    <div class="stat-box"><div class="val">618</div><div class="lbl">Scout Pts Remaining</div></div>
+  </div>
+
+  <!-- PITCHING -->
+  <h2>The Pitching Staff</h2>
+
+  <p>
+    The headline is simple: <span class="player-mention">Jerry Butler</span> is the ace. Not a reliever â an ace. Precise scouting confirmed an A- Endurance grade, meaning he has the stamina to open and carry games. Pair that with A+ Velocity and B+ Control and you have the best arm in this league going into 2026. Use him at the top of the rotation and don't look back.
+  </p>
+
+  <div class="callout">
+    <p><strong>Butler's profile: A- End / A+ Vel / B+ Ctrl.</strong> Every coach in SimCBL listing him as a reliever is leaving wins on the table. He starts.</p>
+  </div>
+
+  <p>
+    <span class="player-mention">Jacob Boone</span> closes. A Pickoff with B+ Control is a shutdown profile â that's what you want at the end of games, not in the middle. He's graduating, which makes this season even more urgent. Get him the ball in the ninth and let him do his job.
+  </p>
+
+  <p>
+    The most important arm on this entire roster heading into the future isn't either of the A+ guys. It's <span class="player-mention">Mirza Price</span>, freshman, B+ Endurance, B+ Velocity. That's a starter profile at age 19. He's not a project. He's the 2027 rotation anchor the moment the seniors are gone, and the reason this program doesn't have to panic about what happens next year.
+  </p>
+
+  <p>
+    Behind those three, <span class="player-mention">Jermichael Robertson</span> is the most underrated piece. A+ Endurance with B- Control makes him a long reliever â he can eat 4-5 innings out of the pen, bridge gaps, and keep the bullpen fresh for a 39-week grind. His C+ Velocity limits his ceiling, but in terms of role fit, he might be the most valuable arm after the top three.
+  </p>
+
+  <p>
+    The raw talent in this bullpen is real â <span class="player-mention">Cameron Garcia</span>, <span class="player-mention">Frank Coleman</span>, <span class="player-mention">Jack Gilbert</span>, and <span class="player-mention">Rolando Garcia</span> all carry A or A- Velocity grades. The problem is control, uniformly. D-range Control grades across the board. These arms are not ready for high-leverage situations. Use them in low-stakes spots and give them time to develop.
+  </p>
+
+  <div class="callout-warn">
+    <p>The biggest risk in 2026 is leaning on the velocity-only arms too early. Garcia, Coleman, Gilbert â elite speed, no command. One bad spot in a close game and it unravels. Trust Price and Robertson before you trust any of them.</p>
+  </div>
+
+  <!-- OFFENSE -->
+  <h2>The Offense</h2>
+
+  <p>
+    The position player side of this roster is led by three A-range players, and one of them is playing his last game this spring. <span class="player-mention">Leroy Adams</span> â A+, Center Field, Senior â is the best hitter and fielder on this team. Elite across every position category. When he's gone after this season, Linval Underwood (C+) steps in and the CF position takes a significant downgrade. Enjoy Adams while you have him.
+  </p>
+
+  <p>
+    The good news at first base: <span class="player-mention">George Faulkner</span> is a junior with an A overall and multi-position versatility above 75 everywhere. He comes back in 2027. He's the offensive anchor for this roster's future, and he's already producing at an elite level right now.
+  </p>
+
+  <p>
+    <span class="player-mention">Wayne White</span> behind the plate is a legitimate strength â A overall, C-75 rating, returns in 2027. A catching depth problem isn't something this program has to worry about for the next two years, which matters a lot when you're running a 13-man pitching staff through a 39-week schedule.
+  </p>
+
+  <div class="callout-good">
+    <p>The returning core â Faulkner, White, Jordan, Schultz, Alvarez â gives this offense a real floor heading into 2027 even after the seniors leave. The ceiling depends on how recruiting lands.</p>
+  </div>
+
+  <!-- CONCERNS -->
+  <h2>Real Concerns</h2>
+
+  <p>
+    <strong>Right field is a problem.</strong> Kendall Green is rated F overall with a 20 RF score. That's not a depth issue â that's a starting lineup weakness that opposing pitchers will find every single series. This is the most urgent recruiting need outside of pitching, and it needs to be addressed before the SEC schedule starts.
+  </p>
+
+  <p>
+    <strong>The pitching cliff is coming.</strong> After this season, Alabama loses Butler, Boone, Andrews, and Nash in one class. That's four arms including both A+ starters. Mirza Price and Robertson are the only proven returners with any real ceiling. If recruiting doesn't land at least two quality pitching commits â specifically arms with B+ or better Control, not just velocity â the 2027 rotation is thin before it starts.
+  </p>
+
+  <!-- RECRUITING -->
+  <h2>Recruiting Pipeline</h2>
+
+  <p>
+    The board has 16 prospects. The two best commit candidates right now are <span class="player-mention">Larry Farrell</span> â home state Alabama, Medium interest, no competitor â and <span class="player-mention">Muadianvita Knox</span>, who is in a similar position with no competition for his commitment. Both are pitchers. Both should be getting 20 points per week until they sign.
+  </p>
+
+  <p>
+    Matt Wyatt (P) is also a priority but Florida is competing. That's a fight worth having â Wyatt's profile fits the staff need. The position player side is covered with Ramos and Davis on the board, and the H. Ramos commit would fill the offensive depth hole left by graduating seniors.
+  </p>
+
+  <!-- SEASON OUTLOOK -->
+  <h2>Season Outlook</h2>
+
+  <p>
+    Non-conference runs 12 weeks. These are winnable games â South Florida, Towson, Long Beach State, Little Rock. The schedule is front-loaded with easier competition, which means this roster should be battle-tested and healthy by the time the SEC schedule opens Week 13 at Vanderbilt.
+  </p>
+
+  <p>
+    The SEC is a different story. Seven of ten conference series are road games. The toughest stretch â Tennessee, LSU, Missouri, Mississippi State, Florida, Georgia in sequence â is where the pitching depth will be exposed or validated. If Butler is healthy and Price keeps developing, Alabama can compete in all of them. If something breaks in that run, it could cost them a postseason shot.
+  </p>
+
+  <p>
+    Home series against Vanderbilt (Wk 13), Kentucky (Wk 15), LSU (Wk 17), and Arkansas (Wk 23) are the must-win anchors. Win your home games and steal one or two on the road and this is a program that finishes in the top half of the conference.
+  </p>
+
+  <!-- PREDICTION -->
+  <div class="prediction-box">
+    <div class="pred-title">Season Prediction</div>
+    <div class="pred-verdict">Upper Half <span>SEC Finish</span></div>
+    <div class="pred-sub">Competitive in non-conference. Butler as ace gives this team a chance every week. Postseason push depends on hitting three spots in the rotation once the seniors are gone. Recruiting will define next year more than this one.</div>
+  </div>
+
+</div>
+
+<div class="footer">CBreezy Media  â¢  Alabama Crimson Tide SimCBL  â¢  Season 2026 Preview</div>
+
+</body>
+</html>

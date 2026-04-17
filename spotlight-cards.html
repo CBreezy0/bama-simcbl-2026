@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Alabama 2026 â Player Spotlight Cards</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0f1a; font-family: 'Arial', sans-serif; padding: 40px 32px; }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .page-header-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #4a6080;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .page-header-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  .page-header-title span { color: #9E1B32; }
+  .page-header-sub {
+    font-size: 13px;
+    color: #4a6080;
+    margin-top: 6px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: #111827;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    border: 1px solid #1e2d42;
+    position: relative;
+  }
+
+  .card-top {
+    padding: 22px 22px 14px;
+    position: relative;
+    border-bottom: 1px solid #1e2d42;
+  }
+  .card-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .accent-ace      { background: linear-gradient(90deg, #22c55e, #16a34a); }
+  .accent-pitcher  { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+  .accent-closer   { background: linear-gradient(90deg, #a78bfa, #7c3aed); }
+  .accent-hitter   { background: linear-gradient(90deg, #9E1B32, #7a1325); }
+  .accent-future   { background: linear-gradient(90deg, #f59e0b, #d97706); }
+
+  .card-pos-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .pos-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #4a6080;
+    text-transform: uppercase;
+  }
+  .pos-divider { width: 1px; height: 12px; background: #2a3a55; }
+
+  .card-name {
+    font-size: 22px;
+    font-weight: 800;
+    color: #e8ecf0;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+
+  .card-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .meta-pill {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.06);
+    color: #7a9cc4;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .ovr-block {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    text-align: center;
+  }
+  .ovr-grade {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .ovr-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #4a6080;
+    margin-top: 2px;
+  }
+  .g-ap { color: #22c55e; }
+  .g-a  { color: #34d058; }
+  .g-am { color: #4ade80; }
+  .g-bp { color: #60a5fa; }
+  .g-b  { color: #3b82f6; }
+  .g-bm { color: #93c5fd; }
+  .g-cp { color: #f59e0b; }
+
+  .card-body { padding: 16px 22px; }
+
+  .hype-line {
+    font-size: 13px;
+    color: #94aabb;
+    line-height: 1.55;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .stat-item {
+    background: #0d1520;
+    border-radius: 8px;
+    padding: 9px 12px;
+    border: 1px solid #1e2d42;
+  }
+  .stat-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #3a5070;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .stat-val {
+    font-size: 16px;
+    font-weight: 800;
+    color: #c8d8e8;
+  }
+  .stat-val.green { color: #22c55e; }
+  .stat-val.blue  { color: #60a5fa; }
+  .stat-val.gold  { color: #f59e0b; }
+  .stat-val.red   { color: #e87a8a; }
+
+  .tag-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .tag-green { background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.25); }
+  .tag-blue  { background: rgba(96,165,250,0.12); color: #60a5fa; border: 1px solid rgba(96,165,250,0.25); }
+  .tag-gold  { background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+  .tag-red   { background: rgba(158,27,50,0.2); color: #e87a8a; border: 1px solid rgba(158,27,50,0.3); }
+  .tag-purple{ background: rgba(167,139,250,0.12); color: #a78bfa; border: 1px solid rgba(167,139,250,0.25); }
+
+  .card-footer {
+    padding: 10px 22px;
+    border-top: 1px solid #1e2d42;
+    background: #0d1520;
+    font-size: 10px;
+    color: #2a3a55;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .watermark {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 11px;
+    color: #1e2d42;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-header-eyebrow">CBreezy Media  â¢  SimCBL Season 2026</div>
+  <div class="page-header-title"><span>ALABAMA</span> CRIMSON TIDE â Player Spotlights</div>
+  <div class="page-header-sub">Key personnel entering the 2026 season</div>
+</div>
+
+<div class="grid">
+
+  <!-- JERRY BUTLER -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-accent accent-ace"></div>
+      <div class="ovr-block"><div class="ovr-grade g-ap">A+</div><div class="ovr-label">Overall</div></div>
+      <div class="card-pos-line">
+        <span class="pos-tag">Pitcher</span>
+        <div class="pos-divider"></div>
+        <span class="pos-tag">Right Hand</span>
+      </div>
+      <div class="card-name">Jerry Butler</div>
+      <div class="card-meta">
+        <span class="meta-pill">Senior  â¢  Age 22</span>
+        <span class="meta-pill">Final Season</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="hype-line">"A- Endurance confirms he can start. Elite velocity. The best arm in this program â use him as your ace."</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-label">Velocity</div><div class="stat-val green">A+</div></div>
+        <div class="stat-item"><div class="stat-label">Endurance</div><div class="stat-val green">A-</div></div>
+        <div class="stat-item"><div class="stat-label">Control</div><div class="stat-val blue">B+</div></div>
+        <div class="stat-item"><div class="stat-label">SP Rating</div><div class="stat-val blue">80</div></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-green">ACE STARTER</span>
+        <span class="tag tag-red">Final Season</span>
+        <span class="tag tag-blue">R/R</span>
+      </div>
+    </div>
+    <div class="card-footer">Alabama Crimson Tide  â¢  #1 Pitcher</div>
+  </div>
+
+  <!-- JACOB BOONE -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-accent accent-closer"></div>
+      <div class="ovr-block"><div class="ovr-grade g-ap">A+</div><div class="ovr-label">Overall</div></div>
+      <div class="card-pos-line">
+        <span class="pos-tag">Pitcher</span>
+        <div class="pos-divider"></div>
+        <span class="pos-tag">Left Hand</span>
+      </div>
+      <div class="card-name">Jacob Boone</div>
+      <div class="card-meta">
+        <span class="meta-pill">Senior  â¢  Age 22</span>
+        <span class="meta-pill">Final Season</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="hype-line">"A Pickoff + B+ Control = shutdown closer. You don't lose a closer this good without feeling it for years."</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-label">Pickoff</div><div class="stat-val green">A</div></div>
+        <div class="stat-item"><div class="stat-label">Control</div><div class="stat-val blue">B+</div></div>
+        <div class="stat-item"><div class="stat-label">Velocity</div><div class="stat-val blue">B+</div></div>
+        <div class="stat-item"><div class="stat-label">RP Rating</div><div class="stat-val blue">80</div></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-purple">ELITE CLOSER</span>
+        <span class="tag tag-red">Final Season</span>
+        <span class="tag tag-blue">L/L</span>
+      </div>
+    </div>
+    <div class="card-footer">Alabama Crimson Tide  â¢  Closer</div>
+  </div>
+
+  <!-- MIRZA PRICE -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-accent accent-future"></div>
+      <div class="ovr-block"><div class="ovr-grade g-bp">B+</div><div class="ovr-label">Overall</div></div>
+      <div class="card-pos-line">
+        <span class="pos-tag">Pitcher</span>
+        <div class="pos-divider"></div>
+        <span class="pos-tag">Right Hand</span>
+      </div>
+      <div class="card-name">Mirza Price</div>
+      <div class="card-meta">
+        <span class="meta-pill">Freshman  â¢  Age 19</span>
+        <span class="meta-pill">3 Yrs Remaining</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="hype-line">"B+ Endurance + B+ Velocity = starter ceiling. He's not a freshman project. He's the 2027 ace â already."</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-label">Endurance</div><div class="stat-val blue">B+</div></div>
+        <div class="stat-item"><div class="stat-label">Velocity</div><div class="stat-val blue">B+</div></div>
+        <div class="stat-item"><div class="stat-label">Control</div><div class="stat-val blue">B-</div></div>
+        <div class="stat-item"><div class="stat-label">SP Rating</div><div class="stat-val gold">â</div></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-gold">FUTURE STARTER</span>
+        <span class="tag tag-green">3 Seasons</span>
+        <span class="tag tag-blue">R/R</span>
+      </div>
+    </div>
+    <div class="card-footer">Alabama Crimson Tide  â¢  Future Ace</div>
+  </div>
+
+  <!-- LEROY ADAMS -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-accent accent-hitter"></div>
+      <div class="ovr-block"><div class="ovr-grade g-ap">A+</div><div class="ovr-label">Overall</div></div>
+      <div class="card-pos-line">
+        <span class="pos-tag">Center Field</span>
+        <div class="pos-divider"></div>
+        <span class="pos-tag">Left Hand</span>
+      </div>
+      <div class="card-name">Leroy Adams</div>
+      <div class="card-meta">
+        <span class="meta-pill">Senior  â¢  Age 22</span>
+        <span class="meta-pill">Final Season</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="hype-line">"The best position player on this roster. Elite across every category. Everything at CF drops hard when he walks out the door."</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-label">Overall</div><div class="stat-val green">A+</div></div>
+        <div class="stat-item"><div class="stat-label">Position</div><div class="stat-val green">CF</div></div>
+        <div class="stat-item"><div class="stat-label">Versatility</div><div class="stat-val green">A/B+</div></div>
+        <div class="stat-item"><div class="stat-label">Age</div><div class="stat-val">22</div></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-green">ELITE CF</span>
+        <span class="tag tag-red">Final Season</span>
+        <span class="tag tag-blue">L/L</span>
+      </div>
+    </div>
+    <div class="card-footer">Alabama Crimson Tide  â¢  Center Field</div>
+  </div>
+
+  <!-- GEORGE FAULKNER -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-accent accent-hitter"></div>
+      <div class="ovr-block"><div class="ovr-grade g-a">A</div><div class="ovr-label">Overall</div></div>
+      <div class="card-pos-line">
+        <span class="pos-tag">First Base</span>
+        <div class="pos-divider"></div>
+        <span class="pos-tag">Left Hand</span>
+      </div>
+      <div class="card-name">George Faulkner</div>
+      <div class="card-meta">
+        <span class="meta-pill">Junior  â¢  Age 21</span>
+        <span class="meta-pill">Returns 2027</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="hype-line">"All-position versatility at A-rated 1B. Elite ratings across the field. Returns next year. He's the core of this offense going forward."</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-label">Overall</div><div class="stat-val green">A</div></div>
+        <div class="stat-item"><div class="stat-label">1B Rating</div><div class="stat-val green">75+</div></div>
+        <div class="stat-item"><div class="stat-label">Class</div><div class="stat-val blue">Junior</div></div>
+        <div class="stat-item"><div class="stat-label">Yrs Left</div><div class="stat-val blue">2</div></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-green">ELITE 1B</span>
+        <span class="tag tag-blue">2 Seasons</span>
+        <span class="tag tag-gold">Multi-Position</span>
+      </div>
+    </div>
+    <div class="card-footer">Alabama Crimson Tide  â¢  First Base</div>
+  </div>
+
+  <!-- WAYNE WHITE -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-accent accent-hitter"></div>
+      <div class="ovr-block"><div class="ovr-grade g-a">A</div><div class="ovr-label">Overall</div></div>
+      <div class="card-pos-line">
+        <span class="pos-tag">Catcher</span>
+        <div class="pos-divider"></div>
+        <span class="pos-tag">Right Hand</span>
+      </div>
+      <div class="card-name">Wayne White</div>
+      <div class="card-meta">
+        <span class="meta-pill">RS Junior  â¢  Age 22</span>
+        <span class="meta-pill">Returns 2027</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="hype-line">"C-75 behind the plate. Calls the staff, handles the arms, brings elite production at the most demanding position on the field."</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-label">Overall</div><div class="stat-val green">A</div></div>
+        <div class="stat-item"><div class="stat-label">C Rating</div><div class="stat-val green">75</div></div>
+        <div class="stat-item"><div class="stat-label">Class</div><div class="stat-val blue">RS Junior</div></div>
+        <div class="stat-item"><div class="stat-label">Yrs Left</div><div class="stat-val blue">2</div></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-green">ELITE CATCHER</span>
+        <span class="tag tag-blue">2 Seasons</span>
+        <span class="tag tag-blue">R/R</span>
+      </div>
+    </div>
+    <div class="card-footer">Alabama Crimson Tide  â¢  Catcher</div>
+  </div>
+
+</div>
+
+<div class="watermark">CBreezy Media  â¢  Alabama Crimson Tide  â¢  SimCBL 2026</div>
+
+</body>
+</html>

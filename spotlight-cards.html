@@ -6,7 +6,7 @@
 <title>Alabama 2026 &mdash; Player Spotlight Cards | CBreezy Media</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #080206; font-family: 'Arial', sans-serif; color: #f0e4e8; }
+  body { background: #0c0c0c; font-family: 'Arial', sans-serif; color: #f2f2f2; }
 
   .site-header {
     background: #9E1B32;
@@ -43,13 +43,13 @@
   }
   .page-header-eyebrow {
     font-size: 11px; font-weight: 700; letter-spacing: 3px;
-    color: #6a2a38; text-transform: uppercase; margin-bottom: 10px;
+    color: #888888; text-transform: uppercase; margin-bottom: 10px;
   }
   .page-header-title {
     font-size: 30px; font-weight: 900; color: #fff; letter-spacing: 1px;
   }
   .page-header-title span { color: #9E1B32; }
-  .page-header-sub { font-size: 14px; color: #6a2a38; margin-top: 8px; }
+  .page-header-sub { font-size: 14px; color: #888888; margin-top: 8px; }
 
   /* ── GRID ── */
   .grid {
@@ -63,10 +63,10 @@
 
   /* ── CARD ── */
   .card {
-    background: #130009;
+    background: #161616;
     border-radius: 14px;
     overflow: hidden;
-    border: 1px solid #2a0015;
+    border: 1px solid #282828;
     transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
   }
   .card:hover {
@@ -78,7 +78,7 @@
   .card-top {
     padding: 22px 22px 16px;
     position: relative;
-    border-bottom: 1px solid #2a0015;
+    border-bottom: 1px solid #282828;
   }
   .card-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
   .accent-crimson  { background: linear-gradient(90deg, #9E1B32, #c0273f); }
@@ -87,22 +87,22 @@
   .accent-deep     { background: linear-gradient(90deg, #7a1325, #9E1B32); }
 
   .card-pos-line { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-  .pos-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #6a2a38; text-transform: uppercase; }
-  .pos-divider { width: 1px; height: 12px; background: #3a0020; }
+  .pos-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #888888; text-transform: uppercase; }
+  .pos-divider { width: 1px; height: 12px; background: #333333; }
 
-  .card-name { font-size: 22px; font-weight: 900; color: #f0e4e8; line-height: 1.15; margin-bottom: 8px; }
+  .card-name { font-size: 22px; font-weight: 900; color: #f2f2f2; line-height: 1.15; margin-bottom: 8px; }
 
   .card-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .meta-pill {
     font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
     background: rgba(158,27,50,0.1);
-    color: #9a5060;
-    border: 1px solid #2a0015;
+    color: #787878;
+    border: 1px solid #282828;
   }
 
   .ovr-block { position: absolute; top: 22px; right: 22px; text-align: center; }
   .ovr-grade { font-size: 38px; font-weight: 900; line-height: 1; }
-  .ovr-label { font-size: 9px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; color: #6a2a38; margin-top: 2px; }
+  .ovr-label { font-size: 9px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; color: #888888; margin-top: 2px; }
 
   .g-ap { color: #22c55e; }
   .g-a  { color: #34d058; }
@@ -113,25 +113,25 @@
   .card-body { padding: 18px 22px; }
 
   .hype-line {
-    font-size: 13px; color: #9a6070; line-height: 1.6;
+    font-size: 13px; color: #888888; line-height: 1.6;
     margin-bottom: 16px; font-style: italic;
-    border-left: 3px solid #3a0020;
+    border-left: 3px solid #333333;
     padding-left: 12px;
   }
 
   .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .stat-item {
-    background: #0d0008;
+    background: #111111;
     border-radius: 8px;
     padding: 10px 12px;
-    border: 1px solid #1a0010;
+    border: 1px solid #1c1c1c;
   }
-  .stat-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #4a1020; text-transform: uppercase; margin-bottom: 4px; }
-  .stat-val { font-size: 16px; font-weight: 800; color: #d0a0a8; }
+  .stat-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #777777; text-transform: uppercase; margin-bottom: 4px; }
+  .stat-val { font-size: 16px; font-weight: 800; color: #c0c0c0; }
   .stat-val.green  { color: #22c55e; }
   .stat-val.blue   { color: #60a5fa; }
   .stat-val.gold   { color: #f59e0b; }
-  .stat-val.white  { color: #f0e4e8; }
+  .stat-val.white  { color: #f2f2f2; }
 
   .tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
   .tag { font-size: 10px; font-weight: 700; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 20px; }
@@ -144,9 +144,9 @@
   /* ── CARD FOOTER ── */
   .card-footer {
     padding: 10px 22px;
-    border-top: 1px solid #1a0010;
-    background: #0d0008;
-    font-size: 10px; color: #3a1020; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    border-top: 1px solid #1c1c1c;
+    background: #111111;
+    font-size: 10px; color: #777777; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
   }
 
   /* ── SITE FOOTER ── */

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alabama 2026 — Freshman Class | CBreezy Media</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #080d14; font-family: 'Arial', sans-serif; min-height: 100vh; }
+
+  .hero { background: linear-gradient(150deg, #0d1520 0%, #1D3557 55%, #9E1B32 100%); padding: 52px 48px 40px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: 'FR'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 260px; font-weight: 900; color: rgba(255,255,255,0.025); pointer-events: none; }
+  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 4px; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 14px; }
+  .hero-title { font-size: 48px; font-weight: 900; color: #fff; line-height: 1.0; margin-bottom: 6px; }
+  .hero-title span { color: #f4a342; }
+  .hero-subtitle { font-size: 16px; color: rgba(255,255,255,0.45); margin-top: 8px; margin-bottom: 28px; font-style: italic; }
+  .hero-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 5px 16px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
+
+  .nav { background: #0f1824; border-bottom: 1px solid #1a2740; padding: 0 48px; display: flex; align-items: center; gap: 2px; overflow-x: auto; }
+  .nav a { display: block; padding: 14px 16px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #4a6080; text-decoration: none; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; white-space: nowrap; }
+  .nav a:hover, .nav a.active { color: #fff; border-bottom-color: #9E1B32; }
+
+  .content { max-width: 1080px; margin: 0 auto; padding: 40px 32px 64px; }
+
+  .intro { background: #111827; border: 1px solid #1e2d42; border-radius: 12px; padding: 22px 26px; margin-bottom: 36px; }
+  .intro p { font-size: 15px; color: #7a9cc4; line-height: 1.7; }
+  .intro strong { color: #e0eaf8; }
+
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: #2a4060; text-transform: uppercase; margin-bottom: 16px; margin-top: 36px; }
+
+  /* Featured card — Price */
+  .feature-card { background: #111827; border: 1px solid #1e2d42; border-radius: 16px; overflow: hidden; margin-bottom: 28px; position: relative; }
+  .feature-accent { height: 5px; background: linear-gradient(90deg, #f59e0b, #d97706); }
+  .feature-inner { padding: 28px 32px; display: grid; grid-template-columns: 1fr 280px; gap: 32px; align-items: start; }
+  .feature-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: #f59e0b; text-transform: uppercase; margin-bottom: 10px; }
+  .feature-name { font-size: 36px; font-weight: 900; color: #e8ecf0; line-height: 1.0; margin-bottom: 6px; }
+  .feature-pos { font-size: 13px; color: #4a6080; margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; }
+  .feature-hype { font-size: 15px; color: #94aabb; line-height: 1.65; font-style: italic; margin-bottom: 20px; }
+  .feature-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .ftag { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+  .ftag-gold { background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+  .ftag-blue { background: rgba(96,165,250,0.12); color: #60a5fa; border: 1px solid rgba(96,165,250,0.25); }
+  .ftag-green { background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.25); }
+  .ftag-red { background: rgba(158,27,50,0.18); color: #e87a8a; border: 1px solid rgba(158,27,50,0.3); }
+
+  .feature-stats { background: #0d1520; border: 1px solid #1e2d42; border-radius: 12px; padding: 18px; }
+  .feature-stats-title { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #3a5070; text-transform: uppercase; margin-bottom: 14px; }
+  .fstat-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #1a2236; }
+  .fstat-row:last-child { border-bottom: none; }
+  .fstat-label { font-size: 11px; color: #4a6080; font-weight: 600; }
+  .fstat-val { font-size: 16px; font-weight: 800; }
+  .val-ap { color: #22c55e; } .val-a { color: #34d058; } .val-am { color: #4ade80; }
+  .val-bp { color: #60a5fa; } .val-b { color: #3b82f6; } .val-bm { color: #93c5fd; }
+  .val-cp { color: #f59e0b; } .val-dp { color: #f87171; }
+
+  /* Regular freshman cards grid */
+  .fr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .fr-card { background: #111827; border: 1px solid #1e2d42; border-radius: 14px; overflow: hidden; }
+  .fr-accent { height: 4px; }
+  .acc-blue { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+  .acc-red { background: linear-gradient(90deg, #9E1B32, #7a1325); }
+  .acc-gray { background: linear-gradient(90deg, #374151, #1f2937); }
+  .fr-top { padding: 18px 20px 14px; border-bottom: 1px solid #1e2d42; display: flex; justify-content: space-between; align-items: flex-start; }
+  .fr-name { font-size: 20px; font-weight: 800; color: #e8ecf0; margin-bottom: 3px; }
+  .fr-pos { font-size: 11px; color: #4a6080; letter-spacing: 1px; text-transform: uppercase; }
+  .fr-ovr { text-align: center; }
+  .fr-ovr-grade { font-size: 30px; font-weight: 900; line-height: 1; }
+  .fr-ovr-label { font-size: 9px; letter-spacing: 2px; color: #4a6080; text-transform: uppercase; margin-top: 2px; }
+  .fr-body { padding: 14px 20px; }
+  .fr-hype { font-size: 12px; color: #7a9cc4; line-height: 1.55; font-style: italic; margin-bottom: 12px; }
+  .fr-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .fr-stat { background: #0d1520; border: 1px solid #1e2d42; border-radius: 6px; padding: 7px 10px; }
+  .fr-stat-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #3a5070; text-transform: uppercase; margin-bottom: 2px; }
+  .fr-stat-val { font-size: 14px; font-weight: 800; color: #c8d8e8; }
+  .fr-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .fr-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+  .fr-tag-blue { background: rgba(96,165,250,0.1); color: #60a5fa; border: 1px solid rgba(96,165,250,0.2); }
+  .fr-tag-gold { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+  .fr-tag-gray { background: rgba(107,114,128,0.1); color: #6b7280; border: 1px solid rgba(107,114,128,0.2); }
+  .fr-tag-red { background: rgba(158,27,50,0.15); color: #e87a8a; border: 1px solid rgba(158,27,50,0.25); }
+  .fr-tag-green { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+  .fr-footer { padding: 9px 20px; background: #0d1520; border-top: 1px solid #1e2d42; font-size: 10px; color: #2a3a55; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+  .footer { background: #080d14; border-top: 1px solid #111827; padding: 24px 48px; text-align: center; font-size: 10px; color: #1e2d42; letter-spacing: 2px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">CBreezy Media  •  SimCBL Season 2026</div>
+  <div class="hero-title">Alabama<br><span>Freshman Class</span></div>
+  <div class="hero-subtitle">The Future Is Already Here</div>
+  <div class="hero-pills">
+    <span class="pill">5 Freshmen</span>
+    <span class="pill">3 Pitchers</span>
+    <span class="pill">2 Position Players</span>
+    <span class="pill">3 Years Remaining</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="index.html">Home</a>
+  <a href="season-preview.html">Season Preview</a>
+  <a href="depth-chart.html">Depth Chart</a>
+  <a href="pitcher-potentials.html">Pitching Intel</a>
+  <a href="spotlight-cards.html">Player Spotlights</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="recruiting.html">Recruiting</a>
+  <a href="war-room.html">War Room</a>
+  <a href="freshmen.html" class="active">Freshmen</a>
+</nav>
+
+<div class="content">
+
+  <div class="intro">
+    <p>Alabama is losing four seniors after 2026 — two of them A+ starters. What saves the program from a pitching cliff isn't a trade or a transfer. <strong>It's already on the roster.</strong> The 2026 freshman class arrives with a legitimate future ace, two developing arms, and two position players who could grow into contributors. This class doesn't just fill spots. It sets the ceiling for what 2027 and beyond looks like.</p>
+  </div>
+
+  <!-- MIRZA PRICE FEATURE -->
+  <div class="section-label">The Headliner</div>
+
+  <div class="feature-card">
+    <div class="feature-accent"></div>
+    <div class="feature-inner">
+      <div>
+        <div class="feature-eyebrow">Future Starter  •  Right-Handed  •  Age 19</div>
+        <div class="feature-name">Mirza Price</div>
+        <div class="feature-pos">Pitcher  •  Freshman  •  3 Seasons Remaining</div>
+        <div class="feature-hype">"B+ Endurance at age 19 means he can carry a start. B+ Velocity means he can miss bats. This isn't a freshman project — he's the 2027 rotation anchor the moment Butler and Boone walk out the door. The fact that he's here right now, in 2026, is an advantage most programs don't have. Don't waste him in low-leverage relief."</div>
+        <div class="feature-tags">
+          <span class="ftag ftag-gold">FUTURE ACE</span>
+          <span class="ftag ftag-blue">STARTER CEILING</span>
+          <span class="ftag ftag-green">3 SEASONS</span>
+          <span class="ftag ftag-blue">R/R</span>
+        </div>
+      </div>
+      <div class="feature-stats">
+        <div class="feature-stats-title">Precise Potentials</div>
+        <div class="fstat-row"><span class="fstat-label">Overall</span><span class="fstat-val val-bp">B+</span></div>
+        <div class="fstat-row"><span class="fstat-label">Endurance</span><span class="fstat-val val-bp">B+</span></div>
+        <div class="fstat-row"><span class="fstat-label">Velocity</span><span class="fstat-val val-bp">B+</span></div>
+        <div class="fstat-row"><span class="fstat-label">Control</span><span class="fstat-val val-bm">B−</span></div>
+        <div class="fstat-row"><span class="fstat-label">Sequencing</span><span class="fstat-val val-cp">C+</span></div>
+        <div class="fstat-row"><span class="fstat-label">Pickoff</span><span class="fstat-val val-dp">D+</span></div>
+        <div class="fstat-row"><span class="fstat-label">SP Rating</span><span class="fstat-val val-cp">70</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REST OF FRESHMAN CLASS -->
+  <div class="section-label">The Rest of the Class</div>
+
+  <div class="fr-grid">
+
+    <!-- FRANK COLEMAN -->
+    <div class="fr-card">
+      <div class="fr-accent acc-blue"></div>
+      <div class="fr-top">
+        <div>
+          <div class="fr-name">Frank Coleman</div>
+          <div class="fr-pos">Pitcher  •  Right-Handed  •  Age 19</div>
+        </div>
+        <div class="fr-ovr">
+          <div class="fr-ovr-grade val-bm">B−</div>
+          <div class="fr-ovr-label">Overall</div>
+        </div>
+      </div>
+      <div class="fr-body">
+        <div class="fr-hype">"A Velocity is the standout tool. D+ Endurance keeps him out of the rotation but makes him a potential short reliever. Three years to develop his command."</div>
+        <div class="fr-stats">
+          <div class="fr-stat"><div class="fr-stat-label">Velocity</div><div class="fr-stat-val" style="color:#34d058;">A</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">Endurance</div><div class="fr-stat-val" style="color:#f87171;">D+</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">Control</div><div class="fr-stat-val" style="color:#fbbf24;">C−</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">RP Rating</div><div class="fr-stat-val" style="color:#f59e0b;">55</div></div>
+        </div>
+        <div class="fr-tags">
+          <span class="fr-tag fr-tag-blue">SHORT RP</span>
+          <span class="fr-tag fr-tag-gold">A VEL</span>
+          <span class="fr-tag fr-tag-blue">R/R</span>
+          <span class="fr-tag fr-tag-gray">3 YRS LEFT</span>
+        </div>
+      </div>
+      <div class="fr-footer">Alabama Crimson Tide  •  Short Reliever</div>
+    </div>
+
+    <!-- ROLANDO GARCIA -->
+    <div class="fr-card">
+      <div class="fr-accent acc-blue"></div>
+      <div class="fr-top">
+        <div>
+          <div class="fr-name">Rolando Garcia</div>
+          <div class="fr-pos">Pitcher  •  Left-Handed  •  Age 19</div>
+        </div>
+        <div class="fr-ovr">
+          <div class="fr-ovr-grade val-bm">B−</div>
+          <div class="fr-ovr-label">Overall</div>
+        </div>
+      </div>
+      <div class="fr-body">
+        <div class="fr-hype">"A- Velocity is the headline. C+ Endurance gives him some rope. Left-handed adds value in matchup situations. Mid-inning role to start, ceiling climbs if Control develops."</div>
+        <div class="fr-stats">
+          <div class="fr-stat"><div class="fr-stat-label">Velocity</div><div class="fr-stat-val" style="color:#4ade80;">A−</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">Endurance</div><div class="fr-stat-val" style="color:#f59e0b;">C+</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">Control</div><div class="fr-stat-val" style="color:#f59e0b;">C+</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">RP Rating</div><div class="fr-stat-val" style="color:#f59e0b;">45</div></div>
+        </div>
+        <div class="fr-tags">
+          <span class="fr-tag fr-tag-blue">MID-INNING RP</span>
+          <span class="fr-tag fr-tag-gold">A− VEL</span>
+          <span class="fr-tag fr-tag-green">L/L</span>
+          <span class="fr-tag fr-tag-gray">3 YRS LEFT</span>
+        </div>
+      </div>
+      <div class="fr-footer">Alabama Crimson Tide  •  Mid-Inning Reliever</div>
+    </div>
+
+    <!-- KEITH OSBORNE -->
+    <div class="fr-card">
+      <div class="fr-accent acc-red"></div>
+      <div class="fr-top">
+        <div>
+          <div class="fr-name">Keith Osborne</div>
+          <div class="fr-pos">First Base  •  Freshman  •  Age 18</div>
+        </div>
+        <div class="fr-ovr">
+          <div class="fr-ovr-grade val-b">B</div>
+          <div class="fr-ovr-label">Overall</div>
+        </div>
+      </div>
+      <div class="fr-body">
+        <div class="fr-hype">"B overall as a true freshman at 1B is real upside. Behind Faulkner now but gives the program a plan at first base beyond 2027. Development arm — needs time but the ceiling is there."</div>
+        <div class="fr-stats">
+          <div class="fr-stat"><div class="fr-stat-label">Overall</div><div class="fr-stat-val" style="color:#3b82f6;">B</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">Position</div><div class="fr-stat-val" style="color:#c8d8e8;">1B</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">Age</div><div class="fr-stat-val" style="color:#c8d8e8;">18</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">Yrs Left</div><div class="fr-stat-val" style="color:#60a5fa;">3</div></div>
+        </div>
+        <div class="fr-tags">
+          <span class="fr-tag fr-tag-blue">1B DEPTH</span>
+          <span class="fr-tag fr-tag-gold">UPSIDE</span>
+          <span class="fr-tag fr-tag-gray">DEVELOPING</span>
+          <span class="fr-tag fr-tag-gray">3 YRS LEFT</span>
+        </div>
+      </div>
+      <div class="fr-footer">Alabama Crimson Tide  •  First Base</div>
+    </div>
+
+    <!-- KENDALL GREEN -->
+    <div class="fr-card">
+      <div class="fr-accent acc-gray"></div>
+      <div class="fr-top">
+        <div>
+          <div class="fr-name">Kendall Green</div>
+          <div class="fr-pos">Right Field  •  Freshman  •  Age 18</div>
+        </div>
+        <div class="fr-ovr">
+          <div class="fr-ovr-grade" style="color:#dc2626;">F</div>
+          <div class="fr-ovr-label">Overall</div>
+        </div>
+      </div>
+      <div class="fr-body">
+        <div class="fr-hype">"F overall with a 20 RF score — not sugarcoating it. This is the biggest roster weakness heading into 2026. Opposing pitchers will attack him. He needs to be replaced in the starting lineup as soon as a better option is available through recruiting."</div>
+        <div class="fr-stats">
+          <div class="fr-stat"><div class="fr-stat-label">Overall</div><div class="fr-stat-val" style="color:#dc2626;">F</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">RF Score</div><div class="fr-stat-val" style="color:#dc2626;">20</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">Position</div><div class="fr-stat-val" style="color:#c8d8e8;">RF</div></div>
+          <div class="fr-stat"><div class="fr-stat-label">Priority</div><div class="fr-stat-val" style="color:#f87171;">REPLACE</div></div>
+        </div>
+        <div class="fr-tags">
+          <span class="fr-tag fr-tag-red">STARTER RISK</span>
+          <span class="fr-tag fr-tag-red">WEAKEST LINK</span>
+          <span class="fr-tag fr-tag-gray">RECRUIT NEED</span>
+        </div>
+      </div>
+      <div class="fr-footer">Alabama Crimson Tide  •  Right Field — Needs Replacement</div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="footer">CBreezy Media  •  Alabama Crimson Tide SimCBL  •  2026 Freshman Class</div>
+</body>
+</html>

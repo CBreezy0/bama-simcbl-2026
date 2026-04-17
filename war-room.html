@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alabama 2026 — War Room | CBreezy Media</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #080d14; font-family: 'Arial', sans-serif; min-height: 100vh; }
+
+  .hero { background: linear-gradient(150deg, #0d1520 0%, #1D3557 55%, #9E1B32 100%); padding: 52px 48px 40px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: 'STATUS'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 150px; font-weight: 900; color: rgba(255,255,255,0.025); white-space: nowrap; pointer-events: none; }
+  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 4px; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 14px; }
+  .hero-title { font-size: 48px; font-weight: 900; color: #fff; line-height: 1.0; margin-bottom: 6px; }
+  .hero-title span { color: #f4a342; }
+  .hero-subtitle { font-size: 16px; color: rgba(255,255,255,0.45); margin-top: 8px; margin-bottom: 28px; font-style: italic; }
+  .hero-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 5px 16px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
+
+  .nav { background: #0f1824; border-bottom: 1px solid #1a2740; padding: 0 48px; display: flex; align-items: center; gap: 2px; overflow-x: auto; }
+  .nav a { display: block; padding: 14px 16px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #4a6080; text-decoration: none; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; white-space: nowrap; }
+  .nav a:hover, .nav a.active { color: #fff; border-bottom-color: #9E1B32; }
+
+  .content { max-width: 1000px; margin: 0 auto; padding: 40px 32px 64px; }
+
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: #2a4060; text-transform: uppercase; margin-bottom: 14px; margin-top: 36px; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 36px; }
+  .stat-box { background: #111827; border: 1px solid #1e2d42; border-radius: 10px; padding: 16px 14px; text-align: center; }
+  .stat-box .val { font-size: 26px; font-weight: 800; color: #9E1B32; }
+  .stat-box .lbl { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #4a6080; text-transform: uppercase; margin-top: 4px; }
+
+  /* Budget meter */
+  .budget-card { background: #111827; border: 1px solid #1e2d42; border-radius: 12px; padding: 22px 24px; margin-bottom: 28px; }
+  .budget-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .budget-card-title { font-size: 13px; font-weight: 800; color: #e0eaf8; }
+  .budget-remain-badge { background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25); color: #22c55e; font-size: 12px; font-weight: 800; padding: 4px 12px; border-radius: 20px; }
+  .budget-bar { background: #1a2236; border-radius: 6px; height: 12px; overflow: hidden; margin-bottom: 10px; }
+  .budget-fill { height: 100%; background: linear-gradient(90deg, #22c55e 0%, #9E1B32 100%); border-radius: 6px; width: 69%; }
+  .budget-breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .budget-item { background: #0d1520; border: 1px solid #1e2d42; border-radius: 8px; padding: 10px 14px; }
+  .budget-item-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #3a5070; text-transform: uppercase; margin-bottom: 4px; }
+  .budget-item-val { font-size: 18px; font-weight: 800; }
+  .val-spent { color: #e87a8a; }
+  .val-remain { color: #22c55e; }
+  .val-total { color: #4a6080; }
+
+  /* Action log */
+  .action-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .action-item { background: #111827; border: 1px solid #1e2d42; border-radius: 10px; padding: 14px 18px; display: flex; align-items: flex-start; gap: 14px; }
+  .action-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .icon-done { background: rgba(34,197,94,0.12); }
+  .icon-pending { background: rgba(245,158,11,0.12); }
+  .icon-defer { background: rgba(107,114,128,0.1); }
+  .action-body {}
+  .action-title { font-size: 14px; font-weight: 700; color: #e0eaf8; margin-bottom: 3px; }
+  .action-desc { font-size: 12px; color: #4a6080; line-height: 1.55; }
+  .status-done { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); margin-left: 8px; }
+  .status-pending { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); margin-left: 8px; }
+  .status-defer { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; background: rgba(107,114,128,0.1); color: #6b7280; border: 1px solid rgba(107,114,128,0.2); margin-left: 8px; }
+
+  /* Scout log table */
+  .card-wrap { background: #111827; border: 1px solid #1e2d42; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+  .card-header { background: #1a2236; padding: 12px 18px; border-bottom: 1px solid #2a3a55; display: flex; justify-content: space-between; align-items: center; }
+  .card-header-title { font-size: 13px; font-weight: 800; color: #e0eaf8; }
+  .card-header-sub { font-size: 11px; color: #4a6080; }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: #141f30; }
+  thead th { padding: 9px 14px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #4a6080; text-align: left; border-bottom: 1px solid #2a3a55; }
+  tbody tr { border-bottom: 1px solid #1a2236; }
+  tbody tr:last-child { border-bottom: none; }
+  td { padding: 9px 14px; font-size: 13px; color: #c8d8e8; }
+  .done-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; margin-right: 6px; }
+  .est-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6b7280; margin-right: 6px; }
+
+  /* Decisions */
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+  .decision-card { background: #111827; border: 1px solid #1e2d42; border-radius: 10px; padding: 16px 18px; }
+  .decision-card.open { border-color: #f59e0b; border-left: 3px solid #f59e0b; }
+  .decision-card.resolved { border-left: 3px solid #22c55e; }
+  .decision-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .label-open { color: #f59e0b; }
+  .label-resolved { color: #22c55e; }
+  .decision-title { font-size: 14px; font-weight: 800; color: #e0eaf8; margin-bottom: 6px; }
+  .decision-desc { font-size: 12px; color: #4a6080; line-height: 1.55; }
+
+  .callout { background: #1D3557; border-left: 4px solid #9E1B32; border-radius: 0 10px 10px 0; padding: 14px 18px; margin-bottom: 20px; }
+  .callout p { color: rgba(255,255,255,0.8); font-size: 13px; line-height: 1.6; }
+  .callout strong { color: #f4a342; }
+
+  .footer { background: #080d14; border-top: 1px solid #111827; padding: 24px 48px; text-align: center; font-size: 10px; color: #1e2d42; letter-spacing: 2px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">CBreezy Media  •  SimCBL Season 2026</div>
+  <div class="hero-title">Alabama<br><span>War Room</span></div>
+  <div class="hero-subtitle">Program Status — Updated Post Week 1</div>
+  <div class="hero-pills">
+    <span class="pill">Roster Audited</span>
+    <span class="pill">Pitching Scouted</span>
+    <span class="pill">618 Pts Remaining</span>
+    <span class="pill">Gameplan Pending</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="index.html">Home</a>
+  <a href="season-preview.html">Season Preview</a>
+  <a href="depth-chart.html">Depth Chart</a>
+  <a href="pitcher-potentials.html">Pitching Intel</a>
+  <a href="spotlight-cards.html">Player Spotlights</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="recruiting.html">Recruiting</a>
+  <a href="war-room.html" class="active">War Room</a>
+  <a href="freshmen.html">Freshmen</a>
+</nav>
+
+<div class="content">
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="val">27</div><div class="lbl">Roster Size</div></div>
+    <div class="stat-box"><div class="val">8</div><div class="lbl">Open Spots</div></div>
+    <div class="stat-box"><div class="val">618</div><div class="lbl">Scout Pts Left</div></div>
+    <div class="stat-box"><div class="val">11</div><div class="lbl">Arms Scouted</div></div>
+  </div>
+
+  <!-- Budget meter -->
+  <div class="section-label">Scouting Budget — 2026</div>
+  <div class="budget-card">
+    <div class="budget-top">
+      <div class="budget-card-title">Scouting Point Tracker</div>
+      <div class="budget-remain-badge">618 pts remaining</div>
+    </div>
+    <div class="budget-bar"><div class="budget-fill"></div></div>
+    <div class="budget-breakdown">
+      <div class="budget-item"><div class="budget-item-label">Total Budget</div><div class="budget-item-val val-total">2,000 pts</div></div>
+      <div class="budget-item"><div class="budget-item-label">Spent</div><div class="budget-item-val val-spent">~1,382 pts</div></div>
+      <div class="budget-item"><div class="budget-item-label">Remaining</div><div class="budget-item-val val-remain">618 pts</div></div>
+    </div>
+  </div>
+
+  <!-- Actions taken -->
+  <div class="section-label">Actions Completed This Session</div>
+  <div class="action-list">
+    <div class="action-item">
+      <div class="action-icon icon-done">✅</div>
+      <div class="action-body">
+        <div class="action-title">Full 27-Man Roster Audit <span class="status-done">DONE</span></div>
+        <div class="action-desc">Identified all 6 graduating seniors, positional gaps, and recruiting needs heading into 2026. Confirmed 8 open spots to fill through recruiting.</div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-icon icon-done">✅</div>
+      <div class="action-body">
+        <div class="action-title">16-Player Recruiting Board Built <span class="status-done">DONE</span></div>
+        <div class="action-desc">Board targets pitching depth and outfield/position upgrades. All 16 prospects are 5-star. 100 pts invested Week 1 across 8 targets. Hal Cline removed from active board — 20 pts locked server-side.</div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-icon icon-done">✅</div>
+      <div class="action-body">
+        <div class="action-title">Precise Pitcher Potentials — 11 Arms Scouted <span class="status-done">DONE</span></div>
+        <div class="action-desc">All 11 eligible returning pitchers precisely scouted at 50 pts each (550 pts total). Nash (SR, graduating) and Norman (D-rated) estimated only. Data confirmed Butler as ace starter, Boone as elite closer, Price as future anchor.</div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-icon icon-done">✅</div>
+      <div class="action-body">
+        <div class="action-title">Recruiting Intelligence Pass — 5 Pitchers + 3 Position <span class="status-done">DONE</span></div>
+        <div class="action-desc">~500 pts spent scouting recruit potentials. Farrell confirmed as elite SP (A- End). Knox confirmed as starter-ceiling arm. Wyatt confirmed as A+ Vel elite closer (F End = not a starter). Gardner dropped after F End/Seq revealed limited ceiling. Henry Ramos upgraded to top position target after A Contact + A Discipline confirmed.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pitcher scouting log -->
+  <div class="section-label">Pitcher Scouting Log — Session Spend</div>
+  <div class="card-wrap">
+    <div class="card-header">
+      <div class="card-header-title">Precise Potential Reveals</div>
+      <div class="card-header-sub">50 pts per player  •  Permanent reveals</div>
+    </div>
+    <table>
+      <thead><tr><th>Pitcher</th><th>Cost</th><th>Status</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Jerry Butler</td><td>50 pts</td><td><span class="done-dot"></span>Precisely Scouted</td><td>A- End confirms ace starter role</td></tr>
+        <tr><td>Jacob Boone</td><td>50 pts</td><td><span class="done-dot"></span>Precisely Scouted</td><td>A Pickoff + B+ Ctrl = elite closer</td></tr>
+        <tr><td>Mirza Price</td><td>50 pts</td><td><span class="done-dot"></span>Precisely Scouted</td><td>B+ End + B+ Vel = future starter</td></tr>
+        <tr><td>Jeffrey Andrews</td><td>50 pts</td><td><span class="done-dot"></span>Precisely Scouted</td><td>A- Vel, decent ctrl — depth SR</td></tr>
+        <tr><td>Jermichael Robertson</td><td>50 pts</td><td><span class="done-dot"></span>Precisely Scouted</td><td>A+ End = long reliever, eats innings</td></tr>
+        <tr><td>Rocket Smith</td><td>50 pts</td><td><span class="done-dot"></span>Precisely Scouted</td><td>Best Vel/Ctrl combo among returners</td></tr>
+        <tr><td>Cameron Garcia</td><td>50 pts</td><td><span class="done-dot"></span>Precisely Scouted</td><td>A Vel, D Ctrl — closer candidate long-term</td></tr>
+        <tr><td>Frank Coleman</td><td>50 pts</td><td><span class="done-dot"></span>Precisely Scouted</td><td>A Vel, D+ End — short RP</td></tr>
+        <tr><td>Jack Gilbert</td><td>50 pts</td><td><span class="done-dot"></span>Precisely Scouted</td><td>A- Vel, D Ctrl — developing RP</td></tr>
+        <tr><td>Rolando Garcia</td><td>50 pts</td><td><span class="done-dot"></span>Precisely Scouted</td><td>A- Vel, mid-inning RP role</td></tr>
+        <tr><td>Francis Collins</td><td>50 pts</td><td><span class="done-dot"></span>Precisely Scouted</td><td>C overall — low-leverage depth</td></tr>
+        <tr><td>Everett Nash</td><td>—</td><td><span class="est-dot"></span>Estimated</td><td>SR/graduating — not worth spend</td></tr>
+        <tr><td>John Norman</td><td>—</td><td><span class="est-dot"></span>Estimated</td><td>D-rated — low ceiling, no spend</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pending decisions -->
+  <div class="section-label">Open Decisions</div>
+
+  <div class="callout">
+    <p><strong>Note:</strong> Gameplan (rotation, lineup, defense) is not yet active for Season 2026. All configuration deferred until simulation begins. Butler confirmed as #1 starter based on scouting data.</p>
+  </div>
+
+  <div class="decision-grid">
+    <div class="decision-card open">
+      <div class="decision-label label-open">Open</div>
+      <div class="decision-title">Set Pitching Rotation</div>
+      <div class="decision-desc">Gameplan tab not yet active. Butler slots as #1 starter. Boone goes to closer. Price as #3. Robertson as long reliever. Configure once sim opens.</div>
+    </div>
+    <div class="decision-card open">
+      <div class="decision-label label-open">Open</div>
+      <div class="decision-title">Set Starting Lineup</div>
+      <div class="decision-desc">Defense and batting order config deferred. Adams leads lineup. Faulkner at 1B. White behind the plate. Right field (Kendall Green, F OVR) is the problem spot to address.</div>
+    </div>
+    <div class="decision-card open">
+      <div class="decision-label label-open">Open</div>
+      <div class="decision-title">Position Player Potentials — 618 Pts</div>
+      <div class="decision-desc">Adams, Faulkner, White, and core starters not yet precisely scouted. Use remaining 618 pts to reveal position player ceilings before the season starts.</div>
+    </div>
+    <div class="decision-card open">
+      <div class="decision-label label-open">Open</div>
+      <div class="decision-title">Fill 8 Open Roster Spots</div>
+      <div class="decision-desc">27/35 players on roster. Recruiting board is active — Farrell, Knox, Ramos are the top targets. Need at least 2 pitching commits and 1 outfield upgrade before conference play.</div>
+    </div>
+    <div class="decision-card resolved">
+      <div class="decision-label label-resolved">Resolved</div>
+      <div class="decision-title">Butler Role — Starter or Reliever?</div>
+      <div class="decision-desc">Confirmed starter. A- Endurance proves he can carry a full start. Listing him as RP leaves wins on the table. He goes in Slot 1 of the rotation.</div>
+    </div>
+    <div class="decision-card resolved">
+      <div class="decision-label label-resolved">Resolved</div>
+      <div class="decision-title">Boone Role — Starter or Closer?</div>
+      <div class="decision-desc">Confirmed closer. A Pickoff + B+ Control = premium shutdown arm. C+ Endurance means he cannot open games. Ninth inning, every high-leverage save situation.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">CBreezy Media  •  Alabama Crimson Tide SimCBL  •  War Room — Season 2026</div>
+</body>
+</html>

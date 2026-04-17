@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alabama Pitching Staff â Precise Potentials 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d0d0d; font-family: 'Arial', sans-serif; padding: 32px; }
+
+  .card {
+    background: #111827;
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  }
+
+  .header {
+    background: linear-gradient(135deg, #9E1B32 0%, #7a1325 50%, #1D3557 100%);
+    padding: 28px 32px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-left {}
+  .header-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .header-main {
+    font-size: 26px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 4px;
+    font-style: italic;
+  }
+  .header-badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 10px 18px;
+    text-align: center;
+  }
+  .badge-num { font-size: 28px; font-weight: 800; color: #fff; }
+  .badge-label { font-size: 10px; letter-spacing: 1.5px; color: rgba(255,255,255,0.55); text-transform: uppercase; }
+
+  .legend {
+    display: flex;
+    gap: 20px;
+    padding: 12px 32px;
+    background: #1a2236;
+    border-bottom: 1px solid #2a3a55;
+    flex-wrap: wrap;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #aaa; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: #1a2236; }
+  thead th {
+    padding: 10px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7a9cc4;
+    text-align: left;
+    border-bottom: 2px solid #2a3a55;
+  }
+  thead th.center { text-align: center; }
+
+  tbody tr { border-bottom: 1px solid #1e2d42; transition: background 0.15s; }
+  tbody tr:hover { background: rgba(255,255,255,0.03); }
+  tbody tr.grad-row { background: rgba(158, 27, 50, 0.08); }
+  tbody tr.grad-row:hover { background: rgba(158, 27, 50, 0.14); }
+
+  td { padding: 11px 14px; font-size: 13px; color: #cdd9e5; vertical-align: middle; }
+  td.center { text-align: center; }
+
+  .player-name { font-weight: 700; color: #e8ecf0; font-size: 14px; }
+  .class-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .cls-sr { background: rgba(158,27,50,0.25); color: #e87a8a; }
+  .cls-jr { background: rgba(29,53,87,0.4); color: #7aabda; }
+  .cls-so { background: rgba(80,80,80,0.3); color: #aaa; }
+  .cls-fr { background: rgba(26,116,49,0.2); color: #6ec97f; }
+  .cls-rsjr { background: rgba(120,80,0,0.3); color: #d4a04a; }
+
+  .grade {
+    display: inline-block;
+    min-width: 38px;
+    padding: 3px 0;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+  }
+  .g-ap { color: #22c55e; }
+  .g-a  { color: #34d058; }
+  .g-am { color: #4ade80; }
+  .g-bp { color: #60a5fa; }
+  .g-b  { color: #3b82f6; }
+  .g-bm { color: #93c5fd; }
+  .g-cp { color: #f59e0b; }
+  .g-c  { color: #f6a823; }
+  .g-cm { color: #fbbf24; }
+  .g-dp { color: #f87171; }
+  .g-d  { color: #ef4444; }
+  .g-dm { color: #fca5a5; }
+  .g-f  { color: #dc2626; }
+  .g-est { color: #6b7280; font-style: italic; }
+
+  .role-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .role-ace      { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+  .role-starter  { background: rgba(96,165,250,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+  .role-closer   { background: rgba(167,139,250,0.15); color: #a78bfa; border: 1px solid rgba(167,139,250,0.3); }
+  .role-setup    { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .role-long     { background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
+  .role-mid      { background: rgba(156,163,175,0.15); color: #9ca3af; border: 1px solid rgba(156,163,175,0.3); }
+  .role-short    { background: rgba(249,115,22,0.15); color: #fb923c; border: 1px solid rgba(249,115,22,0.3); }
+  .role-dev      { background: rgba(107,114,128,0.12); color: #6b7280; border: 1px solid rgba(107,114,128,0.2); }
+
+  .footer {
+    background: #1a2236;
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #2a3a55;
+  }
+  .footer-left { font-size: 11px; color: #4a6080; }
+  .footer-right { font-size: 11px; color: #4a6080; font-style: italic; }
+
+  .est-note { font-size: 11px; color: #4a6080; font-style: italic; }
+  .ovr-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-title">Alabama Crimson Tide  â¢  SimCBL Season 2026</div>
+      <div class="header-main">Pitching Staff â Precise College Potentials</div>
+      <div class="header-sub">11 of 13 arms precisely scouted  â¢  Nash &amp; Norman estimated  â¢   50 pts per reveal</div>
+    </div>
+    <div class="header-badge">
+      <div class="badge-num">618</div>
+      <div class="badge-label">pts remaining</div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div> A range â Elite</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div> B range â Above avg</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div> C range â Average</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div> D/F range â Below avg</div>
+    <div class="legend-item" style="margin-left:auto"><span style="color:#e87a8a;font-size:11px;font-weight:700;">SR</span> = Graduating after 2026</div>
+  </div>
+
+  <!-- TABLE -->
+  <table>
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Class</th>
+        <th class="center">OVR</th>
+        <th class="center">END</th>
+        <th class="center">CTRL</th>
+        <th class="center">VEL</th>
+        <th class="center">SEQ</th>
+        <th class="center">PO</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="grad-row">
+        <td><span class="player-name">Jerry Butler</span></td>
+        <td><span class="class-badge cls-sr">SR</span></td>
+        <td class="center"><span class="grade g-ap">A+</span></td>
+        <td class="center"><span class="grade g-am">A-</span></td>
+        <td class="center"><span class="grade g-bp">B+</span></td>
+        <td class="center"><span class="grade g-ap">A+</span></td>
+        <td class="center"><span class="grade g-bm">B-</span></td>
+        <td class="center"><span class="grade g-cm">C-</span></td>
+        <td><span class="role-badge role-ace">ACE STARTER</span></td>
+      </tr>
+      <tr class="grad-row">
+        <td><span class="player-name">Jacob Boone</span></td>
+        <td><span class="class-badge cls-sr">SR</span></td>
+        <td class="center"><span class="grade g-ap">A+</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-bp">B+</span></td>
+        <td class="center"><span class="grade g-bp">B+</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-a">A</span></td>
+        <td><span class="role-badge role-closer">ELITE CLOSER</span></td>
+      </tr>
+      <tr>
+        <td><span class="player-name">Mirza Price</span></td>
+        <td><span class="class-badge cls-fr">FR</span></td>
+        <td class="center"><span class="grade g-bp">B+</span></td>
+        <td class="center"><span class="grade g-bp">B+</span></td>
+        <td class="center"><span class="grade g-bm">B-</span></td>
+        <td class="center"><span class="grade g-bp">B+</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-dp">D+</span></td>
+        <td><span class="role-badge role-starter">FUTURE STARTER</span></td>
+      </tr>
+      <tr class="grad-row">
+        <td><span class="player-name">Jeffrey Andrews</span></td>
+        <td><span class="class-badge cls-sr">SR</span></td>
+        <td class="center"><span class="grade g-bp">B+</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-bm">B-</span></td>
+        <td class="center"><span class="grade g-am">A-</span></td>
+        <td class="center"><span class="grade g-c">C</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td><span class="role-badge role-mid">HBÉGH-LVG RP</span></td>
+      </tr>
+      <tr class="grad-row">
+        <td><span class="player-name">Everett Nash <span class="est-note">*eist.</span></span></td>
+        <td><span class="class-badge cls-sr">SR</span></td>
+        <td class="center"><span class="grade g-am">A-</span></td>
+        <td class="center"><span class="grade g-bm">B-</span></td>
+        <td class="center"><span class="grade g-b">B</span></td>
+        <td class="center"><span class="grade g-am">A-</span></td>
+        <td class="center"><span class="grade g-am">A-</span></td>
+        <td class="center"><span class="grade g-cm">C-</span></td>
+        <td><span class="role-badge role-mid">HIGH-LVG RP</span></td>
+      </tr>
+      <tr>
+        <td><span class="player-name">Jermichael Robertson</span></td>
+        <td><span class="class-badge cls-jr">JR</span></td>
+        <td class="center"><span class="grade g-bm">B-</span></td>
+        <td class="center"><span class="grade g-ap">A+</span></td>
+        <td class="center"><span class="grade g-bm">B-</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-d">D</span></td>
+        <td><span class="role-badge role-long">LONG RELIEVER</span></td>
+      </tr>
+      <tr>
+        <td><span class="player-name">Rocket Smith</span></td>
+        <td><span class="class-badge cls-jr">JR</span></td>
+        <td class="center"><span class="grade g-b">B</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-b">B</span></td>
+        <td class="center"><span class="grade g-bp">B+</span></td>
+        <td class="center"><span class="grade g-c">C</span></td>
+        <td class="center"><span class="grade g-c">C</span></td>
+        <td><span class="role-badge role-setup">SETUP MAN</span></td>
+      </tr>
+      <tr>
+        <td><span class="player-name">Cameron Garcia</span></td>
+        <td><span class="class-badge cls-jr">JR</span></td>
+        <td class="center"><span class="grade g-b">B</span></td>
+        <td class="center"><span class="grade g-c">C</span></td>
+        <td class="center"><span class="grade g-d">D</span></td>
+        <td class="center"><span class="grade g-a">A</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-b">B</span></td>
+        <td><span class="role-badge role-closer">CLOSER CANDIDATE</span></td>
+      </tr>
+      <tr>
+        <td><span class="player-name">Frank Coleman</span></td>
+        <td><span class="class-badge cls-fr">FR</span></td>
+        <td class="center"><span class="grade g-bm">B-</span></td>
+        <td class="center"><span class="grade g-dp">D+</span></td>
+        <td class="center"><span class="grade g-cm">C-</span></td>
+        <td class="center"><span class="grade g-a">A</span></td>
+        <td class="center"><span class="grade g-d">D</span></td>
+        <td class="center"><span class="grade g-b">B</span></td>
+        <td><span class="role-badge role-short">SHORT RP</span></td>
+      </tr>
+      <tr>
+        <td><span class="player-name">Jack Gilbert</span></td>
+        <td><span class="class-badge cls-so">SO</span></td>
+        <td class="center"><span class="grade g-bm">B-</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-d">D</span></td>
+        <td class="center"><span class="grade g-am">A-</span></td>
+        <td class="center"><span class="grade g-bm">B-</span></td>
+        <td class="center"><span class="grade g-cm">C-</span></td>
+        <td><span class="role-badge role-dev">DEVELOPING RP</span></td>
+      </tr>
+      <tr>
+        <td><span class="player-name">Rolando Garcia</span></td>
+        <td><span class="class-badge cls-fr">FR</span></td>
+        <td class="center"><span class="grade g-bm">B-</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-am">A-</span></td>
+        <td class="center"><span class="grade g-dp">D+</span></td>
+        <td class="center"><span class="grade g-dm">D-</span></td>
+        <td><span class="role-badge role-mid">MID-INNING RP</span></td>
+      </tr>
+      <tr>
+        <td><span class="player-name">Francis Collins</span></td>
+        <td><span class="class-badge cls-rsjr">RS JR</span></td>
+        <td class="center"><span class="grade g-c">C</span></td>
+        <td class="center"><span class="grade g-cm">C-</span></td>
+        <td class="center"><span class="grade g-bm">B-</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-c">C</span></td>
+        <td class="center"><span class="grade g-c">C</span></td>
+        <td><span class="role-badge role-dev">LOW-LVG RP</span></td>
+      </tr>
+      <tr>
+        <td><span class="player-name">John Norman <span class="est-note">*est.</span></span></td>
+        <td><span class="class-badge cls-so">SO</span></td>
+        <td class="center"><span class="grade g-d">D</span></td>
+        <td class="center"><span class="grade g-cp">C+</span></td>
+        <td class="center"><span class="grade g-dp">D+</span></td>
+        <td class="center"><span class="grade g-dp">D+</span></td>
+        <td class="center"><span class="grade g-bp">B+</span></td>
+        <td class="center"><span class="grade g-b">B</span></td>
+        <td><span class="role-badge role-dev">DEPTA!?ONY</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">CBreezy Media  â¢  Alabama Crimson Tide SimCBL  â¢  Season 2026</div>
+    <div class="footer-right">*est. = estimated (not precisely scouted)</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-14T11:14:18Z",
-  "week": 30,
+  "updated_at": "2026-07-15T11:17:34Z",
+  "week": 31,
   "season_year": 2026,
   "record": {
     "wins": 32,
@@ -2125,7 +2125,7 @@
       "game_type": "regular"
     },
     {
-      "id": 59275,
+      "id": 59396,
       "week": 40,
       "game_day": "a",
       "is_complete": false,
@@ -2133,10 +2133,10 @@
       "bama_score": null,
       "opp_score": null,
       "won": null,
-      "opp_id": 234,
-      "opp_abbrev": "GEOT",
-      "opp_name": "Georgetown Hoyas",
-      "opp_conf": "Big East Conference",
+      "opp_id": 233,
+      "opp_abbrev": "UNH",
+      "opp_name": "New Haven Chargers",
+      "opp_conf": "North East Conference",
       "is_sec": false,
       "game_type": "playoff"
     }

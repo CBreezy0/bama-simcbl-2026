@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-21T11:39:37Z",
-  "week": 33,
+  "updated_at": "2026-07-22T11:39:46Z",
+  "week": 34,
   "season_year": 2026,
   "record": {
     "wins": 32,
@@ -92,7 +92,7 @@
       "height": 76,
       "weight": 186,
       "recruit_stars": 2,
-      "is_injured": true,
+      "is_injured": false,
       "injury_risk": "Normal",
       "signing_tendency": "Signs Normal",
       "pitch1_name": "Four-Seam Fastball",
